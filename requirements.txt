@@ -122,7 +122,7 @@ python-slugify==2.0.1
 python-xapp==1.8.1
 python-xlib==0.26
 pytz==2019.3
-pyxdg==0.25
+pyxdg==0.26
 PyYAML==5.1.2
 pyzmq==18.1.1
 regex==2020.1.8
