@@ -20,7 +20,7 @@ from resumenes.views import res_view
 from django.views.generic.base import RedirectView
 
 
-favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
+favicon_view = RedirectView.as_view(url='/staticfiles/favicon.ico', permanent=True)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
