@@ -8,9 +8,7 @@ import numpy as np
 import io
 import urllib, base64
   
-def home_view(request): 
-  # <img src="../media/foo.png">
-  
+def home_view(request):   
   # Data for plotting
   t = np.arange(0.0, 2.0, 0.01)
   s = 1 + np.sin(2 * np.pi * t)
