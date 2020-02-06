@@ -1,17 +1,38 @@
 {% extends 'base.html' %}
-{% block content%}
-<h1>Hello Puercas </h1>
-<p>Cuerpo, {{request.user}}
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id consequat nulla. Aliquam ac orci massa. Maecenas at iaculis mauris, in convallis felis. Nunc commodo pellentesque lacus in tristique. Integer tincidunt augue ante, eu facilisis purus placerat ac. Fusce lobortis ut odio eu maximus. Phasellus in quam ac nunc eleifend ultricies ac eget lorem. Curabitur nec viverra dui. Nunc quis neque vitae ex dapibus auctor eget eu orci. Etiam fermentum mattis est quis fermentum. Etiam ultrices est eget blandit auctor. Nam viverra ipsum eu facilisis ultrices. Sed rutrum ullamcorper quam sit amet tristique.
+{% block content %}
+    <h1>Hello Puercas, {{ request.user }} </h1>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id consequat nulla. Aliquam ac orci massa.
+        Maecenas at iaculis mauris, in convallis felis. Nunc commodo pellentesque lacus in tristique. Integer tincidunt
+        augue ante, eu facilisis purus placerat ac. Fusce lobortis ut odio eu maximus. Phasellus in quam ac nunc
+        eleifend ultricies ac eget lorem. Curabitur nec viverra dui. Nunc quis neque vitae ex dapibus auctor eget eu
+        orci. Etiam fermentum mattis est quis fermentum. Etiam ultrices est eget blandit auctor. Nam viverra ipsum eu
+        facilisis ultrices. Sed rutrum ullamcorper quam sit amet tristique.
 
-Fusce malesuada sem non efficitur pellentesque. Integer eget odio elementum, pellentesque sem ac, semper justo. Sed hendrerit est eu ex pellentesque, eget pharetra turpis pulvinar. Suspendisse feugiat sit amet neque a bibendum. Etiam ultricies sodales semper. Suspendisse consectetur tincidunt lacus, eu eleifend urna ultrices a. Sed ac dictum felis.
+        Fusce malesuada sem non efficitur pellentesque. Integer eget odio elementum, pellentesque sem ac, semper justo.
+        Sed hendrerit est eu ex pellentesque, eget pharetra turpis pulvinar. Suspendisse feugiat sit amet neque a
+        bibendum. Etiam ultricies sodales semper. Suspendisse consectetur tincidunt lacus, eu eleifend urna ultrices a.
+        Sed ac dictum felis.
 
-Integer accumsan orci sed eleifend lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec lacinia ac dui interdum imperdiet. Duis vel rhoncus libero. Ut luctus magna nec feugiat iaculis. Pellentesque ut arcu aliquam mauris tincidunt maximus hendrerit ut diam. Nunc vitae gravida urna. Praesent eleifend sagittis lorem quis luctus. Praesent malesuada tempor ipsum vel eleifend. Aliquam vel leo velit. Quisque eget felis diam. In a quam scelerisque, aliquet nibh sit amet, lacinia leo. Sed vitae magna egestas, lobortis velit quis, fringilla massa. Morbi gravida, purus non maximus vehicula, massa urna sollicitudin diam, sed congue ipsum dui ac velit. Aliquam venenatis, nunc non vehicula tempus, tellus est fringilla leo, vel rutrum sapien sem et mauris. Morbi quis quam sit amet leo tincidunt bibendum vitae quis erat.
+        Integer accumsan orci sed eleifend lobortis. Orci varius natoque penatibus et magnis dis parturient montes,
+        nascetur ridiculus mus. Donec lacinia ac dui interdum imperdiet. Duis vel rhoncus libero. Ut luctus magna nec
+        feugiat iaculis. Pellentesque ut arcu aliquam mauris tincidunt maximus hendrerit ut diam. Nunc vitae gravida
+        urna. Praesent eleifend sagittis lorem quis luctus. Praesent malesuada tempor ipsum vel eleifend. Aliquam vel
+        leo velit. Quisque eget felis diam. In a quam scelerisque, aliquet nibh sit amet, lacinia leo. Sed vitae magna
+        egestas, lobortis velit quis, fringilla massa. Morbi gravida, purus non maximus vehicula, massa urna
+        sollicitudin diam, sed congue ipsum dui ac velit. Aliquam venenatis, nunc non vehicula tempus, tellus est
+        fringilla leo, vel rutrum sapien sem et mauris. Morbi quis quam sit amet leo tincidunt bibendum vitae quis erat.
 
-Fusce eget ante faucibus, blandit ligula in, aliquet sapien. Donec id tempor leo. Etiam aliquet pellentesque eros sit amet iaculis. Sed egestas velit eu diam facilisis, sit amet porta quam porttitor. Suspendisse odio eros, egestas id lacus id, pulvinar euismod massa. Mauris vulputate condimentum leo nec sagittis. Suspendisse tincidunt, dui et mollis aliquet, sapien ligula commodo orci, et placerat sapien libero vitae tellus. Cras at imperdiet sapien, vel congue nunc. Pellentesque quis elit id sapien blandit facilisis vel ut elit. Nunc neque mauris, malesuada et felis sit amet, volutpat dapibus purus. Maecenas sagittis sagittis porttitor.
+        Fusce eget ante faucibus, blandit ligula in, aliquet sapien. Donec id tempor leo. Etiam aliquet pellentesque
+        eros sit amet iaculis. Sed egestas velit eu diam facilisis, sit amet porta quam porttitor. Suspendisse odio
+        eros, egestas id lacus id, pulvinar euismod massa. Mauris vulputate condimentum leo nec sagittis. Suspendisse
+        tincidunt, dui et mollis aliquet, sapien ligula commodo orci, et placerat sapien libero vitae tellus. Cras at
+        imperdiet sapien, vel congue nunc. Pellentesque quis elit id sapien blandit facilisis vel ut elit. Nunc neque
+        mauris, malesuada et felis sit amet, volutpat dapibus purus. Maecenas sagittis sagittis porttitor.
 
-Sed posuere scelerisque
-</p>
+        Sed posuere scelerisque
+    </p>
 
-<img src="{{ image }}">
+    <img src="{{ image }}">
+
 {% endblock %}
