@@ -26,7 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home_view, name='home'),
     path('', home_view, name='home'),
-    path('/', home_view, name='home'),
     path('resumenes/', res_view, name='resumenes'),
     path('favicon.ico', favicon_view),
 ]
