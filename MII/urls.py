@@ -30,5 +30,5 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('resumenes/', res_view, name='resumenes'),
     path('favicon.ico', favicon_view),
-    path('metodo_newton', newton_view)
+    path('metodos-dos.herokuapp.com/metodo_newton', newton_view)
 ]
