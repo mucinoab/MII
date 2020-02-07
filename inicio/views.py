@@ -7,8 +7,8 @@ import numpy as np
 import io, urllib, base64
 from random import randint
 
-
 def home_view(request):
+
     '''
     t = np.arange(0.0, 2.0, 0.01)
     s = 1 + np.sin(randint(1, 50) * np.pi * t)
@@ -27,7 +27,6 @@ def home_view(request):
 
     fig = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
     '''
-
 
     # Compute areas and colors
     N = 150
