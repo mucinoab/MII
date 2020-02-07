@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from inicio.views import home_view
 from resumenes.views import res_view
+from newton.views import newton_view
+
 from django.views.generic.base import RedirectView
 
 
@@ -28,4 +30,5 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('resumenes/', res_view, name='resumenes'),
     path('favicon.ico', favicon_view),
+    path('metodo_newton', newton_view)
 ]
