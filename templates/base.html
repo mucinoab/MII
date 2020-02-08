@@ -129,12 +129,12 @@
 </head>
 <ul>
     <!-- Se sustituye lo que esta despues de "href" por un link, que te mande a la página de esa sección -->
-    <li><a href="http://127.0.0.1:8000/home/">Inicio</a></li>
-    <li><a href="http://127.0.0.1:8000/resumenes">Resúmenes</a></li>
+    <li><a href="{{ ALLOWED_HOSTS }}home">Inicio</a></li>
+    <li><a href="{{ ALLOWED_HOSTS }}resumenes">Resúmenes</a></li>
     <li class="dropdown">
         <a href="#metos" class="dropbtn">Métodos</a>
         <div class="dropdown-content">
-            <a href="https://metodos-dos.herokuapp.com/metodo_newton">Newton</a>
+            <a href="http://127.0.0.1:8000/metodo_newton">Newton</a>
             <a href="#">Método 2</a>
             <a href="#">Método 3 </a>
         </div>

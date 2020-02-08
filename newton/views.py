@@ -3,82 +3,67 @@ import sympy
 import matplotlib.pyplot as plt
 import numpy as np
 
-import io, urllib, base64
+from io import BytesIO
+from urllib import parse
+from base64 import b64encode
+
 
 def newton_view(request):
-
     x = sympy.Symbol('x')
-    # convert the given function to a symbolic expression
 
     # starting = float(input("Valor inicial:"))
-    # fucn = input("Función:")
+    #fucn = input("Función:")
 
     starting = .1
-    fucn   = (3 * x ** 2) - 14
+    fucn = -6 * x ** 2 + x - 14+120
 
     fx = sympy.S(fucn)
-
-    # calculate the differential of the function
     dfdx = sympy.diff(fx, x)
 
-    e = .0001
+    e = .001
     x0 = starting
     iterations = 0
     delta = 1
+    b = 1
+
     while e < delta:
         r = x0 - fx.subs(x, x0) / dfdx.subs(x, x0)
         delta = abs((r - x0) / r)
         iterations += 1
         x0 = r
+        if iterations > 100:
+            b = 0
+            break
+
 
     print(f'Root {r} calculated after {iterations} iterations {fucn}')
-#------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
-    r = float(r)
-    t = np.arange(r-1, r+1, .1)
+    t = np.arange(r - 20, r + 20, .5)
     s = []
+
     for n in t:
         s.append(float(fucn.subs(x, n)))
 
-
-
     fig, ax = plt.subplots()
-
     ax.plot(t, s, label=f'f(x) = {str(fucn)}')
-    ax.set(xlabel='time (s)', ylabel='voltage (mV)', title='About as simple as it gets, folks')
+    # ax.set(xlabel='time (s)', ylabel='voltage (mV)', title='About as simple as it gets, folks')
+    ax.set(title='Método de Newton')
     ax.grid()
-    ax.vlines(1.82, -10, 10, color = 'r', label = 'Corte con Eje X = '+'%.3f'%(r))
+    if b == 1:
+        plt.plot(r, fucn.subs(x, r), marker='o', markersize=5, color="red", label= f"Corte con Eje X = {r:.2f}")
+    else:
+        ax.hlines(0, 0, 0, color='r', label = 'No Ee Encontró Corte con Eje X')
 
-    print(fucn.subs(x, r))
+    # ax.hlines(0, -5, 5, color='r')
+
     plt.legend(loc='best')
 
-    ''' 
-    fig = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-
-
-    # Compute areas and colors
-    N = 150
-    r = 2 * np.random.rand(N)
-    theta = 2 * np.pi * np.random.rand(N)
-    area = 200 * r ** 2
-    colors = theta  
-
-
-
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='polar')
-    c = ax.scatter(theta, r, c=colors, s=area, cmap='hsv', alpha=0.75)
-
-    '''
-
-    buf = io.BytesIO()
-
-    #plt.savefig(buf, format='png')
-
-    fig.savefig(buf, format='png')  # dpi = 300
+    buf = BytesIO()
+    fig.savefig(buf, format='png', bbox_inches='tight')  # dpi = 300
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+    string = b64encode(buf.read())
+    uri = 'data:image/png;base64,' + parse.quote(string)
     buf.flush()
 
     args = {'image': uri}

@@ -23,9 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'dc^1-h#n45$_cxkm*^mm71cc5izf+c^y7sup=7-2_79%&w&vqt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = []
+DEBUG = True
+
+ALLOWED_HOSTS = ['www.metodos-dos.herokuapp.com/', '127.0.0.1:8000/']
 
 
 # Application definition

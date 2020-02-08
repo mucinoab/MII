@@ -26,9 +26,9 @@ favicon_view = RedirectView.as_view(url='/staticfiles/favicon.ico', permanent=Tr
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home_view, name='home'),
-    path('', home_view, name='home'),
-    path('resumenes/', res_view, name='resumenes'),
+    path('home/', home_view),
+    path('', home_view),
+    path('resumenes/', res_view),
     path('favicon.ico', favicon_view),
-    path('https://metodos-dos.herokuapp.com/metodo_newton', newton_view, name ='metodo_newton ')
+    path('metodo_newton/', newton_view,)
 ]
