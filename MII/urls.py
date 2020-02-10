@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view),
     path('resumenes/', res_view),
-    path('static/favicon.ico', favicon_view),
+    path('/favicon.ico', favicon_view),
     path('metodo_newton/', newton_view),
     path('metodo_newton/?f=<str:fun>&ini<str:in>', newton_calcula),
 ]

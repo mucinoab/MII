@@ -15,8 +15,6 @@ def newton_view(request):
     form = In()
     context = {"form":form}
 
-    print(request.META['CONTENT_LENGTH'])
-
     if request.method == 'GET':
         form = In(request.GET)
         if form.is_valid():
