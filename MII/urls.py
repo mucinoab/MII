@@ -26,9 +26,9 @@ favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view),
+    path('', home_view, name="home"),
     path('resumenes/', res_view),
-    path('favicon.ico', favicon_view),
+    path('favicon.ico/', favicon_view),
     path('metodo_newton/', newton_view),
-    path('metodo_newton/?f=<str:fun>&ini<str:in>', newton_calcula),
+    path('metodo_newton/?f=<str:fun>&ini<str:in>/', newton_calcula),
 ]

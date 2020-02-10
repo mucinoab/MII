@@ -1,19 +1,18 @@
-from django.shortcuts import render
-
-import sympy
-import numpy as np
-import matplotlib.pyplot as plt
-
+from base64 import b64encode
 from io import BytesIO
 from urllib import parse
-from base64 import b64encode
+
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy
+from django.shortcuts import render
 
 from .forms import In
 
 
 def newton_view(request):
     form = In()
-    context = {"form":form}
+    context = {"form": form}
 
     if request.method == 'GET':
         form = In(request.GET)
@@ -22,11 +21,12 @@ def newton_view(request):
 
     return render(request, "newton_input.html", context)
 
+
 def newton_calcula(request, form):
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
 
-    valores = form.cleaned_data #funcion y valor inicial
+    valores = form.cleaned_data  # funcion y valor inicial
     context = {'form': form}
     starting = valores['ini']
     fucn = valores['f']
@@ -64,7 +64,6 @@ def newton_calcula(request, form):
         else:
             nuevo += fucn[c]
 
-
     t = np.arange(r - 25, r + 25, .5)
     s = []
 
@@ -82,7 +81,7 @@ def newton_calcula(request, form):
     ax.set(xlabel='x', ylabel='f(x)')
     ax.grid(color="azure")
 
-    if b == 1: #si se encontro corte despues de 50 iteraciones
+    if b == 1:  # si se encontro corte despues de 50 iteraciones
         plt.plot(r, fx.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.2f}")
     else:
         ax.hlines(0, 0, 0, color='r', label='No Se Encontró Corte con Eje X')
@@ -90,13 +89,11 @@ def newton_calcula(request, form):
     plt.legend(loc='best')
 
     buf = BytesIO()
-    fig.savefig(buf, format='png', dpi = 160, facecolor= "#004c3f", edgecolor='#004c3f', transparent=True)
+    fig.savefig(buf, format='png', dpi=160, facecolor="#004c3f", edgecolor='#004c3f', transparent=True)
     buf.seek(0)
     string = b64encode(buf.read())
     uri = 'data:image/png;base64,' + parse.quote(string)
-    buf.flush()
 
     context['image'] = uri
 
     return render(request, "newton_calculado.html", context)
-

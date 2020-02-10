@@ -116,13 +116,16 @@
         }
 
         input[type=text] {
-            width: 25vw;
+            margin: 1vh;
+            width: 20vm;
             box-sizing: border-box;
             border: 2px solid #333;
+            display: block;
             border-radius: 7px;
             font-size: 2vm;
             background-color: whitesmoke;
-            padding: 12px 20px 12px 40px;
+            {#padding: 12px 20px 12px 40px;#}
+            padding: 1vh;
             transition: width 0.4s ease-in-out;
         }
 
@@ -135,13 +138,19 @@
             border: 2px solid whitesmoke;
             border-radius: 10px;
             color: white;
-            padding: 1.5vw 3vw;
+            padding: 1vh;
             text-decoration: none;
-            margin: 4px 2px;
+            margin: 1vh 3vw;
             text-align: center;
             display: inline-block;
-            font-size: 2.2vw;
+            font-size: 2vh;
             cursor: pointer;
+        }
+        label{
+            color: white;
+            width: 90vw;
+            font-size: 3.3vw;
+            margin: 1vw;
         }
 
         /* Maneja la barra de scroll */
@@ -168,11 +177,11 @@
 </head>
 <ul>
     <!-- Se sustituye lo que esta despues de "href" por un link, que te mande a la página de esa sección -->
-    <li><a href="">Inicio</a></li>
-    <li><a href="resumenes">Resúmenes</a></li>
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/resumenes">Resúmenes</a></li>
     <li class="dropdown">
         <a href="#metos" class="dropbtn">Métodos</a>
-        <div class="dropdown-content">
+            <div class="dropdown-content">
             <a href="/metodo_newton">Newton</a>
             <a href="#">Método 2</a>
             <a href="#">Método 3 </a>
@@ -181,7 +190,7 @@
     <li><a href="#tutorial">Tutorial</a></li>
     <li><a href="#sobre_nosotros">Créditos</a></li>
 </ul>
-<div style="padding-top:1vh;margin-top: 3.5vh;">
+<div style="padding-top:4vw;margin-top: 3.5vh;">
     <body>
     {% block content %} replace me {% endblock %}
     </body>

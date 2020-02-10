@@ -6,32 +6,30 @@ import matplotlib.pyplot as plt
 import numpy as np
 from django.shortcuts import render
 
-
 # from django.http import HttpResponse
+from django.views.decorators.gzip import gzip_page
 
-
+@gzip_page
 def home_view(request):
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
-    # fig = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-    # Compute areas and colors
-    N = 150
+
+    N = 80
     r = 2 * np.random.rand(N)
-    theta = 2 * np.pi * np.random.rand(N)
-    area = 200 * r ** 2
+    theta = 4 * np.pi * np.random.rand(N)
+    area = np.random.randint(50, 100) * r ** 4
     colors = theta
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='polar')
-    c = ax.scatter(theta, r, c=colors, s=area, cmap='hsv', alpha=0.75)
+    ax.scatter(theta, r, c=colors, s=area, cmap='hsv', alpha=0.50)
 
     buf = BytesIO()
 
-    fig.savefig(buf, format='png', bbox_inches='tight',facecolor= "#004c3f", edgecolor='#004c3f', transparent=True)  # dpi = 300
+    fig.savefig(buf, format='png', bbox_inches='tight', transparent=True, dpi=200)  # dpi = 300
     buf.seek(0)
     string = b64encode(buf.read())
     uri = 'data:image/png;base64,' + parse.quote(string)
-    buf.flush()
 
     args = {'image': uri}
 
