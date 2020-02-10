@@ -23,14 +23,15 @@ def newton_view(request):
     return render(request, "newton_input.html", context)
 
 def newton_calcula(request, form):
+    plt.rcParams.update(plt.rcParamsDefault)
+    plt.close('all')
 
     valores = form.cleaned_data #funcion y valor inicial
     context = {'form': form}
     starting = valores['ini']
+    fucn = valores['f']
 
     x, y, z, t = sympy.symbols('x y z t')
-
-    fucn = valores['f']
     fx = sympy.sympify(fucn)
 
     dfdx = sympy.diff(fx, x)
@@ -78,18 +79,18 @@ def newton_calcula(request, form):
     ax.axhline(0, color='black')
 
     ax.plot(t, s, label=f'f(x) = {nuevo}', color='navy')
-    ax.set(title='Método de Newton', xlabel='x', ylabel='f(x)')
+    ax.set(xlabel='x', ylabel='f(x)')
     ax.grid(color="azure")
 
     if b == 1: #si se encontro corte despues de 50 iteraciones
-        plt.plot(r, fx.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje X = {r:.2f}")
+        plt.plot(r, fx.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.2f}")
     else:
         ax.hlines(0, 0, 0, color='r', label='No Se Encontró Corte con Eje X')
 
     plt.legend(loc='best')
 
     buf = BytesIO()
-    fig.savefig(buf, format='png', dpi = 150, facecolor= "#004c3f", edgecolor='#004c3f', transparent=True)
+    fig.savefig(buf, format='png', dpi = 160, facecolor= "#004c3f", edgecolor='#004c3f', transparent=True)
     buf.seek(0)
     string = b64encode(buf.read())
     uri = 'data:image/png;base64,' + parse.quote(string)

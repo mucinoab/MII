@@ -11,8 +11,9 @@ from django.shortcuts import render
 
 
 def home_view(request):
+    plt.rcParams.update(plt.rcParamsDefault)
+    plt.close('all')
     # fig = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-
     # Compute areas and colors
     N = 150
     r = 2 * np.random.rand(N)
@@ -26,7 +27,7 @@ def home_view(request):
 
     buf = BytesIO()
 
-    fig.savefig(buf, format='png', bbox_inches='tight')  # dpi = 300
+    fig.savefig(buf, format='png', bbox_inches='tight',facecolor= "#004c3f", edgecolor='#004c3f', transparent=True)  # dpi = 300
     buf.seek(0)
     string = b64encode(buf.read())
     uri = 'data:image/png;base64,' + parse.quote(string)
