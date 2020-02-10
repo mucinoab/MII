@@ -51,7 +51,7 @@ def newton_calcula(request, form):
             b = 0
             break
 
-    print(f'Root {r} calculated after {iterations} iterations {fucn}')
+    # print(f'Root {r} calculated after {iterations} iterations {fucn}')
 
     # ------------------------------------------------------------------
 
@@ -78,7 +78,7 @@ def newton_calcula(request, form):
     ax.axhline(0, color='black')
 
     ax.plot(t, s, label=f'f(x) = {nuevo}', color='navy')
-    ax.set(xlabel='x', ylabel='f(x)')
+    ax.set(xlabel='x', ylabel='f(x)', title =f"Raíz calculada después de {iterations} iteraciones   ")
     ax.grid(color="azure")
 
     if b == 1:  # si se encontro corte despues de 50 iteraciones
