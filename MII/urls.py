@@ -17,18 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from inicio.views import home_view
 from resumenes.views import res_view
-from newton.views import newton_view
+from newton.views import newton_view, newton_calcula
 
 from django.views.generic.base import RedirectView
 
 
-favicon_view = RedirectView.as_view(url='/staticfiles/favicon.ico', permanent=True)
+favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home_view),
     path('', home_view),
     path('resumenes/', res_view),
-    path('favicon.ico', favicon_view),
-    path('metodo_newton/', newton_view,)
+    path('static/favicon.ico', favicon_view),
+    path('metodo_newton/', newton_view),
+    path('metodo_newton/?f=<str:fun>&ini<str:in>', newton_calcula),
 ]

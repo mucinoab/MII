@@ -1,23 +1,40 @@
 from django.shortcuts import render
+
 import sympy
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
 from io import BytesIO
 from urllib import parse
 from base64 import b64encode
 
+from .forms import In
+
 
 def newton_view(request):
-    x = sympy.Symbol('x')
+    form = In()
+    context = {"form":form}
 
-    # starting = float(input("Valor inicial:"))
-    #fucn = input("Función:")
+    print(request.META['CONTENT_LENGTH'])
 
-    starting = .1
-    fucn = -6 * x ** 2 + x - 14+120
+    if request.method == 'GET':
+        form = In(request.GET)
+        if form.is_valid():
+            return newton_calcula(request, form)
 
-    fx = sympy.S(fucn)
+    return render(request, "newton_input.html", context)
+
+def newton_calcula(request, form):
+
+    valores = form.cleaned_data #funcion y valor inicial
+    context = {'form': form}
+    starting = valores['ini']
+
+    x, y, z, t = sympy.symbols('x y z t')
+
+    fucn = valores['f']
+    fx = sympy.sympify(fucn)
+
     dfdx = sympy.diff(fx, x)
 
     e = .001
@@ -31,41 +48,56 @@ def newton_view(request):
         delta = abs((r - x0) / r)
         iterations += 1
         x0 = r
-        if iterations > 100:
+        if iterations > 50:
             b = 0
             break
 
-
     print(f'Root {r} calculated after {iterations} iterations {fucn}')
+
     # ------------------------------------------------------------------
 
-    t = np.arange(r - 20, r + 20, .5)
+    nuevo = ''
+    for c in range(len(fucn)):
+        if fucn[c] == '*':
+            if fucn[c + 1] == '*':
+                c += 2
+                nuevo += "^"
+        else:
+            nuevo += fucn[c]
+
+
+    t = np.arange(r - 25, r + 25, .5)
     s = []
 
     for n in t:
-        s.append(float(fucn.subs(x, n)))
+        s.append(float(fx.subs(x, n)))
+
+    plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
 
     fig, ax = plt.subplots()
-    ax.plot(t, s, label=f'f(x) = {str(fucn)}')
-    # ax.set(xlabel='time (s)', ylabel='voltage (mV)', title='About as simple as it gets, folks')
-    ax.set(title='Método de Newton')
-    ax.grid()
-    if b == 1:
-        plt.plot(r, fucn.subs(x, r), marker='o', markersize=5, color="red", label= f"Corte con Eje X = {r:.2f}")
-    else:
-        ax.hlines(0, 0, 0, color='r', label = 'No Ee Encontró Corte con Eje X')
 
-    # ax.hlines(0, -5, 5, color='r')
+    # plt.axvline(0, color='black')
+    ax.axhline(0, color='black')
+
+    ax.plot(t, s, label=f'f(x) = {nuevo}', color='navy')
+    ax.set(title='Método de Newton', xlabel='x', ylabel='f(x)')
+    ax.grid(color="azure")
+
+    if b == 1: #si se encontro corte despues de 50 iteraciones
+        plt.plot(r, fx.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje X = {r:.2f}")
+    else:
+        ax.hlines(0, 0, 0, color='r', label='No Se Encontró Corte con Eje X')
 
     plt.legend(loc='best')
 
     buf = BytesIO()
-    fig.savefig(buf, format='png', bbox_inches='tight')  # dpi = 300
+    fig.savefig(buf, format='png', dpi = 150, facecolor= "#004c3f", edgecolor='#004c3f', transparent=True)
     buf.seek(0)
     string = b64encode(buf.read())
     uri = 'data:image/png;base64,' + parse.quote(string)
     buf.flush()
 
-    args = {'image': uri}
+    context['image'] = uri
 
-    return render(request, "newton.html", args)
+    return render(request, "newton_calculado.html", context)
+
