@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{#    <form method="GET">#}
-{#        {{ form.as_}}#}
-{#    <input type="submit" value="Calcular y Graficar">#}
-{#    </form>#}
+    {#    <form method="GET">#}
+    {#        {{ form.as_}}#}
+    {#    <input type="submit" value="Calcular y Graficar">#}
+    {#    </form>#}
 
     <form method="GET">
-    {% for field in form %}
-        <div class="fieldWrapper">
-            {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
-        </div>
-    {% endfor %}
-       <input type="submit" value="Calcular y Graficar">
-</form>
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        <input type="submit" class="button" value="Calcular y Graficar"/>
+    </form>
 {% endblock %}
+

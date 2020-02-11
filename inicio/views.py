@@ -26,7 +26,7 @@ def home_view(request):
 
     buf = BytesIO()
 
-    fig.savefig(buf, format='png', bbox_inches='tight', transparent=True, dpi=200)  # dpi = 300
+    fig.savefig(buf, format='png', bbox_inches='tight', transparent=True, dpi=170)  # dpi = 300
     buf.seek(0)
     string = b64encode(buf.read())
     uri = 'data:image/png;base64,' + parse.quote(string)
