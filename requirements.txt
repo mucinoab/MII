@@ -28,7 +28,7 @@ decorator==4.4.1
 defer==1.0.6
 defusedxml==0.6.0
 dirspec==13.10
-Django==3.0.2
+Django==3.0.3
 EasyProcess==0.2.7
 entrypoints==0.3
 et-xmlfile==1.0.1
