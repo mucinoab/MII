@@ -1,6 +1,8 @@
 from base64 import b64encode
 from io import BytesIO
 from urllib import parse
+from traceback import print_exc
+
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -43,17 +45,19 @@ def newton_calcula(request, form):
         iterations = 0
         delta = 1
         b = 1
+        iteraciones_permitidas = 60
 
         while e < delta:
             r = x0 - fx.subs(x, x0) / dfdx.subs(x, x0)
             delta = abs((r - x0) / r)
             iterations += 1
             x0 = r
-            if iterations > 49:
+            if iterations > iteraciones_permitidas:
                 b = 0
                 break
 
-    except:
+    except  Exception:
+        print_exc()
         return errors_view(request)
 
     else:
@@ -80,7 +84,7 @@ def newton_calcula(request, form):
         # plt.axvline(0, color='black')
         ax.axhline(0, color='black')
 
-        ax.plot(t, s, label= f'$\f(x) = {nuevo}', color='navy')
+        ax.plot(t, s, label= f'f(x) = {nuevo}', color='navy')
         ax.grid(color="azure")
 
         if b == 1:  # si se encontro corte antes de 50 iteraciones
@@ -88,7 +92,7 @@ def newton_calcula(request, form):
             ax.set(xlabel='x', ylabel='f(x)', title=f"Raíz calculada después de {iterations} iteraciones")
         else:
             ax.hlines(0, 0, 0, color='r', label='No Se Encontró Corte con Eje X')
-            ax.set(xlabel='x', ylabel='f(x)', title=f"No se logro encontrar raíz después de 50 iteraciones")
+            ax.set(xlabel='x', ylabel='f(x)', title=f"No se logro encontrar raíz después de {iteraciones_permitidas} iteraciones")
 
         plt.legend(loc='best')
 

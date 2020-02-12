@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
-{% load static %}
+{#{% load static %}#}
 {% block content %}
-    <img src="{static}/sad_dog.png">
-    <h1>Upps, algo salio mal...</h1>
+{#    <img src="{% static 'sad_cat.png'%}">#}
+    <pre>
+        <p style="font-size: 1.8vw; margin-left: -6vw;">
+                _
+                \`*-.
+                 )  _`-.
+                .  : `. .
+                : _   '  \
+                ; *` _.   `*-._
+                `-.-'          `-.
+                  ;       `       `.
+                  :.       .        \
+                  . \  .   :   .-'   .
+                  '  `+.;  ;  '      :
+                  :  '  |    ;       ;-.
+                  ; '   : :`-:     _.`* ;
+         [bug] .*' /  .*' ; .*`- +'  `*'
+               `*-*   `*-*  `*-*'
+
+            Upps, algo salio mal... Intentalo de nuevo.
+        </p >
+        <a href="/metodo_newton" class="button"><span>Regresar</span></a>
+    </pre>
 {% endblock %}
