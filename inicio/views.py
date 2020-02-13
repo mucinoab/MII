@@ -5,9 +5,9 @@ from urllib import parse
 import matplotlib.pyplot as plt
 import numpy as np
 from django.shortcuts import render
-
 # from django.http import HttpResponse
 from django.views.decorators.gzip import gzip_page
+
 
 @gzip_page
 def home_view(request):
