@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'inicio',
     'error',
+    'punto_fijo',
     'resumenes',
     'tutorial',
     'newton',

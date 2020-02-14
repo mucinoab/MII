@@ -6,6 +6,8 @@ from urllib import parse
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy
+from sympy import latex
+from sympy.core import S
 from django.shortcuts import render
 
 from error.views import errors_view
@@ -59,15 +61,16 @@ def newton_calcula(request, form):
         return errors_view(request)
 
     else:
+        plt.rc('text', usetex=True)
 
-        nuevo = ''
-        for c in range(len(fucn)):
-            if fucn[c] == '*':
-                if fucn[c + 1] == '*':
-                    c += 2
-                    nuevo += "^"
-            else:
-                nuevo += fucn[c]
+        # nuevo = ''
+        # for c in range(len(fucn)):
+        #     if fucn[c] == '*':
+        #         if fucn[c + 1] == '*':
+        #             c += 2
+        #             nuevo += "^"
+        #     else:
+        #         nuevo += fucn[c]
 
         t = np.arange(r - 25, r + 25, .5)
         s = []
@@ -82,7 +85,10 @@ def newton_calcula(request, form):
         # plt.axvline(0, color='black')
         ax.axhline(0, color='black')
 
-        ax.plot(t, s, label=f'f(x) = {nuevo}', color='navy')
+        fucn = latex(S(fucn, evaluate=False))
+
+
+        ax.plot(t, s, label=fucn, color='navy')
         ax.grid(color="azure")
 
         if b == 1:  # si se encontro corte antes de 50 iteraciones
