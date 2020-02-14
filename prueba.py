@@ -2,8 +2,8 @@ from sympy import symbols, sympify, solve, latex, init_printing
 from sympy.core import S
 #https://docs.sympy.org/latest/modules/solvers/solvers.html
 
+#x*y**2+x-10*y+8
 #x**2-10*x+y**2+8
-#x+y**2+x-10*y+8
 
 print("Punto fijo")
 
