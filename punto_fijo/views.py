@@ -1,17 +1,8 @@
-from django.shortcuts import render
-from .forms import In, E1, E2, E3
-
-from sympy import symbols, sympify, solve
-
-from base64 import b64encode
-from io import BytesIO
-from traceback import print_exc
-from urllib import parse
-
 import matplotlib.pyplot as plt
-import numpy as np
+from django.shortcuts import render
+from sympy import sympify, solve
 
-from error.views import errors_view
+from .forms import In, E1, E2, E3
 
 
 def fijo_view(request):
@@ -28,23 +19,18 @@ def fijo_view(request):
             elif form.cleaned_data['n'] == 2:
                 return fijo_input(request, 2)
 
-            else:
-                return fijo_input(request, 3)
+            return fijo_input(request, 3)
 
     return render(request, "fijo_elejir.html", context)
 
 
 def fijo_input(request, n):
-
     if n == 1:
         form = E1()
     elif n == 2:
         form = E2()
     else:
         form = E3()
-
-
-
 
     if request.method == 'GET':
         if n == 1:
@@ -58,24 +44,22 @@ def fijo_input(request, n):
             print("paso")
             return fijo_calcula(request, form, n)
         else:
-            print(form.cleaned_data, form.errors)
+            print(form.cleaned_data, form.errors.as_data())
 
-        context = {"form": form}
-            
+    context = {"form": form}
+
     return render(request, "fijo_input.html", context)
 
 
-def fijo_calcula(request, form, n):
-
-    #inicia cosas de sympy
+def fijo_calcula(request, form):
+    # inicia cosas de sympy
     x, y, z, t = sympy.symbols('x y z t')
 
-    #Inicia cosas de matplotlib
+    # Inicia cosas de matplotlib
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
 
-
-    valores = form.cleaned_data #obtiene el input
+    valores = form.cleaned_data  # obtiene el input
     context = {'form': form}
 
     if n == 1:
@@ -88,29 +72,11 @@ def fijo_calcula(request, form, n):
 
         for z in range(10):
             x0 = round(fx.subs(x, x0))
-            print(x0.n(4), fx.subs(x, x0) )
+            print(x0.n(4), fx.subs(x, x0))
 
     #
     #
     # elif n == 2:
     # else:
 
-
-
     return render(request, "fijo_calculado.html", context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
