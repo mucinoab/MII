@@ -19,6 +19,7 @@ def newton_view(request):
     if request.method == 'GET':
         form = In(request.GET)
         if form.is_valid():
+            # print(form.cleaned_data, request.GET)
             return newton_calcula(request, form)
 
     return render(request, "newton_input.html", context)

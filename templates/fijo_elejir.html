@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>¿Cuántas ecuaciones son?</h2>
-    <form method="GET">
+    <form method="POST">{% csrf_token %}
         {% for field in form %}
             <div class="fieldWrapper">
                 {{ field.errors }}

@@ -20,7 +20,7 @@ from django.views.generic.base import RedirectView
 from error.views import errors_view
 from inicio.views import home_view
 from newton.views import newton_view, newton_calcula
-from punto_fijo.views import fijo_view, fijo_calcula
+from punto_fijo.views import fijo_view, fijo_calcula, fijo_input
 from resumenes.views import res_view
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
@@ -34,5 +34,7 @@ urlpatterns = [
     path('metodo_newton/?f=<str:fun>&ini<str:in>/', newton_calcula),
     path('error/', errors_view),
     path('punto_fijo/', fijo_view),
-    path('punto_fijo/?fx=<str:fx>&x0<str:x0>/', fijo_calcula),
+    path('punto_fijo_calcula/', fijo_calcula),
 ]
+
+# http://127.0.0.1:8000/punto_fijo/?fx=x**3%2B4*x**2-10&x0=1
