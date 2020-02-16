@@ -75,7 +75,7 @@ def fijo_calcula(request):
     n = len(request.POST)  # 1 llave y par de valores por ecuación.
 
     if n == 3:
-        funo = str(valores['fx'])+y
+        funo = str(valores['fx'])#+"+x"
         x0 = float(valores['x0'])
 
         print(type(x0), type(funo), x0, funo)
@@ -83,7 +83,9 @@ def fijo_calcula(request):
         x, y, z = sympy.symbols('x y z')
         fux = sympy.sympify(funo)
 
-        fx = sympy.sympify(str(sympy.solve(fux, x, implicit=True, quick=True, manual=True)).strip('[]'))
+        print(sympy.solve(fux, 0, implicit=True, numerical=False, warn=True, manual=True, cubics=True))
+
+        # fx = sympy.sympify(str(sympy.solve(fux, x, implicit=True, quick=True, manual=True)).strip('[]'))
 
         for z in range(10):
             x0 = round(fx.subs(x, x0))

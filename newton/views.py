@@ -41,7 +41,7 @@ def newton_calcula(request, form):
 
         dfdx = sympy.diff(fx, x)
 
-        e = .001
+        e = .00001
         x0 = starting
         iterations = 0
         delta = 1
@@ -88,7 +88,7 @@ def newton_calcula(request, form):
         ax.grid(color="azure")
 
         if b == 1:  # si se encontro corte antes de 50 iteraciones
-            plt.plot(r, fx.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.2f}")
+            plt.plot(r, fx.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.4f}")
             ax.set(xlabel='x', ylabel='f(x)', title=f"Raíz calculada después de {iterations} iteraciones")
         else:
             ax.hlines(0, 0, 0, color='r', label='No Se Encontró Corte con Eje X')

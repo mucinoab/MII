@@ -10,12 +10,13 @@ print("Punto fijo")
 x, y, z, t = symbols('x y z t')
 init_printing()
 
-fux = sympify("x**2-10*x+y**2+8")
+fux = sympify("x**3+4*x**2-10+x")#"x**2-10*x+y**2+8")
 fuy = sympify("x*y**2+x-10*y+8")
 
-fx = sympify(str(solve(fux, x, implicit=True, quick=True, manual=True)).strip('[]'))
-fy = sympify(str(solve(fuy, y, implicit=True, quick=True, manual= True)).strip('[]'))
+fx = sympify(str(solve(fux, x, implicit=True, manual=True, rational=False)).strip('[]'))
+fy = sympify(str(solve(fuy, y, implicit=True, manual= True, rational=False)).strip('[]'))
 
+print(fux, "----", fx)
 nx = 3
 ny = 3
 
