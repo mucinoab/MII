@@ -75,7 +75,7 @@ def fijo_calcula(request):
     n = len(request.POST)  # 1 llave y par de valores por ecuación.
 
     if n == 3:
-        funo = str(valores['fx'])
+        funo = str(valores['fx'])+y
         x0 = float(valores['x0'])
 
         print(type(x0), type(funo), x0, funo)
