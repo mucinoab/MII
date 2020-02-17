@@ -1,16 +1,30 @@
 import matplotlib.pyplot as plt
+from sympy import *
 import sympy
-import numpy as np
+# import numpy as np
 
 from base64 import b64encode
 from io import BytesIO
-from traceback import print_exc
+# from traceback import print_exc
 from urllib import parse
 
 from django.shortcuts import render
-
 from .forms import In, E1, E2, E3
 
+def estiliza_string(fucn):
+    superscript_map = {
+        "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶",
+        "7": "⁷", "8": "⁸", "9": "⁹"}
+    nuevo = ''
+    for c in range(len(fucn)):
+        if fucn[c] == '*':
+            if fucn[c + 1] == '*':
+                nuevo += superscript_map[fucn[c+2]]
+                c += 4
+        else:
+            nuevo += fucn[c]
+
+    return nuevo
 
 def fijo_view(request):
     form = In()
@@ -111,6 +125,7 @@ def fijo_calcula(request):
         fx = sympy.sympify(str(sympy.solve(funo, x, implicit=True, rational=False)).strip('[]'))
         fy = sympy.sympify(str(sympy.solve(fundos, y, implicit=True, rational=False)).strip('[]'))
 
+
         for q in range(1, iteraciones + 1):
 
             x0 = round(fx.subs({x: x0, y: y0}), 25)
@@ -122,10 +137,25 @@ def fijo_calcula(request):
 
         #graficación
 
-        r = resul['filas'][iteraciones-1][2]
+        plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
+        plt.style.use("dark_background")
 
-        t = np.arange(r - 25, r + 25, .5)
-        
+        titulo = estiliza_string(valores['fx'])+" and "+estiliza_string(valores['fy'])
 
+        p1 = plot_implicit(funo, show=False, line_color='navy', title=titulo)
+        p2 = plot_implicit(fundos, show=False, line_color = '#4c002c')
+        p1.extend(p2)
+
+        p1.show()
+        buf = BytesIO()
+        p1._backend.fig.savefig(buf, format='png', dpi=150, transparent=True)
+        buf.seek(0)
+        uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
+        context['image'] = uri
 
     return render(request, "fijo_calculado.html", context)
+# static
+#
+# char *super[] = {"\xe2\x81\xb0", "\xc2\xb9", "\xc2\xb2",
+#                  "\xc2\xb3", "\xe2\x81\xb4", "\xe2\x81\xb5", "\xe2\x81\xb6",
+#                  "\xe2\x81\xb7", "\xe2\x81\xb8", "\xe2\x81\xb9"};

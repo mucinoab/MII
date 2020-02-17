@@ -11,6 +11,17 @@ from django.shortcuts import render
 from error.views import errors_view
 from .forms import In
 
+def estiliza_string(fucn):
+    nuevo = ''
+    for c in range(len(fucn)):
+        if fucn[c] == '*':
+            if fucn[c + 1] == '*':
+                c += 2
+                nuevo += "^"
+        else:
+            nuevo += fucn[c]
+
+    return nuevo
 
 def newton_view(request):
     form = In()
@@ -61,14 +72,8 @@ def newton_calcula(request, form):
         return errors_view(request)
 
     else:
-        nuevo = ''
-        for c in range(len(fucn)):
-            if fucn[c] == '*':
-                if fucn[c + 1] == '*':
-                    c += 2
-                    nuevo += "^"
-            else:
-                nuevo += fucn[c]
+
+        nuevo = estiliza_string(fucn)
 
         t = np.arange(r - 25, r + 25, .5)
         s = []
@@ -95,6 +100,7 @@ def newton_calcula(request, form):
                    title=f"No se logro encontrar raíz después de {iteraciones_permitidas} iteraciones")
 
         plt.legend(loc='best')
+
 
         buf = BytesIO()
         fig.savefig(buf, format='png', dpi=160, facecolor="#004c3f", edgecolor='#004c3f', transparent=True)

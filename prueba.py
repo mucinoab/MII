@@ -1,4 +1,4 @@
-from sympy import symbols, series, sympify, solve, latex, init_printing
+from sympy import symbols, series, sympify, solve, latex, init_printing, plot_implicit
 from sympy.core import S
 #https://docs.sympy.org/latest/modules/solvers/solvers.html
 
@@ -12,6 +12,8 @@ x, y, z = symbols('x y z')
 
 fux = sympify("x**2-10*x+y**2+8")
 fuy = sympify("x*y**2+x-10*y+8")
+
+plot_implicit(fux, show=False)
 
 # print(series(fux, x, 0, 1), "hola")
 
