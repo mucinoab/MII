@@ -26,7 +26,6 @@ def newton_view(request):
 
 
 def newton_calcula(request, form):
-
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
 

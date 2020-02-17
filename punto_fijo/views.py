@@ -1,8 +1,13 @@
-from django.shortcuts import render
-from sympy.core import S
-
 import matplotlib.pyplot as plt
 import sympy
+import numpy as np
+
+from base64 import b64encode
+from io import BytesIO
+from traceback import print_exc
+from urllib import parse
+
+from django.shortcuts import render
 
 from .forms import In, E1, E2, E3
 
@@ -61,7 +66,9 @@ def fijo_input(request, n):
 
 
 def fijo_calcula(request):
-    print(request.POST, len(request.POST))
+    # print(request.POST, len(request.POST))
+
+    iteraciones = 20
 
     # inicia cosas de sympy
     x, y, z = sympy.symbols('x y z')
@@ -71,12 +78,11 @@ def fijo_calcula(request):
     plt.close('all')
 
     valores = request.POST  # obtiene el input
-    # context = {'form': form}
 
     n = len(request.POST)  # 1 llave y par de valores por ecuación.
 
     if n == 3:
-        funo = str(valores['fx'])#+"+x"
+        funo = str(valores['fx'])  # +"+x"
         x0 = float(valores['x0'])
 
         print(type(x0), type(funo), x0, funo)
@@ -88,11 +94,13 @@ def fijo_calcula(request):
 
         # fx = sympy.sympify(str(sympy.solve(fux, x, implicit=True, quick=True, manual=True)).strip('[]'))
 
-        for z in range(10):
+        for q in range(10):
             x0 = round(fx.subs(x, x0))
             print(x0.n(4), fx.subs(x, x0))
 
     elif n == 5:
+
+        resul = {'titulos': ['n', 'Xn', 'Yn'], 'filas': []}
 
         funo = sympy.sympify(valores['fx'])
         x0 = float(valores['x0'])
@@ -103,16 +111,21 @@ def fijo_calcula(request):
         fx = sympy.sympify(str(sympy.solve(funo, x, implicit=True, rational=False)).strip('[]'))
         fy = sympy.sympify(str(sympy.solve(fundos, y, implicit=True, rational=False)).strip('[]'))
 
-        for q in range(10):
+        for q in range(1, iteraciones + 1):
 
-            x0 = round(fx.subs({x: x0, y: y0}), 20)
-            y0 = round(fy.subs({x: x0, y: y0}), 20)
-            print(x0.n(8), y0.n(8))
+            x0 = round(fx.subs({x: x0, y: y0}), 25)
+            y0 = round(fy.subs({x: x0, y: y0}), 25)
+
+            resul['filas'].append( [q, x0.n(6), y0.n(6)] )
+
+        context = {'context': resul}
+
+        #graficación
+
+        r = resul['filas'][iteraciones-1][2]
+
+        t = np.arange(r - 25, r + 25, .5)
+        
 
 
-        print(fx.subs({x: x0, y: y0}).n(8), fy.subs({x: x0, y: y0}).n(8), abs(fx.subs({x: x0, y: y0}).n(20) - fy.subs({x: x0, y: y0}).n(20)), '\n')
-
-
-
-
-    return render(request, "fijo_calculado.html", {})
+    return render(request, "fijo_calculado.html", context)

@@ -1,6 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-{#    <h2>Método del Punto Fijo</h2>#}
-{#    <img src="{{ image }}">#}
-{#    <a href="/punto_fijo" class="button"><span>Regresar</span></a>#}
+    <h2>Método del Punto Fijo</h2>
+
+    <table align="center">
+        <tr>
+        <tr>
+            {% for titulo in context.titulos %}
+                <th>{{ titulo }}</th>
+            {% endfor %}
+        </tr>
+        {% for value in context.filas %}
+            <tr>
+                {% for foo in value %}
+                    <td>{{ foo }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    <img src="{{ image }}">
+    <a href="/punto_fijo" class="button"><span>Regresar</span></a>
 {% endblock %}
