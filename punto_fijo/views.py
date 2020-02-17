@@ -64,6 +64,7 @@ def fijo_calcula(request):
     print(request.POST, len(request.POST))
 
     # inicia cosas de sympy
+    x, y, z = sympy.symbols('x y z')
 
     # Inicia cosas de matplotlib
     plt.rcParams.update(plt.rcParamsDefault)
@@ -90,5 +91,28 @@ def fijo_calcula(request):
         for z in range(10):
             x0 = round(fx.subs(x, x0))
             print(x0.n(4), fx.subs(x, x0))
+
+    elif n == 5:
+
+        funo = sympy.sympify(valores['fx'])
+        x0 = float(valores['x0'])
+
+        fundos = sympy.sympify(valores['fy'])
+        y0 = float(valores['x0'])
+
+        fx = sympy.sympify(str(sympy.solve(funo, x, implicit=True, rational=False)).strip('[]'))
+        fy = sympy.sympify(str(sympy.solve(fundos, y, implicit=True, rational=False)).strip('[]'))
+
+        for q in range(10):
+
+            x0 = round(fx.subs({x: x0, y: y0}), 20)
+            y0 = round(fy.subs({x: x0, y: y0}), 20)
+            print(x0.n(8), y0.n(8))
+
+
+        print(fx.subs({x: x0, y: y0}).n(8), fy.subs({x: x0, y: y0}).n(8), abs(fx.subs({x: x0, y: y0}).n(20) - fy.subs({x: x0, y: y0}).n(20)), '\n')
+
+
+
 
     return render(request, "fijo_calculado.html", {})
