@@ -52,11 +52,8 @@ def fijo_view(request):
 def fijo_input(request, n):
     if n == 1:
         form = E1()
-        print("forma")
     elif n == 2:
         form = E2()
-        print("2")
-
     else:
         form = E3()
 
@@ -98,16 +95,16 @@ def fijo_calcula(request):
 
     n = len(request.POST)  # 1 llave y par de valores por ecuación.
 
-    if n == 3:
+    if n == 3: #una variable
         funo = str(valores['fx'])  # +"+x"
         x0 = float(valores['x0'])
 
-        print(type(x0), type(funo), x0, funo)
+        # print(type(x0), type(funo), x0, funo)
 
         x, y, z = sympy.symbols('x y z')
         fux = sympy.sympify(funo)
 
-        print(sympy.solve(fux, 0, implicit=True, numerical=False, warn=True, manual=True, cubics=True))
+        # print(sympy.solve(fux, 0, implicit=True, numerical=False, warn=True, manual=True, cubics=True))
 
         # fx = sympy.sympify(str(sympy.solve(fux, x, implicit=True, quick=True, manual=True)).strip('[]'))
 
@@ -115,7 +112,7 @@ def fijo_calcula(request):
             x0 = round(fx.subs(x, x0))
             print(x0.n(4), fx.subs(x, x0))
 
-    elif n == 5:
+    elif n == 5: #dos variables
 
         resul = {'titulos': ['n', 'Xn', 'Yn'], 'filas': []}
 
