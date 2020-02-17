@@ -9,24 +9,23 @@ from django.shortcuts import render
 from sympy import *
 
 from .forms import In, E1, E2, E3
-
-
 # import numpy as np
 
 
 def estiliza_string(fucn):
-    superscript_map = {
-        "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶",
-        "7": "⁷", "8": "⁸", "9": "⁹"}
+    superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹"}
     nuevo = ''
-    for c in range(len(fucn)):
+    c = 0
+    p = len(fucn)
+
+    while c < p:
         if fucn[c] == '*':
             if fucn[c + 1] == '*':
                 nuevo += superscript_map[fucn[c + 2]]
-                c += 4
+                c += 2
         else:
             nuevo += fucn[c]
-
+        c += 1
     return nuevo
 
 

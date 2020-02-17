@@ -11,17 +11,20 @@ from django.shortcuts import render
 from error.views import errors_view
 from .forms import In
 
-
 def estiliza_string(fucn):
+    superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹"}
     nuevo = ''
-    for c in range(len(fucn)):
+    c = 0
+    p = len(fucn)
+
+    while c < p:
         if fucn[c] == '*':
             if fucn[c + 1] == '*':
+                nuevo += superscript_map[fucn[c + 2]]
                 c += 2
-                nuevo += "^"
         else:
             nuevo += fucn[c]
-
+        c += 1
     return nuevo
 
 
