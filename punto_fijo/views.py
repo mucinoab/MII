@@ -12,6 +12,9 @@ from .forms import In, E1, E2, E3
 # import numpy as np
 
 
+import time
+
+
 def estiliza_string(fucn):
     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹"}
     nuevo = ''
@@ -82,6 +85,8 @@ def fijo_input(request, n):
 def fijo_calcula(request):
     # print(request.POST, len(request.POST))
 
+    start = time.time()
+
     iteraciones = 20
 
     # inicia cosas de sympy
@@ -126,10 +131,12 @@ def fijo_calcula(request):
         fy = sympy.sympify(str(sympy.solve(fundos, y, implicit=True, rational=False)).strip('[]'))
 
         for q in range(1, iteraciones + 1):
-            x0 = round(fx.subs({x: x0, y: y0}), 25)
-            y0 = round(fy.subs({x: x0, y: y0}), 25)
+            # x0 = fx.subs({x: x0, y: y0})
+            # y0 = fy.subs({x: x0, y: y0})
+            x0 = round(fx.subs({x: x0, y: y0}), 8)
+            y0 = round(fy.subs({x: x0, y: y0}), 8)
 
-            resul['filas'].append([q, x0.n(6), y0.n(6)])
+            resul['filas'].append([q, x0.n(5), y0.n(5)])
 
         context = {'context': resul}
 
@@ -151,4 +158,6 @@ def fijo_calcula(request):
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
         context['image'] = uri
 
+        end = time.time()
+        print(end - start)
     return render(request, "fijo_calculado.html", context)
