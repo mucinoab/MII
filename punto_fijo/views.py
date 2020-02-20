@@ -13,6 +13,7 @@ from .forms import In, E1, E2, E3
 
 
 import time
+import sys
 
 
 def estiliza_string(fucn):
@@ -145,7 +146,7 @@ def fijo_calcula(request):
         plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
         plt.style.use("dark_background")
 
-        titulo = estiliza_string(valores['fx']) + " and " + estiliza_string(valores['fy'])
+        titulo ='\n' + estiliza_string(valores['fx']) + " and " + estiliza_string(valores['fy']) + '\n'
 
         p1 = plot_implicit(funo, show=False, line_color='navy', title=titulo)
         p2 = plot_implicit(fundos, show=False, line_color='#4c002c')
@@ -153,11 +154,17 @@ def fijo_calcula(request):
 
         p1.show()
         buf = BytesIO()
-        p1._backend.fig.savefig(buf, format='png', dpi=150, transparent=True)
+        #experimental, que la compresión dependa del timepo, para así dar una respuesta más rádi
+
+        p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#004c3f", edgecolor='#004c3f', dpi=150, transparent=True)
+        # p1._backend.fig.savefig(buf, format='png', quality=1, facecolor="#004c3f", edgecolor='#004c3f', dpi=150, transparent=True)
         buf.seek(0)
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
         context['image'] = uri
 
+        print(sys.getsizeof(buf))
         end = time.time()
         print(end - start)
+
+
     return render(request, "fijo_calculado.html", context)

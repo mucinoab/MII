@@ -12,6 +12,7 @@ from error.views import errors_view
 from .forms import In
 
 def estiliza_string(fucn):
+
     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹"}
     nuevo = ''
     c = 0
@@ -29,11 +30,13 @@ def estiliza_string(fucn):
 
 
 def newton_view(request):
+
     form = In()
     context = {"form": form}
 
     if request.method == 'GET':
         form = In(request.GET)
+
         if form.is_valid():
             # print(form.cleaned_data, request.GET)
             return newton_calcula(request, form)
@@ -42,10 +45,12 @@ def newton_view(request):
 
 
 def newton_calcula(request, form):
+
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
 
     try:
+
         valores = form.cleaned_data  # funcion y valor inicial
         context = {'form': form}
         starting = valores['ini']
@@ -64,6 +69,7 @@ def newton_calcula(request, form):
         iteraciones_permitidas = 60
 
         while e < delta:
+
             r = x0 - fx.subs(x, x0) / dfdx.subs(x, x0)
             delta = abs((r - x0) / r)
             iterations += 1
@@ -99,10 +105,10 @@ def newton_calcula(request, form):
         if b == 1:  # si se encontro corte antes de 50 iteraciones
             plt.plot(r, fx.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.4f}")
             ax.set(xlabel='x', ylabel='f(x)', title=f"Raíz calculada después de {iterations} iteraciones")
+
         else:
             ax.hlines(0, 0, 0, color='r', label='No Se Encontró Corte con Eje X')
-            ax.set(xlabel='x', ylabel='f(x)',
-                   title=f"No se logro encontrar raíz después de {iteraciones_permitidas} iteraciones")
+            ax.set(xlabel='x', ylabel='f(x)', title=f"No se logro encontrar raíz después de {iteraciones_permitidas} iteraciones")
 
         plt.legend(loc='best')
 
