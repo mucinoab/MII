@@ -11,9 +11,10 @@ from django.shortcuts import render
 from error.views import errors_view
 from .forms import In
 
-def estiliza_string(fucn):
 
-    superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹"}
+def estiliza_string(fucn):
+    superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
+                       "9": "⁹"}
     nuevo = ''
     c = 0
     p = len(fucn)
@@ -30,7 +31,6 @@ def estiliza_string(fucn):
 
 
 def newton_view(request):
-
     form = In()
     context = {"form": form}
 
@@ -45,7 +45,6 @@ def newton_view(request):
 
 
 def newton_calcula(request, form):
-
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
 
@@ -108,7 +107,8 @@ def newton_calcula(request, form):
 
         else:
             ax.hlines(0, 0, 0, color='r', label='No Se Encontró Corte con Eje X')
-            ax.set(xlabel='x', ylabel='f(x)', title=f"No se logro encontrar raíz después de {iteraciones_permitidas} iteraciones")
+            ax.set(xlabel='x', ylabel='f(x)',
+                   title=f"No se logro encontrar raíz después de {iteraciones_permitidas} iteraciones")
 
         plt.legend(loc='best')
 

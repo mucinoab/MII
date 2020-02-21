@@ -1,22 +1,22 @@
+import sys
+import time
 from base64 import b64encode
 from io import BytesIO
 # from traceback import print_exc
 from urllib import parse
 
 import matplotlib.pyplot as plt
+import numpy as np
 import sympy
 from django.shortcuts import render
 from sympy import *
 
 from .forms import In, E1, E2, E3
-import numpy as np
-
-import time
-import sys
 
 
 def estiliza_string(fucn):
-    superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹"}
+    superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
+                       "9": "⁹"}
     nuevo = ''
     c = 0
     p = len(fucn)
@@ -100,7 +100,7 @@ def fijo_calcula(request):
 
     n = len(request.POST)  # 1 llave y par de valores por ecuación.
 
-    if n == 3: #una variable
+    if n == 3:  # una variable
         funo = str(valores['fx'])  # +"+x"
         x0 = float(valores['x0'])
 
@@ -117,7 +117,7 @@ def fijo_calcula(request):
             x0 = round(fx.subs(x, x0))
             print(x0.n(4), fx.subs(x, x0))
 
-    elif n == 5: #dos variables
+    elif n == 5:  # dos variables
 
         resul = {'titulos': ['n', 'Xn', 'Yn'], 'filas': []}
 
@@ -145,7 +145,7 @@ def fijo_calcula(request):
         plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
         plt.style.use("dark_background")
 
-        titulo ='\n' + estiliza_string(valores['fx']) + "  y  " + estiliza_string(valores['fy']) + '\n'
+        titulo = '\n' + estiliza_string(valores['fx']) + "  y  " + estiliza_string(valores['fy']) + '\n'
 
         p1 = plot_implicit(funo, show=False, line_color='navy', title=titulo)
         p2 = plot_implicit(fundos, show=False, line_color='#4c002c')
@@ -153,9 +153,10 @@ def fijo_calcula(request):
 
         p1.show()
         buf = BytesIO()
-        #experimental, que la compresión dependa del timepo, para así dar una respuesta más rádi
+        # experimental, que la compresión dependa del timepo, para así dar una respuesta más rádi
 
-        p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#004c3f", edgecolor='#004c3f', dpi=150, transparent=True)
+        p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#004c3f",
+                                edgecolor='#004c3f', dpi=150, transparent=True)
         # p1._backend.fig.savefig(buf, format='png', quality=1, facecolor="#004c3f", edgecolor='#004c3f', dpi=150, transparent=True)
         buf.seek(0)
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
@@ -168,18 +169,16 @@ def fijo_calcula(request):
     return render(request, "fijo_calculado.html", context)
 
 
-def fijo_ejemplo_1(request): #Ejemplo 1 para una variable
+def fijo_ejemplo_1(request):  # Ejemplo 1 para una variable
 
-    start = time.time()
-
-    #Calculando valores
+    # Calculando valores
 
     iteraciones = 20
-    resul = {'titulos':['n', 'Xn', 'f(x)'], 'filas': []}
+    resul = {'titulos': ['n', 'Xn', 'f(x)'], 'filas': []}
 
     x = sympy.symbols('x')
 
-    #Ejemplos de Curiel
+    # Ejemplos de Curiel
     fun = "x**3+4*x**2-10"
     gx = "sqrt((10)/(x+4))"
     x0 = 1
@@ -194,11 +193,10 @@ def fijo_ejemplo_1(request): #Ejemplo 1 para una variable
 
     context = {'context': resul}
 
-    #Graficación
+    # Graficación
 
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
-
 
     r = resul['filas'][-1][1]
     t = np.arange(r - 5, r + .5, .1)
@@ -226,20 +224,4 @@ def fijo_ejemplo_1(request): #Ejemplo 1 para una variable
     uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
     context['image'] = uri
 
-    end = time.time()
-    print(end - start)
-
     return render(request, "fijo_calculado.html", context)
-
-
-
-
-
-
-
-
-
-
-
-
-
