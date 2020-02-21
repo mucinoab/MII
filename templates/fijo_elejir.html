@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>¿Cuántas ecuaciones son?</h2>
+
+    <a href="/fijo_ejemplo1" class="button"><span>Ejemplo 1 Variable</span></a>
+
     <form method="POST">{% csrf_token %}
         {% for field in form %}
             <div class="fieldWrapper">

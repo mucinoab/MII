@@ -9,8 +9,7 @@ from django.shortcuts import render
 from sympy import *
 
 from .forms import In, E1, E2, E3
-# import numpy as np
-
+import numpy as np
 
 import time
 import sys
@@ -107,7 +106,7 @@ def fijo_calcula(request):
 
         # print(type(x0), type(funo), x0, funo)
 
-        x, y, z = sympy.symbols('x y z')
+        # x, y, z = sympy.symbols('x y z')
         fux = sympy.sympify(funo)
 
         # print(sympy.solve(fux, 0, implicit=True, numerical=False, warn=True, manual=True, cubics=True))
@@ -146,7 +145,7 @@ def fijo_calcula(request):
         plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
         plt.style.use("dark_background")
 
-        titulo ='\n' + estiliza_string(valores['fx']) + " and " + estiliza_string(valores['fy']) + '\n'
+        titulo ='\n' + estiliza_string(valores['fx']) + "  y  " + estiliza_string(valores['fy']) + '\n'
 
         p1 = plot_implicit(funo, show=False, line_color='navy', title=titulo)
         p2 = plot_implicit(fundos, show=False, line_color='#4c002c')
@@ -166,5 +165,81 @@ def fijo_calcula(request):
         end = time.time()
         print(end - start)
 
+    return render(request, "fijo_calculado.html", context)
+
+
+def fijo_ejemplo_1(request): #Ejemplo 1 para una variable
+
+    start = time.time()
+
+    #Calculando valores
+
+    iteraciones = 20
+    resul = {'titulos':['n', 'Xn', 'f(x)'], 'filas': []}
+
+    x = sympy.symbols('x')
+
+    #Ejemplos de Curiel
+    fun = "x**3+4*x**2-10"
+    gx = "sqrt((10)/(x+4))"
+    x0 = 1
+
+    fux = sympy.sympify(fun)
+    gxx = sympy.sympify(gx)
+
+    for q in range(1, iteraciones + 1):
+        x0 = gxx.subs(x, x0).n(16)
+        num = "{0:.6f}".format(fux.subs(x, x0))
+        resul['filas'].append([q, x0.n(7), num])
+
+    context = {'context': resul}
+
+    #Graficación
+
+    plt.rcParams.update(plt.rcParamsDefault)
+    plt.close('all')
+
+
+    r = resul['filas'][-1][1]
+    t = np.arange(r - 5, r + .5, .1)
+    s = []
+    for n in t:
+        s.append(float(fux.subs(x, n)))
+
+    plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
+    plt.style.use("dark_background")
+    fig, ax = plt.subplots()
+
+    ax.axhline(0, color='black')
+
+    ax.plot(t, s, label=f'f(x) = {estiliza_string(fun)}', color='navy')
+    ax.grid(color="azure")
+
+    plt.plot(r, fux.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.4f}")
+    ax.set(xlabel='x', ylabel='f(x)', title=f"Raíz calculada después de {iteraciones} iteraciones")
+
+    plt.legend(loc='best')
+
+    buf = BytesIO()
+    fig.savefig(buf, format='png', dpi=160, edgecolor='#004c3f', transparent=True)
+    buf.seek(0)
+    uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
+    context['image'] = uri
+
+    end = time.time()
+    print(end - start)
 
     return render(request, "fijo_calculado.html", context)
+
+
+
+
+
+
+
+
+
+
+
+
+
