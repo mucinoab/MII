@@ -38,4 +38,3 @@ urlpatterns = [
     path('fijo_ejemplo1', fijo_ejemplo_1),
 ]
 
-# http://127.0.0.1:8000/punto_fijo/?fx=x**3%2B4*x**2-10&x0=1
