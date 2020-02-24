@@ -96,9 +96,9 @@ def newton_calcula(request, form):
         fig, ax = plt.subplots()
 
         # plt.axvline(0, color='black')
-        ax.axhline(0, color='black')
+        ax.axhline(0, color='gray')
 
-        ax.plot(t, s, label=f'f(x) = {nuevo}', color='navy')
+        ax.plot(t, s, label=f'f(x) = {nuevo}', color='#40E0D0')
         ax.grid(color="azure")
 
         if b == 1:  # si se encontro corte antes de 50 iteraciones
@@ -113,9 +113,8 @@ def newton_calcula(request, form):
         plt.legend(loc='best')
 
         buf = BytesIO()
-        fig.savefig(buf, format='png', dpi=160, facecolor="#004c3f", edgecolor='#004c3f', transparent=True)
+        fig.savefig(buf, format='png', dpi=160, facecolor="#000000", edgecolor='#000000', transparent=True)
         buf.seek(0)
-        # string = b64encode(buf.read())
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
 
         context['image'] = uri

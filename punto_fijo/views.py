@@ -111,7 +111,7 @@ def fijo_calcula(request):
 
         # print(sympy.solve(fux, 0, implicit=True, numerical=False, warn=True, manual=True, cubics=True))
 
-        # fx = sympy.sympify(str(sympy.solve(fux, x, implicit=True, quick=True, manual=True)).strip('[]'))
+        fx = sympy.sympify(str(sympy.solve(fux, x, implicit=True, quick=True, manual=True)).strip('[]'))
 
         for q in range(10):
             x0 = round(fx.subs(x, x0))
@@ -147,16 +147,16 @@ def fijo_calcula(request):
 
         titulo = '\n' + estiliza_string(valores['fx']) + "  y  " + estiliza_string(valores['fy']) + '\n'
 
-        p1 = plot_implicit(funo, show=False, line_color='navy', title=titulo)
-        p2 = plot_implicit(fundos, show=False, line_color='#4c002c')
+        p1 = plot_implicit(funo, show=False, line_color='#27864d', title=titulo)
+        p2 = plot_implicit(fundos, show=False, line_color='#40E0D0')
         p1.extend(p2)
 
         p1.show()
         buf = BytesIO()
         # experimental, que la compresión dependa del timepo, para así dar una respuesta más rádi
 
-        p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#004c3f",
-                                edgecolor='#004c3f', dpi=150, transparent=True)
+        p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000",
+                                edgecolor='#000000', dpi=150, transparent=True)
         # p1._backend.fig.savefig(buf, format='png', quality=1, facecolor="#004c3f", edgecolor='#004c3f', dpi=150, transparent=True)
         buf.seek(0)
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
@@ -208,7 +208,7 @@ def fijo_ejemplo_1(request):  # Ejemplo 1 para una variable
     plt.style.use("dark_background")
     fig, ax = plt.subplots()
 
-    ax.axhline(0, color='black')
+    ax.axhline(0, color='gray')
 
     ax.plot(t, s, label=f'f(x) = {estiliza_string(fun)}', color='navy')
     ax.grid(color="azure")
@@ -219,7 +219,7 @@ def fijo_ejemplo_1(request):  # Ejemplo 1 para una variable
     plt.legend(loc='best')
 
     buf = BytesIO()
-    fig.savefig(buf, format='png', dpi=160, edgecolor='#004c3f', transparent=True)
+    fig.savefig(buf, format='png', dpi=160, edgecolor='#000000', transparent=True)
     buf.seek(0)
     uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
     context['image'] = uri
