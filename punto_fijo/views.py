@@ -225,3 +225,62 @@ def fijo_ejemplo_1(request):  # Ejemplo 1 para una variable
     context['image'] = uri
 
     return render(request, "fijo_calculado.html", context)
+
+
+
+def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
+
+    # Calculando valores
+
+    iteraciones = 11
+    resul = {'titulos': ['n', 'Xn', 'Yn', 'f(x, y)', 'g(x, y)'], 'filas': []}
+
+    x, y = sympy.symbols('x y')
+
+    # Ejemplos de Curiel
+    funx = "x**2-10*x+y**2+8"
+    funy = "x*y**2+x-10*y+8"
+
+    #despejes
+    fx = "(x**2+y**2+8)/(10)"
+    fy = "(x*y**2+x+8)/(10)"
+    x0 = 0
+    y0 = 0
+
+    fux = sympy.sympify(funx)
+    fuy = sympy.sympify(funy)
+
+    fxx = sympy.sympify(fx)
+    fyy = sympy.sympify(fy)
+
+    for q in range(1, iteraciones + 1):
+        x0 = round(fxx.subs({x: x0, y: y0}), 6)
+        y0 = round(fyy.subs({x: x0, y: y0}), 6)
+
+        num = "{0:.4f}".format(fux.subs({x: x0, y: y0}))
+        num2 = "{0:.4f}".format(fuy.subs({x: x0, y: y0}))
+        resul['filas'].append([q, x0.n(5), y0.n(5), num, num2])
+
+    context = {'context': resul}
+
+    # Graficación
+
+    plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
+    plt.style.use("dark_background")
+
+    titulo = '\n' + estiliza_string(funx) + "  y  " + estiliza_string(funy) + '\n'
+
+    p1 = plot_implicit(fux, show=False, line_color='#27864d', title=titulo)
+    p2 = plot_implicit(fuy, show=False, line_color='#40E0D0')
+    p1.extend(p2)
+
+    p1.show()
+    buf = BytesIO()
+
+    p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000",
+                            edgecolor='#000000', dpi=150, transparent=True)
+    buf.seek(0)
+    uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
+    context['image'] = uri
+
+    return render(request, "fijo_calculado.html", context)

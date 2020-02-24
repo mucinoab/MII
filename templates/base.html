@@ -15,21 +15,61 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 #main {margin-left: 120px}
 /* Remove margins from "page content" on small screens */
 @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+        label {
+            color: white;
+            width: 90vw;
+            font-size: 3.3vw;
+            margin: 1vw;
+        }
 
-{#.button{#}
-{#    background-color:#00606f;#}
-{#    border: 2px solid whitesmoke;#}
-{#    border-radius: 10px;#}
-{#    transition: all .05s;#}
-{#    cursor: pointer;#}
-{#    color: white;#}
-{#    padding: .6vh;#}
-{#    text-decoration: none;#}
-{#    margin-left: inherit;#}
-{#    margin-bottom: inherit;#}
-{#    float: left;#}
-{#    font-size: inherit;#}
-{#}#}
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+                        border-style: double;
+
+            width: fit-content;
+            float: center;
+        }
+
+        th {
+            border: 1px solid #dddddd;
+            border-style: double;
+            text-align: center;
+            padding: 1vm;
+            background: #333;
+            color: white;
+            font-size: 2.8vw;
+        }
+
+        td {
+            border-style: double;
+            border: 2px solid #dddddd;
+            font-size: 2.3vw;
+            text-align: left;
+            padding: 8px;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #262626;
+        }
+
+        /* Maneja la barra de scroll */
+        ::-webkit-scrollbar {
+            width: .2vh;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #004c3f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333;
+        }
 
 margin-right: 350px;
 </style>
@@ -86,7 +126,7 @@ margin-right: 350px;
       <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: 55555555</p>
       <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
     </div><br>
-    
+
     <!-- Footer -->
   <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
