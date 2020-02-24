@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>regresion lineal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  </head>
+  <body>
+
+    <h1>regresion lineal</h1>
+    <canvas id="myChart" width="  400" height="200"></canvas>
+
+    <script>
+      // Data from: https://data.giss.nasa.gov/gistemp/
+      // Mean from: https://earthobservatory.nasa.gov/world-of-change/DecadalTemp
+
+      window.addEventListener('load', setup);
+      window.addEventListener('load', lineal);
+
+      async function setup() {
+        var arr = await rect();
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const dataTemps = await getData();
+        const myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: dataTemps.southern,
+            datasets: [
+              {
+                label: 'Global Temperature in °C',
+                data: dataTemps.temps,
+                fill: false,
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderWidth: 1,
+                showLine : false,
+              },
+              {
+                label: 'recta',
+                data: arr.arry,
+                fill: false,
+                borderColor: 'rgba(255, 109, 132, 1)',
+                backgroundColor: 'rgba(0, 159, 64, 0.2)',
+                borderWidth: 1,
+                //showLine: true,
+              },
+            ],
+          },    
+          options:{}
+        });
+      }
+      async function getData() {
+        // const response = await fetch('testdata.csv');
+        const response = await fetch('ZonAnn.Ts+dSST.csv');
+        const data = await response.text();
+        const years = [];
+        const temps = [];
+        const northern = [];
+        const southern = [];
+        const rows = data.split('\n').slice(1);
+        rows.forEach(row => {
+          const cols = row.split(',');
+          years.push(cols[0]);
+          temps.push(14 + parseFloat(cols[1]));
+          northern.push(14 + parseFloat(cols[2]));
+          southern.push(14 + parseFloat(cols[3]));
+        });
+        return { years, temps, northern, southern };
+      }
+
+     async function lineal() {
+      var xarray = [],yarray = [],
+      x = y = xy = xx = a = b = resultado = 0,
+      cantidad = xarray.length,
+      futuro = 100;
+      const dataTemps =  await getData();
+      xarray = [...dataTemps.southern];
+      yarray = [...dataTemps.temps];
+      cantidad = 100;
+      for (var i = 0; i < cantidad; i++) {
+        //console.log('Dado ' + xarray[i] + ' => ' + yarray[i]);
+        x += xarray[i];
+        y += yarray[i];
+        xy += xarray[i]*yarray[i];
+        xx += xarray[i]*xarray[i];
+      }
+
+      b = ((cantidad * xy) - (x * y)) / ((cantidad * xx) - (x * x));
+      a = (y - (b * x)) / cantidad;
+
+      if(b != 0) {
+      //console.log(a + ' ' +b);
+      return{a,b};
+      } else {
+      //console.log('Dado ' + futuro + ' => Infinito');
+      return 0;
+      } 
+    }
+
+    async function rect(){
+      var arry = [];
+      const vari = await lineal();
+      for(i = 13;i<=15;i+=.01){
+          arry.push(parseFloat(vari.a  + vari.b *i));
+          
+      }
+      return {arry};
+    }
+
+    </script>
+  </body>
+</html>
