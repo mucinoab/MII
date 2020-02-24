@@ -227,7 +227,6 @@ def fijo_ejemplo_1(request):  # Ejemplo 1 para una variable
     return render(request, "fijo_calculado.html", context)
 
 
-
 def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
 
     # Calculando valores
@@ -241,7 +240,7 @@ def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
     funx = "x**2-10*x+y**2+8"
     funy = "x*y**2+x-10*y+8"
 
-    #despejes
+    # despejes
     fx = "(x**2+y**2+8)/(10)"
     fy = "(x*y**2+x+8)/(10)"
     x0 = 0

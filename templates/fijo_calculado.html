@@ -10,21 +10,21 @@
         <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="inicio">
             <h2 class="w3-hide-medium w3-hide-large w3-text-light-grey">Método Punto Fijo</h2>
             <hr style="width:200px" class="w3-opacity">
-                <table align="center">
-        <tr>
-        <tr>
-            {% for titulo in context.titulos %}
-                <th>{{ titulo }}</th>
-            {% endfor %}
-        </tr>
-        {% for value in context.filas %}
-            <tr>
-                {% for foo in value %}
-                    <td>{{ foo }}</td>
+            <table align="center">
+                <tr>
+                <tr>
+                    {% for titulo in context.titulos %}
+                        <th>{{ titulo }}</th>
+                    {% endfor %}
+                </tr>
+                {% for value in context.filas %}
+                    <tr>
+                        {% for foo in value %}
+                            <td>{{ foo }}</td>
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
+            </table>
 
             <img src="{{ image }}">
             <a href="/punto_fijo" class="button"><span>Regresar</span></a>
