@@ -10,6 +10,8 @@ import numpy as np
 import sympy
 from django.shortcuts import render
 from sympy import *
+from sympy.plotting import plot3d
+from sympy.plotting.plot import unset_show
 
 from .forms import In, E1, E2, E3
 
@@ -283,3 +285,24 @@ def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
     context['image'] = uri
 
     return render(request, "fijo_calculado.html", context)
+
+def fijo_ejemplo_3(request):  # Ejemplo 3 para una variables
+    unset_show()
+
+    #calculando valores
+    iteraciones = 10
+    resul = {'titulos': ['n', 'Xn', 'Yn', 'f(x, y)', 'g(x, y)'], 'filas': []}
+    context = {}
+    x, y = symbols('x y')
+    p1 = plot3d(x * y, (x, -5, 5), (y, -5, 5), show=False, title="Fijo")
+    p1.show()
+
+    buf = BytesIO()
+    p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000",
+                            edgecolor='#000000', dpi=150, transparent=True)
+    buf.seek(0)
+    uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
+    context['image'] = uri
+
+    return render(request, "fijo_calculado.html", context)
+
