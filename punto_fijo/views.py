@@ -1,8 +1,5 @@
-import sys
-import time
 from base64 import b64encode
 from io import BytesIO
-# from traceback import print_exc
 from urllib import parse
 
 import matplotlib.pyplot as plt
@@ -14,7 +11,6 @@ from sympy.plotting import plot3d
 from sympy.plotting.plot import unset_show
 
 from .forms import In, E1, E2, E3
-
 
 def estiliza_string(fucn):
     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
@@ -87,7 +83,7 @@ def fijo_input(request, n):
 def fijo_calcula(request):
     # print(request.POST, len(request.POST))
 
-    start = time.time()
+    # start = time.time()
 
     iteraciones = 20
 
@@ -100,7 +96,7 @@ def fijo_calcula(request):
 
     valores = request.POST  # obtiene el input
 
-    n = len(request.POST)  # 1 llave y par de valores por ecuación.
+    n = len(valores)  # 1 llave y par de valores por ecuación.
 
     if n == 3:  # una variable
         funo = str(valores['fx'])  # +"+x"
@@ -164,9 +160,9 @@ def fijo_calcula(request):
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
         context['image'] = uri
 
-        print(sys.getsizeof(buf))
-        end = time.time()
-        print(end - start)
+        # print(sys.getsizeof(buf))
+        # end = time.time()
+        # print(end - start)
 
     return render(request, "fijo_calculado.html", context)
 

@@ -41,12 +41,16 @@ start = time.time()
 for n in range(iteraciones):
     j = jaco(x[0][0], x[1][0]).dot(fxfy(x[0][0], x[1][0]))
     x = x - j
+sol = fxfy(x[0][0], x[1][0])
 
+print(sol)
+print( f'{float(sol[0]):.6f}')
 
 end = time.time()
-print(end - start)
-print(x)
+# print(end - start)
+# print(x)
 
+# print((' '.join(map(str, j))))
 
 #-----------------------------------------------------------------------------------------
 
@@ -101,4 +105,3 @@ print(x)
 #
 # end = time.time()
 # print(end - start)
-

@@ -7,9 +7,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sympy
 from django.shortcuts import render
+from sympy.plotting import plot3d
 
 from error.views import errors_view
-from .forms import In
+from .forms import In, E2, E3, E4
 
 
 def estiliza_string(fucn):
@@ -42,6 +43,39 @@ def newton_view(request):
             return newton_calcula(request, form)
 
     return render(request, "newton_input.html", context)
+
+
+def newton_view_multi(request):
+    form = In()
+    context = {"form": form}
+
+    if request.method == 'POST':
+
+        form = In(request.POST)
+
+        if form.is_valid():
+            if form.cleaned_data['n'] == 2:
+                return newton_input(request, 2)
+
+            elif form.cleaned_data['n'] == 3:
+                return newton_input(request, 3)
+            else:
+                return newton_input(request, 4)
+
+    return render(request, "newton_elegir.html", context)
+
+
+def newton_input(request, n):
+    if n == 2:
+        form = E2()
+    elif n == 3:
+        form = E3()
+    else:
+        form = E4()
+
+    context = {"form": form}
+
+    return render(request, "newton_input_multi.html", context)
 
 
 def newton_calcula(request, form):
@@ -122,21 +156,73 @@ def newton_calcula(request, form):
         return render(request, "newton_calculado.html", context)
 
 
-# def newton_multi():
+def newton_multi(request):
+    iteraciones = 10
+    x, y, z, w = sympy.symbols('x y z w')
 
+    valores = request.POST
+    n = len(valores)
 
+    plt.rcParams.update(plt.rcParamsDefault)
+    plt.close('all')
 
+    if n == 5:
 
+        resul = {'titulos': ['n', 'Vector Solución', 'f₁(x, y), f₂(x, y)'], 'filas': []}
+        f1 = sympy.sympify(valores['f1'])
+        x0 = float(valores['x0'])
 
+        f2 = sympy.sympify(valores['f2'])
+        y0 = float(valores['y0'])
 
+        # derivadas parciales
+        f1x = sympy.diff(f1, x)
+        f1y = sympy.diff(f1, y)
 
+        f2x = sympy.diff(f2, x)
+        f2y = sympy.diff(f2, y)
 
+        # vector de las funciones iniciales
+        v = sympy.Matrix([[f1], [f2]])
 
+        # inversa,de la jacobiana
+        j_inv = (sympy.Matrix([[f1x, f1y], [f2x, f2y]])) ** -1
 
+        # lamdify de las matrices
+        jaco = sympy.lambdify([x, y], j_inv, 'numpy')
+        fxfy = sympy.lambdify([x, y], v, 'numpy')
 
+        solucion = np.array([[x0], [y0]])
 
+        for n in range(1, iteraciones + 1):
+            
+            sol = fxfy(solucion[0][0], solucion[1][0])
+            xs = f'{solucion[0][0]:.6f}'
+            ys = f'{solucion[1][0]:.6f}'
+            fxn = f'{float(sol[0]):.6f}'
+            fyn = f'{float(sol[1]):.6f}'
 
+            resul['filas'].append([n, xs + ' | ' + ys, fxn + ' | ' + fyn])
+            j = jaco(solucion[0][0], solucion[1][0]).dot(fxfy(solucion[0][0], solucion[1][0]))
+            solucion = solucion - j
 
+        context = {'context': resul}
 
+        #graficación
+        plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
+        plt.style.use("dark_background")
 
+        xs = solucion[0][0] # x solucion
+        ys = solucion[1][0] # y solucion
 
+        titulo = '\n' + estiliza_string(valores['f1']) + ' and ' + estiliza_string(valores['f2']) + '\n'
+
+        p = plot3d(f1, f2, (x, xs - 3, xs + 3), (y, ys - 3, ys + 3), title=titulo, nb_of_points_x= 15, nb_of_points_y= 15, xlabel = 'X', ylabel='Y')
+        buf = BytesIO()
+        p._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000", edgecolor='#000000', dpi=150, transparent=True)
+        buf.seek(0)
+        uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
+        context['image'] = uri
+        p._backend.close()
+
+    return render(request, "newton_calculado_multi.html", context)
