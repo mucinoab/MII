@@ -120,3 +120,23 @@ def newton_calcula(request, form):
         context['image'] = uri
 
         return render(request, "newton_calculado.html", context)
+
+
+# def newton_multi():
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
