@@ -4,8 +4,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class In(forms.Form):  # Input de cuantas funciones
     n = forms.IntegerField(required=True, label='',
-                           widget=forms.TextInput(attrs={'placeholder': 'Solo números entre 2 y 4'}),
-                           validators=[MinValueValidator(2), MaxValueValidator(4)])
+                           widget=forms.TextInput(attrs={'placeholder': 'Solo números entre 2 ó 3'}),
+                           validators=[MinValueValidator(2), MaxValueValidator(3)])
 
 
 class E2(forms.Form):  # Input para 2 funciones

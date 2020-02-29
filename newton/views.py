@@ -157,7 +157,6 @@ def newton_calcula(request, form):
 
 
 def newton_multi(request):
-    iteraciones = 10
     x, y, z, w = sympy.symbols('x y z w')
 
     valores = request.POST
@@ -167,6 +166,7 @@ def newton_multi(request):
     plt.close('all')
 
     if n == 5:
+        iteraciones = 10
 
         resul = {'titulos': ['n', 'Vector Solución', 'f₁(x, y), f₂(x, y)'], 'filas': []}
         f1 = sympy.sympify(valores['f1'])
@@ -186,7 +186,8 @@ def newton_multi(request):
         v = sympy.Matrix([[f1], [f2]])
 
         # inversa,de la jacobiana
-        j_inv = (sympy.Matrix([[f1x, f1y], [f2x, f2y]])) ** -1
+        j_inv = (sympy.Matrix([[f1x, f1y],
+                               [f2x, f2y]])) ** -1
 
         # lamdify de las matrices
         jaco = sympy.lambdify([x, y], j_inv, 'numpy')
@@ -195,7 +196,8 @@ def newton_multi(request):
         solucion = np.array([[x0], [y0]])
 
         for n in range(1, iteraciones + 1):
-            
+
+            #Dandole formato a los valores
             sol = fxfy(solucion[0][0], solucion[1][0])
             xs = f'{solucion[0][0]:.6f}'
             ys = f'{solucion[1][0]:.6f}'
@@ -203,6 +205,7 @@ def newton_multi(request):
             fyn = f'{float(sol[1]):.6f}'
 
             resul['filas'].append([n, xs + ' | ' + ys, fxn + ' | ' + fyn])
+
             j = jaco(solucion[0][0], solucion[1][0]).dot(fxfy(solucion[0][0], solucion[1][0]))
             solucion = solucion - j
 
@@ -225,4 +228,84 @@ def newton_multi(request):
         context['image'] = uri
         p._backend.close()
 
+
+    elif n == 7:
+        iteraciones = 15
+
+        resul = {'titulos': ['n', 'Vector Solución', 'f₁ | f₂ | f₃'], 'filas': []}
+        f1 = sympy.sympify(valores['f1'])
+        x0 = float(valores['x0'])
+
+        f2 = sympy.sympify(valores['f2'])
+        y0 = float(valores['y0'])
+
+        f3 = sympy.sympify(valores['f3'])
+        z0 = float(valores['z0'])
+
+        # derivadas parciales
+        f1x = sympy.diff(f1, x)
+        f1y = sympy.diff(f1, y)
+        f1z = sympy.diff(f1, z)
+
+        f2x = sympy.diff(f2, x)
+        f2y = sympy.diff(f2, y)
+        f2z = sympy.diff(f2, z)
+
+        f3x = sympy.diff(f3, x)
+        f3y = sympy.diff(f3, y)
+        f3z = sympy.diff(f3, z)
+
+        #funciones iniciales
+        v = sympy.Matrix([[f1], [f2], [f3]])
+
+        #inversa jacobiana
+
+        j_inv = (sympy.Matrix([[f1x, f1y, f1z],
+                               [f2x, f2y, f2z],
+                               [f3x, f3y, f3z]])) ** -1
+
+        jaco = sympy.lambdify([x, y, z], j_inv, "numpy")
+        fxfyfz = sympy.lambdify([x, y, z], v, "numpy")
+
+        solucion = np.array([[x0], [y0], [z0]])
+
+        for n in range(1, iteraciones+1):
+
+            #Dandole formato a los valores
+            sol = fxfyfz(solucion[0][0], solucion[1][0], solucion[2][0])
+            xs = f'{solucion[0][0]:.4f}'
+            ys = f'{solucion[1][0]:.4f}'
+            zs = f'{solucion[2][0]:.4f}'
+
+            fxn = f'{float(sol[0]):.4f}'
+            fyn = f'{float(sol[1]):.4f}'
+            fzn = f'{float(sol[2]):.4f}'
+
+            resul['filas'].append([n, xs + ' | ' + ys + ' | ' + zs, fxn + ' | ' + fyn + ' | ' + fzn])
+
+            j = jaco(solucion[0][0], solucion[1][0], solucion[2][0]).dot(fxfyfz(solucion[0][0], solucion[1][0], solucion[2][0]))
+            solucion -= j
+
+            context = {'context': resul}
+
+
     return render(request, "newton_calculado_multi.html", context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
