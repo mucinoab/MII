@@ -23,7 +23,6 @@ from newton.views import newton_view, newton_calcula, newton_view_multi, newton_
 from punto_fijo.views import fijo_view, fijo_calcula, fijo_ejemplo_1, fijo_ejemplo_2, fijo_ejemplo_3
 from resumenes.views import res_view, metodos_views
 
-
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
 urlpatterns = [

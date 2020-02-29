@@ -1,8 +1,8 @@
 import time
 
-import sympy
-from sympy import init_printing, init_session, pprint
 import numpy as np
+import sympy
+from sympy import init_printing
 
 init_printing()
 
@@ -12,25 +12,23 @@ x, y = sympy.symbols('x y')
 f1 = sympy.sympify("x**2-y**2-1")
 f2 = sympy.sympify("x**2+y**2+x*y-4")
 
-
-#derivadas parciales
+# derivadas parciales
 f1x = sympy.diff(f1, x)
 f1y = sympy.diff(f1, y)
 
 f2x = sympy.diff(f2, x)
 f2y = sympy.diff(f2, y)
 
-#vector de las funciones iniciales
+# vector de las funciones iniciales
 v = sympy.Matrix([[f1], [f2]])
 
 j = sympy.Matrix([[f1x, f1y],
                   [f2x, f2y]])
 
-j_inv = j**-1 #inversa,de la jacobiana
+j_inv = j ** -1  # inversa,de la jacobiana
 
 jaco = sympy.lambdify([x, y], j_inv, 'numpy')
 fxfy = sympy.lambdify([x, y], v, 'numpy')
-
 
 x = np.ones((2, 1))
 
@@ -44,7 +42,7 @@ for n in range(iteraciones):
 sol = fxfy(x[0][0], x[1][0])
 
 print(sol)
-print( f'{float(sol[0]):.6f}')
+print(f'{float(sol[0]):.6f}')
 
 end = time.time()
 # print(end - start)
@@ -52,7 +50,7 @@ end = time.time()
 
 # print((' '.join(map(str, j))))
 
-#-----------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------
 
 # import sympy
 # from sympy import *

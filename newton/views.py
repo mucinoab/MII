@@ -15,7 +15,7 @@ from .forms import In, E2, E3, E4
 
 def estiliza_string(fucn):
     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
-                       "9": "⁹"}
+                       "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
     nuevo = ''
     c = 0
     p = len(fucn)
@@ -196,8 +196,7 @@ def newton_multi(request):
         solucion = np.array([[x0], [y0]])
 
         for n in range(1, iteraciones + 1):
-
-            #Dandole formato a los valores
+            # Dandole formato a los valores
             sol = fxfy(solucion[0][0], solucion[1][0])
             xs = f'{solucion[0][0]:.6f}'
             ys = f'{solucion[1][0]:.6f}'
@@ -211,18 +210,20 @@ def newton_multi(request):
 
         context = {'context': resul}
 
-        #graficación
+        # graficación
         plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
         plt.style.use("dark_background")
 
-        xs = solucion[0][0] # x solucion
-        ys = solucion[1][0] # y solucion
+        xs = solucion[0][0]  # x solucion
+        ys = solucion[1][0]  # y solucion
 
         titulo = '\n' + estiliza_string(valores['f1']) + ' and ' + estiliza_string(valores['f2']) + '\n'
 
-        p = plot3d(f1, f2, (x, xs - 3, xs + 3), (y, ys - 3, ys + 3), title=titulo, nb_of_points_x= 15, nb_of_points_y= 15, xlabel = 'X', ylabel='Y')
+        p = plot3d(f1, f2, (x, xs - 3, xs + 3), (y, ys - 3, ys + 3), title=titulo, nb_of_points_x=15, nb_of_points_y=15,
+                   xlabel='X', ylabel='Y')
         buf = BytesIO()
-        p._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000", edgecolor='#000000', dpi=150, transparent=True)
+        p._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000",
+                               edgecolor='#000000', dpi=150, transparent=True)
         buf.seek(0)
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
         context['image'] = uri
@@ -255,10 +256,10 @@ def newton_multi(request):
         f3y = sympy.diff(f3, y)
         f3z = sympy.diff(f3, z)
 
-        #funciones iniciales
+        # funciones iniciales
         v = sympy.Matrix([[f1], [f2], [f3]])
 
-        #inversa jacobiana
+        # inversa jacobiana
 
         j_inv = (sympy.Matrix([[f1x, f1y, f1z],
                                [f2x, f2y, f2z],
@@ -269,9 +270,8 @@ def newton_multi(request):
 
         solucion = np.array([[x0], [y0], [z0]])
 
-        for n in range(1, iteraciones+1):
-
-            #Dandole formato a los valores
+        for n in range(1, iteraciones + 1):
+            # Dandole formato a los valores
             sol = fxfyfz(solucion[0][0], solucion[1][0], solucion[2][0])
             xs = f'{solucion[0][0]:.4f}'
             ys = f'{solucion[1][0]:.4f}'
@@ -283,29 +283,10 @@ def newton_multi(request):
 
             resul['filas'].append([n, xs + ' | ' + ys + ' | ' + zs, fxn + ' | ' + fyn + ' | ' + fzn])
 
-            j = jaco(solucion[0][0], solucion[1][0], solucion[2][0]).dot(fxfyfz(solucion[0][0], solucion[1][0], solucion[2][0]))
+            j = jaco(solucion[0][0], solucion[1][0], solucion[2][0]).dot(
+                fxfyfz(solucion[0][0], solucion[1][0], solucion[2][0]))
             solucion -= j
 
             context = {'context': resul}
 
-
     return render(request, "newton_calculado_multi.html", context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
