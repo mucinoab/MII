@@ -39,7 +39,6 @@ def newton_view(request):
         form = In(request.GET)
 
         if form.is_valid():
-            # print(form.cleaned_data, request.GET)
             return newton_calcula(request, form)
 
     return render(request, "newton_input.html", context)
@@ -271,6 +270,7 @@ def newton_multi(request):
         solucion = np.array([[x0], [y0], [z0]])
 
         for n in range(1, iteraciones + 1):
+
             # Dandole formato a los valores
             sol = fxfyfz(solucion[0][0], solucion[1][0], solucion[2][0])
             xs = f'{solucion[0][0]:.4f}'
