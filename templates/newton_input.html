@@ -1,3 +1,16 @@
+<style>
+    .button 
+    {
+      background-color: #5e3c58;
+      color: whitesmoke;
+      padding: 12px 28x;
+      text-align: center;
+      border-radius: 8px;
+      font-size: 15px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+</style>
 {% extends 'base.html' %}
 {% block content %}
     <div class="w3-padding-large" id="punto_fijo">
@@ -7,7 +20,7 @@
     </header>
 
     <!-- Inicio Section -->
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="inicio">
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="MNewton">
     <h2 class="w3-hide-medium w3-hide-large w3-text-light-grey">Método de Newton</h2>
     <hr style="width:200px" class="w3-opacity">
     <form method="GET">
@@ -20,4 +33,3 @@
         <input type="submit" class="button" value="Calcular y Graficar"/>
     </form>
 {% endblock %}
-
