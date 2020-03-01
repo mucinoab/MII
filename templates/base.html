@@ -4,21 +4,54 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-    body, h1, h2, h3, h4, h5, h6 {
-        font-family: "Montserrat", sans-serif
+    body {
+        font-family: "Georgia", serif;
+        background-color: #f3f2f1;
+    }
+
+    h1{
+        font-family: "Georgia", serif;
+        margin-left: 150px;
+        color: #5e3c58;
+        padding-top: 50px;
+    }
+    h2{
+        font-family: "Georgia", serif;
+        color: #583747;
+    }
+
+    h3{
+        font-family: "Georgia", serif;
+        color: #583747;
+        font-size: medium;
+    }
+
+    p{
+        color: #8a737e;
+        font-size: medium;
+    }
+
+    h3{
+        font-size: small;
+        color: #8a737e;
+    }
+
+    div{
+        color: #6d7258;
+        padding: large;
     }
 
     .w3-row-padding img {
         margin-bottom: 12px
+        color: #E09F74;
     }
 
     /* Set the width of the sidebar to 120px */
     .w3-sidebar {
         width: 120px;
-        background: #222;
+        background: #ab9ba3;
     }
 
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
@@ -28,32 +61,31 @@
 
     /* Remove margins from "page content" on small screens */
     @media only screen and (max-width: 600px) {#main {
-        margin-left:
-
-    0
+        margin-left: 0
     }
 
     }
     label {
-        color: white;
+        color:#F0DD81;
         width: 90vw;
         font-size: 3.3vw;
         margin: 1vw;
     }
 
     table {
-        font-family: arial, sans-serif;
+        font-family: "Georgia", serif;
         border-collapse: collapse;
         border-style: double;
+
         width: fit-content;
-        float: inside;
+        float: center;
     }
 
     th {
         border: 1px solid #dddddd;
         border-style: double;
         text-align: center;
-        padding: .8vm;
+        padding: 1vm;
         background: #333;
         color: white;
         font-size: 2.8vw;
@@ -63,13 +95,13 @@
         border-style: double;
         border: 2px solid #dddddd;
         font-size: 2.3vw;
-        text-align: center;
-        padding: 6px;
+        text-align: left;
+        padding: 8px;
         color: white;
     }
 
     tr:nth-child(even) {
-        background-color: #262626;
+        background-color: #ddcf90;
     }
 
     /* Maneja la barra de scroll */
@@ -88,31 +120,38 @@
     ::-webkit-scrollbar-thumb:hover {
         background: #333;
     }
+
+    margin-right:
+
+    350
+    px
+
+    ;
 </style>
-<body class="w3-black">
+<body>
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
     <br> <br> <br> <br>
     <a href="/">
         <i class="fa fa-home w3-xxlarge"></i>
-        <p>Inicio</p> <br> <br>
+        <h3>Inicio</h3> <br> <br>
     </a>
     <a href="/resumenes">
         <i class="fa fa-book w3-xxlarge"></i>
-        <p>Resúmenes</p> <br> <br>
+        <h3>Resúmenes</h3> <br> <br>
     </a>
     <a href="/metodos">
         <i class="fa fa-superscript w3-xxlarge"></i>
-        <p>Métodos</p> <br> <br>
+        <h3>Métodos</h3> <br> <br>
     </a>
     <a href="#tutorial">
         <i class="fa fa-play w3-xxlarge"></i>
-        <p>Tutorial</p> <br> <br>
+        <h3>Tutorial</h3> <br> <br>
     </a>
     <a href="#sobre_nosotros">
         <i class="fa fa-users w3-xxlarge"></i>
-        <p>Créditos</p>
+        <h3>Créditos</h3>
     </a>
 </nav>
 
@@ -134,18 +173,18 @@
 
 <!-- Contact Section -->
 <div class="w3-padding-64 w3-content w3-text-grey" id="contacto">
-    <h2 class="w3-text-light-grey">Contactanos</h2>
+    <h2>Contactanos</h2>
     <hr style="width:200px" class="w3-opacity">
 
-    <div class="w3-section">
-        <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> FES Acatlan, Edo.Méx</p>
-        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: 55555555</p>
-        <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
+    <div>
+        <p><i class="fa fa-map-marker fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> FES Acatlan, Edo.Méx</p>
+        <p><i class="fa fa-phone fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> Phone: 55555555</p>
+        <p><i class="fa fa-envelope fa-fw w3-text-black w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
     </div>
     <br>
 
     <!-- Footer -->
-    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <footer class="w3-content w3-margin-left w3-padding-64 w3-text-grey w3-xlarge">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
         <i class="fa fa-instagram w3-hover-opacity"></i>
         <i class="fa fa-snapchat w3-hover-opacity"></i>
