@@ -49,10 +49,24 @@
         <input type="submit" class="button" value="     Ir      "/>
     </form>
     <div>
+<<<<<<< HEAD
+        <a href="/fijo_ejemplo1" class="button"><span>Ejemplo 1 Variable</span></a>
+
+    </div>
+    <div>
+
+        <a href="/fijo_ejemplo2" class="button"><span>Ejemplo 2 Variables</span></a>
+
+    </div>
+
+    <div>
+        <a href="/fijo_ejemplo3" class="button"><span>Ejemplo 3 Variables</span></a>
+=======
         <a href="/fijo_ejemplo1" class="button button1" ><span>Ejemplo 1 Variable</span></a>
     </div>
     <div>
         <a href="/fijo_ejemplo2" class="button button1" ><span>Ejemplo 2 Variables</span></a>
+>>>>>>> bceca5503eb7a23c45c0ba02f709f3c444bbdda5
 
     </div>
 {% endblock %}

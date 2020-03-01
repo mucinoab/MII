@@ -3,6 +3,17 @@
     <!-- Page Content -->
     <div class="w3-padding-large" id="Resumenes">
         <!-- Header/Home -->
+<<<<<<< HEAD
+        <h1><span class="w3-hide-small">Resúmenes</span></h1>
+
+        <!-- Resumenes Section -->
+        <div class="w3-text-grey" id="Resumenes">
+            <h2 class="w3-hide-large  w3-hide-medium w3-text-light-grey">Punto Fijo</h2>
+            <hr class="w3-hide-large w3-hide-medium" style="width:200px" class="w3-opacity">
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 930px; border-style: double; text-align: center;">Punto
+                Fijo</h3>
+=======
         <header class="w3-container w3-padding-32 w3-center w3-black" id="Resumenes">
             <h1 class="w3-jumbo w3-hide-small" style=" text-align: center; color: #5e3c58"><span>Resúmenes</span></h1>
             <h2 class="w3-hide-large  w3-hide-medium" style="font-size:xx-large; text-align: center; color: #5e3c58"><span>Resúmenes</span></h2>
@@ -32,6 +43,7 @@
             <hr class="w3-hide-large w3-hide-medium" style="width:200px" class="w3-opacity">
             <h3 class="w3-hide-small"style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: large; text-align: center;">Punto
                 Fijo</a></h3>
+>>>>>>> bceca5503eb7a23c45c0ba02f709f3c444bbdda5
             <h4 class="small w3-hide-small" style="margin-left: 150px; margin-right: 50px; text-align: justify">
                 Un punto fijo de una función G, es un número P tal que G(P)=P. El problema de encontrar las soluciones
                 de una ecuación f(x)=0 y el de encontrar los puntos fijos de una función h(x) son equivalentes en el
@@ -44,7 +56,10 @@
                 aproximaciones la cual converge a la solución de la ecuación f(x)=0. A la función G se le conoce como
                 función iteradora. Se puede demostrar que dicha sucesión (x_n) converge siempre y cuando |G'(x)| < 1.
                 <br><br>
+<<<<<<< HEAD
+=======
                 </br></br></br></br>
+>>>>>>> bceca5503eb7a23c45c0ba02f709f3c444bbdda5
             </h4>
             <h5 class="w3-hide-large w3-hide-medium" style="text-align: justify;">
                 Un punto fijo de una función G, es un número P tal que G(P)=P. El problema de encontrar las soluciones
@@ -57,6 +72,10 @@
                 El método de punto fijo inicia con una aproximación inicial x0 y x{n+1} = G(xn) genera una sucesión de
                 aproximaciones la cual converge a la solución de la ecuación f(x)=0. A la función G se le conoce como
                 función iteradora. Se puede demostrar que dicha sucesión (x_n) converge siempre y cuando |G'(x)| < 1.
+<<<<<<< HEAD
+                <br><br>
+            </br></br>
+=======
                 
                 </br></br></br></br>
                 <hr class="w3-hide-large w3-hide-medium" style="width:200px" class="w3-opacity">
@@ -89,6 +108,7 @@
                 Si se extiende una tangente desde el punto b , el punto donde esta tangente cruza al eje x representa una aproximación mejorada de la raíz.
                 <br><br>
                  </br></br></br></br>
+>>>>>>> bceca5503eb7a23c45c0ba02f709f3c444bbdda5
             </h5>
             </body>
         </div>

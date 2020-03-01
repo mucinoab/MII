@@ -164,6 +164,7 @@
         <a href="#tutorial" class="w3-bar-item w3-button" style="width:18% !important">Tutorial</a>
         <a href="#sobre_nosotros" class="w3-bar-item w3-button" style="width:19% !important">Créditos</a>
     </div>
+<<<<<<< HEAD
 </div>
 
 <body>
@@ -184,17 +185,24 @@
     <br>
 
     <!-- Footer -->
-  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <i class="fa fa-github w3-hover-opacity">   Github</i>
-    <p class="w3-medium">Powered by Equipo 1</a></p>
-  <!-- End footer -->
-  </footer>
+    <footer class="w3-content w3-margin-left w3-padding-64 w3-text-grey w3-xlarge">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fa fa-twitter w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+        <p class="w3-medium">Powered by Equipo 1</a></p>
+        <!-- End footer -->
+    </footer>
 
 </div>
 
 </body>
 </html>
 
+=======
+</div>
 
 <body>
 {% block content %}
