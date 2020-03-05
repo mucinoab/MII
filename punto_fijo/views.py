@@ -1,5 +1,8 @@
+import sys
+import time
 from base64 import b64encode
 from io import BytesIO
+# from traceback import print_exc
 from urllib import parse
 
 import matplotlib.pyplot as plt
@@ -15,7 +18,7 @@ from .forms import In, E1, E2, E3
 
 def estiliza_string(fucn):
     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
-                       "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
+                       "9": "⁹"}
     nuevo = ''
     c = 0
     p = len(fucn)
@@ -84,7 +87,7 @@ def fijo_input(request, n):
 def fijo_calcula(request):
     # print(request.POST, len(request.POST))
 
-    # start = time.time()
+    start = time.time()
 
     iteraciones = 20
 
@@ -97,7 +100,7 @@ def fijo_calcula(request):
 
     valores = request.POST  # obtiene el input
 
-    n = len(valores)  # 1 llave y par de valores por ecuación.
+    n = len(request.POST)  # 1 llave y par de valores por ecuación.
 
     if n == 3:  # una variable
         funo = str(valores['fx'])  # +"+x"
@@ -161,9 +164,9 @@ def fijo_calcula(request):
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
         context['image'] = uri
 
-        # print(sys.getsizeof(buf))
-        # end = time.time()
-        # print(end - start)
+        print(sys.getsizeof(buf))
+        end = time.time()
+        print(end - start)
 
     return render(request, "fijo_calculado.html", context)
 
@@ -251,13 +254,21 @@ def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
     fxx = sympy.sympify(fx)
     fyy = sympy.sympify(fy)
 
-    for q in range(1, iteraciones + 1):
-        x0 = round(fxx.subs({x: x0, y: y0}), 6)
-        y0 = round(fyy.subs({x: x0, y: y0}), 6)
+    fxn = sympy.lambdify([x,y], fux, "numpy")
+    fyn = sympy.lambdify([x,y], fuy, "numpy")
 
-        num = "{0:.4f}".format(fux.subs({x: x0, y: y0}))
-        num2 = "{0:.4f}".format(fuy.subs({x: x0, y: y0}))
-        resul['filas'].append([q, x0.n(5), y0.n(5), num, num2])
+    fxxn = sympy.lambdify([x,y], fx, "numpy")
+    fyyn = sympy.lambdify([x,y], fy, "numpy")
+
+    for q in range(1, iteraciones + 1):
+        x0 = fxxn(x0, y0)
+        y0 = fyyn(x0, y0)
+
+        num = fxn(x0, y0)
+        num2 = fyn(x0, y0)
+
+        print(q, x0, y0, num, num2)
+        resul['filas'].append([q, x0, y0, num, num2]))
 
     context = {'context': resul}
 
@@ -283,11 +294,10 @@ def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
 
     return render(request, "fijo_calculado.html", context)
 
-
 def fijo_ejemplo_3(request):  # Ejemplo 3 para una variables
     unset_show()
 
-    # calculando valores
+    #calculando valores
     iteraciones = 10
     resul = {'titulos': ['n', 'Xn', 'Yn', 'f(x, y)', 'g(x, y)'], 'filas': []}
     context = {}
@@ -303,3 +313,4 @@ def fijo_ejemplo_3(request):  # Ejemplo 3 para una variables
     context['image'] = uri
 
     return render(request, "fijo_calculado.html", context)
+
