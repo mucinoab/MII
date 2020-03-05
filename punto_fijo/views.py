@@ -18,7 +18,7 @@ from .forms import In, E1, E2, E3
 
 def estiliza_string(fucn):
     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
-                       "9": "⁹"}
+                       "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
     nuevo = ''
     c = 0
     p = len(fucn)
@@ -268,7 +268,7 @@ def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
         num2 = fyn(x0, y0)
 
         print(q, x0, y0, num, num2)
-        resul['filas'].append([q, x0, y0, num, num2]))
+        resul['filas'].append([q, x0, y0, num, num2])
 
     context = {'context': resul}
 
