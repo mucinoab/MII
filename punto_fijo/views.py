@@ -1,5 +1,5 @@
-import sys
-import time
+# import sys
+# import time
 from base64 import b64encode
 from io import BytesIO
 # from traceback import print_exc
@@ -87,7 +87,7 @@ def fijo_input(request, n):
 def fijo_calcula(request):
     # print(request.POST, len(request.POST))
 
-    start = time.time()
+    # start = time.time()
 
     iteraciones = 20
 
@@ -164,9 +164,9 @@ def fijo_calcula(request):
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
         context['image'] = uri
 
-        print(sys.getsizeof(buf))
-        end = time.time()
-        print(end - start)
+        # print(sys.getsizeof(buf))
+        # end = time.time()
+        # print(end - start)
 
     return render(request, "fijo_calculado.html", context)
 
@@ -233,7 +233,7 @@ def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
 
     # Calculando valores
 
-    iteraciones = 11
+    iteraciones = 10
     resul = {'titulos': ['n', 'Xn', 'Yn', 'f(x, y)', 'g(x, y)'], 'filas': []}
 
     x, y = sympy.symbols('x y')
@@ -251,11 +251,11 @@ def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
     fux = sympy.sympify(funx)
     fuy = sympy.sympify(funy)
 
-    fxx = sympy.sympify(fx)
-    fyy = sympy.sympify(fy)
+    # fxx = sympy.sympify(fx)
+    # fyy = sympy.sympify(fy)
 
-    fxn = sympy.lambdify([x,y], fux, "numpy")
-    fyn = sympy.lambdify([x,y], fuy, "numpy")
+    fxn = sympy.lambdify([x,y], funx, "numpy")
+    fyn = sympy.lambdify([x,y], funy, "numpy")
 
     fxxn = sympy.lambdify([x,y], fx, "numpy")
     fyyn = sympy.lambdify([x,y], fy, "numpy")
@@ -267,31 +267,29 @@ def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
         num = fxn(x0, y0)
         num2 = fyn(x0, y0)
 
-        print(q, x0, y0, num, num2)
-        resul['filas'].append([q, x0, y0, num, num2])
+        resul['filas'].append([q, f'{x0:.6}', f'{y0:.6}', f'{num:.6}', f'{num2:.6}'])
 
     context = {'context': resul}
 
     # Graficación
 
-    plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
-    plt.style.use("dark_background")
+    plt.rc_context({'axes.edgecolor': 'black', 'xtick.color': 'black', 'ytick.color': 'black'})
 
     titulo = '\n' + estiliza_string(funx) + "  y  " + estiliza_string(funy) + '\n'
 
-    p1 = plot_implicit(fux, show=False, line_color='#27864d', title=titulo)
-    p2 = plot_implicit(fuy, show=False, line_color='#40E0D0')
+    p1 = plot_implicit(fux, (x, x0-1.5, x0+1.5), (y, y0-1, y0+1), show=False, line_color='#27864d', title=titulo, adaptative=False, points=1)
+    p2 = plot_implicit(fuy, (x, x0-1.5, x0+1.5), (y, y0-1, y0+1), show=False, line_color='#40E0D0', adaptative=False, points=1)
     p1.extend(p2)
 
-    p1.show()
     buf = BytesIO()
+    p1.show()
 
-    p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000",
-                            edgecolor='#000000', dpi=150, transparent=True)
+    p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#f3f2f1",
+                            edgecolor='#f3f2f1', dpi=150)
     buf.seek(0)
     uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
     context['image'] = uri
-
+    context['codigo'] = "https://gist.github.com/mucinoab/494cd9c8a0125f6309430f68c1b19041.js"
     return render(request, "fijo_calculado.html", context)
 
 def fijo_ejemplo_3(request):  # Ejemplo 3 para una variables
