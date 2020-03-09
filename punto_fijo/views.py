@@ -185,13 +185,14 @@ def fijo_ejemplo_1(request):  # Ejemplo 1 para una variable
     gx = "sqrt((10)/(x+4))"
     x0 = 1
 
-    fux = sympy.sympify(fun)
-    gxx = sympy.sympify(gx)
+    fuxx = sympy.lambdify(x, fun, "math")
+    gxxx = sympy.lambdify(x, gx, "math")
 
     for q in range(1, iteraciones + 1):
-        x0 = gxx.subs(x, x0).n(16)
-        num = "{0:.6f}".format(fux.subs(x, x0))
-        resul['filas'].append([q, x0.n(7), num])
+        x0 = gxxx(x0)
+        num = "{0:.6f}".format(fuxx(x0))
+        resul['filas'].append([q,"{0:.6f}".format(x0), num])
+
 
     context = {'context': resul}
 
@@ -200,28 +201,28 @@ def fijo_ejemplo_1(request):  # Ejemplo 1 para una variable
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
 
-    r = resul['filas'][-1][1]
+    r = float(resul['filas'][-1][1])
     t = np.arange(r - 5, r + .5, .1)
     s = []
     for n in t:
-        s.append(float(fux.subs(x, n)))
+        s.append(fuxx(n))
 
-    plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
-    plt.style.use("dark_background")
+    plt.rc_context({'axes.edgecolor': 'black', 'xtick.color': 'black', 'ytick.color': 'black'})
+    # plt.style.use("dark_background")
     fig, ax = plt.subplots()
 
-    ax.axhline(0, color='gray')
+    ax.axhline(0, color='black')
 
     ax.plot(t, s, label=f'f(x) = {estiliza_string(fun)}', color='navy')
-    ax.grid(color="azure")
+    ax.grid(color="gray")
 
-    plt.plot(r, fux.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.4f}")
+    plt.plot(r, fuxx(r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.4f}")
     ax.set(xlabel='x', ylabel='f(x)', title=f"Raíz calculada después de {iteraciones} iteraciones")
 
     plt.legend(loc='best')
 
     buf = BytesIO()
-    fig.savefig(buf, format='png', dpi=160, edgecolor='#000000', transparent=True)
+    fig.savefig(buf, format='png', dpi=160, transparent=True)
     buf.seek(0)
     uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
     context['image'] = uri
@@ -289,26 +290,29 @@ def fijo_ejemplo_2(request):  # Ejemplo 2 para una variables
     buf.seek(0)
     uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
     context['image'] = uri
-    context['codigo'] = "https://gist.github.com/mucinoab/494cd9c8a0125f6309430f68c1b19041.js"
     return render(request, "fijo_calculado.html", context)
 
 def fijo_ejemplo_3(request):  # Ejemplo 3 para una variables
-    unset_show()
+    # unset_show()
 
     #calculando valores
-    iteraciones = 10
+    iteraciones = 15
     resul = {'titulos': ['n', 'Xn', 'Yn', 'f(x, y)', 'g(x, y)'], 'filas': []}
     context = {}
-    x, y = symbols('x y')
-    p1 = plot3d(x * y, (x, -5, 5), (y, -5, 5), show=False, title="Fijo")
-    p1.show()
 
-    buf = BytesIO()
-    p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000",
-                            edgecolor='#000000', dpi=150, transparent=True)
-    buf.seek(0)
-    uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
-    context['image'] = uri
+
+
+
+    # x, y = symbols('x y')
+    # p1 = plot3d(x * y, (x, -5, 5), (y, -5, 5), show=False, title="Fijo")
+    # p1.show()
+    #
+    # buf = BytesIO()
+    # p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000",
+    #                         edgecolor='#000000', dpi=150, transparent=True)
+    # buf.seek(0)
+    # uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
+    # context['image'] = uri
 
     return render(request, "fijo_calculado.html", context)
 
