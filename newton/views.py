@@ -10,7 +10,7 @@ from django.shortcuts import render
 from sympy.plotting import plot3d
 
 from error.views import errors_view
-from .forms import In, E2, E3, E4
+from .forms import In, E2, E3, E4, In1
 
 
 def estiliza_string(fucn):
@@ -32,14 +32,13 @@ def estiliza_string(fucn):
 
 
 def newton_view(request):
-    form = In()
+    form = In1()
     context = {"form": form}
 
     if request.method == 'GET':
-        form = In(request.GET)
+        form = In1(request.GET)
 
         if form.is_valid():
-            # print(form.cleaned_data, request.GET)
             return newton_calcula(request, form)
 
     return render(request, "newton_input.html", context)
@@ -125,15 +124,15 @@ def newton_calcula(request, form):
         for n in t:
             s.append(float(fx.subs(x, n)))
 
-        plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
-        plt.style.use("dark_background")
+        plt.rc_context({'axes.edgecolor': 'black', 'xtick.color': 'black', 'ytick.color': 'black'})
+        # plt.style.use("dark_background")
         fig, ax = plt.subplots()
 
         # plt.axvline(0, color='black')
         ax.axhline(0, color='gray')
 
         ax.plot(t, s, label=f'f(x) = {nuevo}', color='#40E0D0')
-        ax.grid(color="azure")
+        ax.grid(color="gray")
 
         if b == 1:  # si se encontro corte antes de 50 iteraciones
             plt.plot(r, fx.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.4f}")
@@ -147,7 +146,9 @@ def newton_calcula(request, form):
         plt.legend(loc='best')
 
         buf = BytesIO()
-        fig.savefig(buf, format='png', dpi=160, facecolor="#000000", edgecolor='#000000', transparent=True)
+        fig.savefig(buf, format='jpg', quality=90, dpi=160, facecolor="#f3f2f1", edgecolor='#f3f2f1')
+        # # p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#f3f2f1",
+        #                         edgecolor='#f3f2f1', dpi=150)
         buf.seek(0)
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
 
@@ -271,6 +272,7 @@ def newton_multi(request):
         solucion = np.array([[x0], [y0], [z0]])
 
         for n in range(1, iteraciones + 1):
+
             # Dandole formato a los valores
             sol = fxfyfz(solucion[0][0], solucion[1][0], solucion[2][0])
             xs = f'{solucion[0][0]:.4f}'
