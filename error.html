@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{#{% load static %}#}
+{% block content %}
+
+    <div class="w3-padding-large" id="error">
+    <!-- Header/Home -->
+    <header class="w3-container w3-padding-32 w3-center" id="error">
+        <h1 class="w3-jumbo"><span class="w3-hide-small">Error</span></h1>
+    </header>
+    <!-- Inicio Section -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="inicio">
+    <h2 class="w3-hide-medium w3-hide-large w3-text-light-grey">Error</h2>
+    {#    <img src="{% static 'sad_cat.png'%}">#}
+    <pre>
+        <p style="font-size: 1.8vw; margin-left: -6vw;">
+                _
+                \`*-.
+                 )  _`-.
+                .  : `. .
+                : _   '  \
+                ; *` _.   `*-._
+                `-.-'          `-.
+                  ;       `       `.
+                  :.       .        \
+                  . \  .   :   .-'   .
+                  '  `+.;  ;  '      :
+                  :  '  |    ;       ;-.
+                  ; '   : :`-:     _.`* ;
+         [bug] .*' /  .*' ; .*`- +'  `*'
+               `*-*   `*-*  `*-*'
+
+            Upps, algo salio mal... Intentalo de nuevo.
+        </p>
+        <a href="/" class="button"><span>Regresar</span></a>
+    </pre>
+{% endblock %}
