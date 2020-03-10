@@ -34,13 +34,12 @@
     }
 
     div{
-        font-family: "Georgia", serif;
-        color: #583747;
-        font-size: medium;
+        color: #6d7258;
+        padding: large;
     }
 
     .w3-row-padding img {
-        margin-bottom: 12px
+        margin-bottom: 12px;
         color: #E09F74;
     }
 
@@ -72,32 +71,32 @@
         font-family: "Georgia", serif;
         border-collapse: collapse;
         border-style: double;
+
         width: fit-content;
         float: center;
     }
 
     th {
-        border: 1px solid #583747;
+        border: 1px solid #dddddd;
         border-style: double;
         text-align: center;
         padding: 1vm;
-        background: #ab9ba3;
-        color: #583747;
+        background: #333;
+        color: white;
         font-size: 2.8vw;
     }
 
     td {
         border-style: double;
-        border: 2px solid #583747;
+        border: 2px solid #dddddd;
         font-size: 2.3vw;
         text-align: left;
         padding: 8px;
-        {#background: #ab9ba3;#}
-        color: #583747;
+        color: white;
     }
 
-    tr:nth-child(odd) {
-        background-color: #fdf2f9;
+    tr:nth-child(even) {
+        background-color: #ddcf90;
     }
 
     /* Maneja la barra de scroll */
@@ -105,13 +104,19 @@
         width: .2vh;
     }
 
-    img {
-        padding: 0;
-        display: block;
-        margin: 0 auto;
-        max-height: 100%;
-        max-width: 100%;
+    ::-webkit-scrollbar-track {
+        background: #004c3f;
     }
+
+    ::-webkit-scrollbar-thumb {
+        background: #555;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #333;
+    }
+
+    margin-right: 350px;
 </style>
 <body>
 
@@ -162,18 +167,21 @@
     <hr style="width:200px" class="w3-opacity">
 
     <div>
-        <p><i class="fa fa-map-marker fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> Facultad de Estudios Superiores Acatlán</p>
-        <p><i class="fa fa-envelope fa-fw w3-text-black w3-xxlarge w3-margin-right"> </i> Email: ejemplo@mail.com</p>
+        <p><i class="fa fa-map-marker fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> FES Acatlan, Edo.Méx</p>
+        <p><i class="fa fa-phone fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> Phone: 55555555</p>
+        <p><i class="fa fa-envelope fa-fw w3-text-black w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
     </div>
     <br>
 
     <!-- Footer -->
   <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <a href="https://github.com/mucinoab/MII" class="fa fa-github w3-hover-opacity"> Github</a>
-    <p class="w3-medium">Powered by Equipo 1</p>
+    <i class="fa fa-github w3-hover-opacity">   Github</i>
+    <p class="w3-medium">Powered by Equipo 1</a></p>
   <!-- End footer -->
   </footer>
 
-</html>
+</div>
 
+</body>
+</html>
 
