@@ -207,7 +207,8 @@ def newton_multi(request):
             solucion = solucion - j
 
         context = {'context': resul}
-
+        context["jaco"] = sympy.latex(sympy.Matrix([[f1x, f1y],
+                                                    [f2x, f2y]]) ).replace("\left[", ' ').strip("\\right]").replace("matrix", "bmatrix")
         # graficación
         plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
         # plt.style.use("dark_background")
@@ -287,5 +288,10 @@ def newton_multi(request):
             solucion -= j
 
         context = {'context': resul}
+        context["jaco"] = sympy.latex(sympy.Matrix([[f1x, f1y, f1z],
+                                                    [f2x, f2y, f2z],
+                                                    [f3x, f3y, f3z]])).replace("\left[", ' ').strip("\\right]").replace("matrix", "bmatrix")
 
+    context ["inv"] = sympy.latex(j_inv).replace("\left[", ' ').strip("\\right]").replace("matrix", "bmatrix")
+    context ["mat"] = sympy.latex(v).replace("\left[", ' ').strip("\\right]").replace("matrix", "bmatrix")
     return render(request, "newton_calculado_multi.html", context)
