@@ -16,13 +16,20 @@ def lagrange_view(request):
     context = {"form": form}
 
     if request.method == 'POST':
-        datosf = formset_factory(datos)
+        datosf = datos(int(request.POST["numero_datos"]))
         context["datos"] = datosf
-        print(request.POST["numero_datos"])
+        if datosf is None:
+            print("nada")
+        else:
+            print(context)
         return render(request, "lagrange_elegir.html", context)
 
-    if request.method == 'GET':
-        print("get")
+    # if request.method == "GET":
+    #     print(context["datos"]["X1"])
+
+    # if request.method == 'POST':
+
+
     return render(request, "lagrange_elegir.html", context)
 
 
@@ -43,7 +50,6 @@ def poli_lag(grado, datos):
         resul += '+'
 
     resul = resul.strip("+")
-    # print(resul)
     return sympy.lambdify(x, resul, "math"), sympy.sympify(resul)
 
 

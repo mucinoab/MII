@@ -26,7 +26,7 @@
 
     <!-- Inicio Section -->
     <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="inicio">
-    <h2 class="w3-hide-medium w3-hide-large w3-text-light-grey">Interpolación polinómica de Lagrange</h2>
+    <h2 class="w3-hide-medium w3-hide-large w3-text-light-grey">Interpolación Polinómica de Lagrange</h2>
     <hr style="width:200px" class="w3-opacity">
     <h3 style="font-size: large;">¿Con cuántos datos cuentas? </h3>
     <p>Recuerda...</p>
@@ -35,18 +35,34 @@
         <input type="submit" class="button" value="Ir"/>
     </form>
 
-{#    <form> {{ datos }}</form>#}
-
-    <form method="GET">
-    {% csrf_token %}
-    {{ datos}}
+{#    <form method="GET">#}
+{#    {% csrf_token %}#}
+{#    {{ datos}}#}
 {#    <table>#}
-{#        {% for form in formset %}#}
+{#        {% for form in datos %}#}
 {#        {{ form }}#}
 {#        {% endfor %}#}
 {#    </table>#}
-        <input type="submit" class="button" value="Ir"/>
-</form>
+{#        <input type="submit" class="button" value="Ir"/>#}
+{#</form>#}
 
+
+{#    <table align="center">#}
+<form method="POST">
+       {% csrf_token %}
+        {% for titulo in datos.titulos%}
+            <th>{{ titulo }}</th>
+        {% endfor %}
+        {% for value in datos.datos %}
+            <td>{{ value }}</td>
+        {% endfor %}
+{#    </table>#}
+
+
+        <input type="submit" class="button" value="Ir"/>
+        </form>
+<form>
+ {{ datos.as_table }}
+</form>
 {% endblock %}
 
