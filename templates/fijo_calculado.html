@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="w3-padding-large" id="punto_fijo">
-        <!-- Header/Home -->
+    <!-- Header/Home -->
     <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="inicio">
     <h2 class="w3-hide-medium w3-hide-large w3-text-light-grey">Método Punto Fijo</h2>
     <hr style="width:200px" class="w3-opacity">
 
     <table align="center">
-            {% for titulo in context.titulos %}
-                <th>{{ titulo }}</th>
-            {% endfor %}
+        {% for titulo in context.titulos %}
+            <th>{{ titulo }}</th>
+        {% endfor %}
         {% for value in context.filas %}
             <tr>
                 {% for foo in value %}
@@ -22,5 +22,5 @@
     <a href="/punto_fijo" class="button"><span>Regresar</span></a>
 {% endblock %}
 
-        <!-- Inicio Section -->
-            <h1 class="w3-jumbo"><span class="w3-hide-small">Método Punto Fijo</span></h1>
+<!-- Inicio Section -->
+<h1 class="w3-jumbo"><span class="w3-hide-small">Método Punto Fijo</span></h1>

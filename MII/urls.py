@@ -22,11 +22,12 @@ from inicio.views import home_view
 from newton.views import newton_view, newton_calcula, newton_view_multi, newton_multi
 from punto_fijo.views import fijo_view, fijo_calcula, fijo_ejemplo_1, fijo_ejemplo_2, fijo_ejemplo_3
 from resumenes.views import res_view, metodos_views
+from lagrange.views import lagrange_view
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('', home_view, name="home"),
     path('resumenes/', res_view),
     path('favicon.ico/', favicon_view),
@@ -41,4 +42,5 @@ urlpatterns = [
     path('fijo_ejemplo3/', fijo_ejemplo_3),
     path('newton_Multi/', newton_view_multi),
     path('newton_Multi_calcula/', newton_multi),
+    path('lagrange_', lagrange_view),
 ]

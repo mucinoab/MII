@@ -1,16 +1,31 @@
 from django import forms
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
 class In1(forms.Form):  # Input de cuantas funciones
     f = forms.CharField(required=True, label='Función',
-                         widget=forms.TextInput(attrs={'placeholder': 'e.g. x**2-10*x+2'}))
+                        widget=forms.TextInput(attrs={'placeholder': 'e.g. x**2-10*x+2'}))
     ini = forms.FloatField(required=True, label='Valor Inicial x', initial=1.0,
-                          widget=forms.TextInput(attrs={'placeholder': '1.0'}))
+                           widget=forms.TextInput(attrs={'placeholder': '1.0'}))
+
 
 class In(forms.Form):  # Input de cuantas funciones
     n = forms.IntegerField(required=True, label='',
                            widget=forms.TextInput(attrs={'placeholder': 'Solo números entre 2 ó 3'}),
+
                            validators=[MinValueValidator(2), MaxValueValidator(3)])
+
+
+# op1 = (
+#     ("1", "One"),
+#     ("2", "Two"),
+#     ("3", "Three"),
+# )
+#
+# class In(forms.Form):
+#
+#
+#
 
 
 class E2(forms.Form):  # Input para 2 funciones
