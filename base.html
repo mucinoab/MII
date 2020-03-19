@@ -1,4 +1,3 @@
- 
 <!DOCTYPE html>
 <html>
 <title>Métodos Numéricos II</title>
@@ -6,71 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--  /*latex*/-->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 <style>
     body {
         font-family: "Georgia", serif;
         background-color: #f3f2f1;
     }
 
-    h1 {
+    h1{
         font-family: "Georgia", serif;
         margin-left: 150px;
         color: #5e3c58;
         padding-top: 50px;
     }
-
-    h2 {
+    h2{
         font-family: "Georgia", serif;
         color: #583747;
     }
 
-    h3 {
-        font-family: "Georgia", serif;
-        color: #583747;
-        font-size: medium;
-    }
-
-    p {
-        color: #45393F;
-        font-size: large;
-    }
-
-    div {
+    h3{
         font-family: "Georgia", serif;
         color: #583747;
         font-size: medium;
+    }
+
+    p{
+        color: #8a737e;
+        font-size: medium;
+    }
+
+    div{
+        color: #6d7258;
+        padding: large;
     }
 
     .w3-row-padding img {
-        margin-bottom: 12px
+        margin-bottom: 12px;
         color: #E09F74;
     }
 
     /* Set the width of the sidebar to 120px */
     .w3-sidebar {
-        width: 100px;
+        width: 120px;
         background: #ab9ba3;
     }
 
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
     #main {
-        margin-left: 100px
+        margin-left: 120px
     }
 
     /* Remove margins from "page content" on small screens */
     @media only screen and (max-width: 600px) {#main {
-        margin-left:
-
-    0
+        margin-left: 0
     }
 
     }
     label {
-        color: #F0DD81;
+        color:#F0DD81;
         width: 90vw;
         font-size: 3.3vw;
         margin: 1vw;
@@ -80,31 +71,32 @@
         font-family: "Georgia", serif;
         border-collapse: collapse;
         border-style: double;
+
         width: fit-content;
-    {#float: inside;#}
+        float: center;
     }
 
     th {
-        border: 1px solid #583747;
+        border: 1px solid #dddddd;
         border-style: double;
         text-align: center;
         padding: 1vm;
-        background: #ab9ba3;
-        color: #583747;
+        background: #333;
+        color: white;
         font-size: 2.8vw;
     }
 
     td {
         border-style: double;
-        border: 2px solid #583747;
+        border: 2px solid #dddddd;
         font-size: 2.3vw;
         text-align: left;
         padding: 8px;
-        color: #583747;
+        color: white;
     }
 
-    tr:nth-child(odd) {
-        background-color: #EFCFB9;
+    tr:nth-child(even) {
+        background-color: #ddcf90;
     }
 
     /* Maneja la barra de scroll */
@@ -112,27 +104,19 @@
         width: .2vh;
     }
 
-    img {
-        padding: 0;
-        display: block;
-        margin: 0 auto;
-        max-height: 100%;
-        max-width: 100%;
+    ::-webkit-scrollbar-track {
+        background: #004c3f;
     }
 
-    .grid-container {
-        display: grid;
-        padding: 5px;
-        width: fit-content;
-        grid-template-columns: auto auto auto auto;
+    ::-webkit-scrollbar-thumb {
+        background: #555;
     }
 
-    .grid-item {
-        width: fit-content;
-        border: 1px solid rgba(0, 0, 0, 0);
-        padding: 10px;
-        text-align: center;
+    ::-webkit-scrollbar-thumb:hover {
+        background: #333;
     }
+
+    margin-right: 350px;
 </style>
 <body>
 
@@ -183,17 +167,21 @@
     <hr style="width:200px" class="w3-opacity">
 
     <div>
-        <p><i class="fa fa-map-marker fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> Facultad de Estudios
-            Superiores Acatlán</p>
-        <p><i class="fa fa-envelope fa-fw w3-text-black w3-xxlarge w3-margin-right"> </i> Email: ejemplo@mail.com</p>
+        <p><i class="fa fa-map-marker fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> FES Acatlan, Edo.Méx</p>
+        <p><i class="fa fa-phone fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> Phone: 55555555</p>
+        <p><i class="fa fa-envelope fa-fw w3-text-black w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
     </div>
     <br>
 
     <!-- Footer -->
-    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-        <a href="https://github.com/mucinoab/MII" class="fa fa-github w3-hover-opacity"> Github</a>
-        <p class="w3-medium">Powered by Equipo 1</p>
-        <!-- End footer -->
-    </footer>
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-github w3-hover-opacity">   Github</i>
+    <p class="w3-medium">Powered by Equipo 1</a></p>
+  <!-- End footer -->
+  </footer>
 
+</div>
+
+</body>
 </html>
+

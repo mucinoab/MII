@@ -1,12 +1,25 @@
 {% extends "base.html" %}
+
 {% block content %}
+<style>
+    h6{
+        margin-left: 140px; 
+        margin-right: 50px; 
+        text-align: justify;
+        font-size: 20px;
+    }
+    h5{
+        text-align: justify;
+        font-size: 15px;
+    }
+</style>
     <!-- Page Content -->
     <div class="w3-padding-large" id="Resumenes">
         <!-- Header/Home -->
-        <header class="w3-container w3-padding-32 w3-center w3-black" id="Resumenes">
+        <header class="w3-container w3-padding-32 w3-center" id="Resumenes">
             <h1 class="w3-jumbo w3-hide-small" style=" text-align: center; color: #5e3c58"><span>Resúmenes</span></h1>
-            <h2 class="w3-hide-large  w3-hide-medium" style="font-size:xx-large; text-align: center; color: #5e3c58">
-                <span>Resúmenes</span></h2>
+            <h2 class="w3-hide-large  w3-hide-medium" style="font-size:40px; margin-top: 30px;  text-align: center; color: #5e3c58"><span>Resúmenes</span></h2>
+
         </header>
         <!-- Resumenes Section -->
         <div class="w3-text-grey" id="Resumenes">
@@ -16,6 +29,7 @@
                 <h4 style="margin-left: 155px"> Contenido: </h4>
                 <a style="margin-left: 180px; font-size: larger;" href="#Punto_Fijo">1. Punto Fijo</a> </br>
                 <a style="margin-left: 180px; font-size: larger;" href="#Newton">2. Método de Newton</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#Lagrange">3. Método de Lagrange</a> </br>
             </div>
 
             <!-- Indice celular -->
@@ -23,6 +37,7 @@
                 <h4> Contenido: </h4>
                 <a style="margin-left: 30px; font-size: larger;" href="#PFijo">1. Punto Fijo</a> </br>
                 <a style="margin-left: 30px; font-size: larger;" href="#MNewton">2. Método de Newton</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#MLagrange">3. Método de Lagrange</a> </br>
             </div>
 
 
@@ -30,81 +45,125 @@
             <a name="Punto_Fijo"></a>
             </br></br></br>
             <h2 class="w3-hide-large  w3-hide-medium"
-                style="font-size: x-large; border-style: double; margin-right: 165px; text-align: center;">Punto
+                style="font-size: x-large; border-style: double; margin-right: 150px; text-align: center;">Punto
                 Fijo</h2>
-            <hr class="w3-hide-large w3-hide-medium" style="width:200px" class="w3-opacity">
             <h3 class="w3-hide-small"
-                style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: large; text-align: center;">
-                Punto
-                Fijo</a></h3>
-            <h4 class="small w3-hide-small" style="margin-left: 150px; margin-right: 50px; text-align: justify">
+                style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: 25px; text-align: center;">
+                PuntoFijo</h3>
+            <h6 class="w3-hide-small">
                 Un punto fijo de una función G, es un número P tal que G(P)=P. El problema de encontrar las soluciones
                 de una ecuación f(x)=0 y el de encontrar los puntos fijos de una función h(x) son equivalentes en el
                 siguiente sentido: dado el problema de encontar las soluciones de una ecuación f(x)=0, podemos definir
-                una función G con un punto fijo P de muchas formas; por ejemplo, f(x)=x - G(x). En forma inversa, si la
-                función G tiene un punto fijo en P, entonces la función definida por f(x)=x - G(x) posee un cero en
+                una función G con un punto fijo P de muchas formas; por ejemplo, f(x)= x-G(x). En forma inversa, si la
+                función G tiene un punto fijo en P, entonces la función definida por f(x)= x- G(x) posee un cero en
                 P.<br><br>
 
-                El método de punto fijo inicia con una aproximación inicial x0 y x{n+1} = G(xn) genera una sucesión de
+                El método de punto fijo inicia con una aproximación inicial x<sub>0</sub> y x<sub>n+1</sub> = G(x<sub>n</sub>) genera una sucesión de
                 aproximaciones la cual converge a la solución de la ecuación f(x)=0. A la función G se le conoce como
-                función iteradora. Se puede demostrar que dicha sucesión (x_n) converge siempre y cuando |G'(x)| < 1.
+                función iteradora. Se puede demostrar que dicha sucesión (x<sub>n</sub>) converge siempre y cuando |G'(x)| < 1.
                 <br><br>
-            </br></br></br></br>
-            </h4>
-            <h5 class="w3-hide-large w3-hide-medium" style="text-align: justify;">
+                Teorema para ecuación no lineal: <br> 
+                Sea ϕ : [a, b] → [a, b] una función continua en [a, b] y derivable en [a, b] y además que cumple que |ϕ<sup>'</sup>(x)|≤ k < 1, ∀x ∈ [a, b]. Entonces existe un único punto C ∈ [a, b] tal que ϕ(C) = c. Además para todo x<sub>0</sub> ∈ [a, b], la sucesión {x<sub>0</sub>, x<sub>1</sub>}, ...,  x<sub>n</sub>}, donde n va desde 0 hasta infinito,  obtenida de la forma x<sub>n</sub> = ϕ(x<sub>n-1</sub>) converge a c.
+                <br><br>
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
                 Un punto fijo de una función G, es un número P tal que G(P)=P. El problema de encontrar las soluciones
                 de una ecuación f(x)=0 y el de encontrar los puntos fijos de una función h(x) son equivalentes en el
                 siguiente sentido: dado el problema de encontar las soluciones de una ecuación f(x)=0, podemos definir
-                una función G con un punto fijo P de muchas formas; por ejemplo, f(x)=x - G(x). En forma inversa, si la
-                función G tiene un punto fijo en P, entonces la función definida por f(x)=x - G(x) posee un cero en
+                una función G con un punto fijo P de muchas formas; por ejemplo, f(x)= x-G(x). En forma inversa, si la
+                función G tiene un punto fijo en P, entonces la función definida por f(x)= x-G(x) posee un cero en
                 P.<br><br>
 
-                El método de punto fijo inicia con una aproximación inicial x0 y x{n+1} = G(xn) genera una sucesión de
+                El método de punto fijo inicia con una aproximación inicial x<sub>0</sub> y x<sub>n+1</sub> = G(x<sub>n</sub>) genera una sucesión de
                 aproximaciones la cual converge a la solución de la ecuación f(x)=0. A la función G se le conoce como
-                función iteradora. Se puede demostrar que dicha sucesión (x_n) converge siempre y cuando |G'(x)| < 1.
-
-                </br></br></br></br>
-                <hr class="w3-hide-large w3-hide-medium" style="width:200px" class="w3-opacity">
+                función iteradora. Se puede demostrar que dicha sucesión (x<sub>n</sub>) converge siempre y cuando |G'(x)| < 1.
+                <br><br>
+                Teorema para ecuación no lineal: <br> 
+                Sea ϕ : [a, b] → [a, b] una función continua en [a, b] y derivable en [a, b] y además que cumple que |ϕ<sup>'</sup>(x)|≤ k < 1, ∀x ∈ [a, b]. Entonces existe un único punto C ∈ [a, b] tal que ϕ(C) = c. Además para todo x<sub>0</sub> ∈ [a, b], la sucesión {x<sub>0</sub>, x<sub>1</sub>}, ...,  x<sub>n</sub>}, donde n va desde 0 hasta infinito,  obtenida de la forma x<sub>n</sub> = ϕ(x<sub>n-1</sub>) converge a c.
+                 </br></br>
             </h5>
+
             <a name="MNewton"></a>
             <a name="Newton"></a>
-            </br></br></br>
+            </br></br>
+            <h2 class="w3-hide-large  w3-hide-medium" 
+                style="font-size: x-large; border-style: double; margin-right: 70px; text-align: center;">
+                Método de Newton</h2>
+            <h3 class="w3-hide-small" 
+                style="margin-left: 200px; margin-right: 800px; border-style: double; font-size: 25px; text-align: center;"> Método de Newton</h3>
+            <h6 class=" w3-hide-small">
+                Este método se basa en utilizar el desarrollo de Taylor; es de los mas utilizados para localizar raíces ya que en general es muy eficiente y
+                siempre converge para una función polinomial.
+                <br>
+                Consiste en suponer que f: [a, b] → R es continua en [a, b] y tal que f<sup>''</sup>(x) no cambia de signo en [a, b] con f(a)f(b) < 0. El proceso para encontrar un x tal que f(x) = 0 consiste enlo siguiente:</br>
+                    <ol style="margin-left: 25px;">
+                        <li >Fijamos c = a o b, tal que f (c)f<sup>''</sup>(x) > 0, ∀ x ∈ (a, b).</li>
+                        <li>x<sub>0</sub> = c.</li>
+                        <li>Hallamos la ecuación de la tangente que pasa por (x<sub>0</sub>, f(x<sub>0</sub>)) y el punto de corte de dicha tangente con el eje X. El proceso se repite hasta conseguir una sucesión de aproximaciones que converge a la raíz de f(x) = 0.</li>
+                    </ul>
+                </br></br>
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+                Este método se basa en utilizar el desarrollo de Taylor; es de los mas utilizados para localizar raíces ya que en general es muy eficiente y
+                siempre converge para una función polinomial.
+                <br>
+                Consiste en suponer que f: [a, b] → R es continua en [a, b] y tal que f<sup>''</sup>(x) no cambia de signo en [a, b] con f(a)f(b) < 0. El proceso para encontrar un x tal que f(x) = 0 consiste enlo siguiente:</br>
+                    <ol style="margin-left: 25px;">
+                        <li >Fijamos c = a o b, tal que f (c)f<sup>''</sup>(x) > 0, ∀ x ∈ (a, b).</li>
+                        <li>x<sub>0</sub> = c.</li>
+                        <li>Hallamos la ecuación de la tangente que pasa por (x<sub>0</sub>, f(x<sub>0</sub>)) y el punto de corte de dicha tangente con el eje X. El proceso se repite hasta conseguir una sucesión de aproximaciones que converge a la raíz de f(x) = 0.</li>
+                    </ul>
+                </br></br>
+            </h5>
+
+            <a name="MLagrange"></a>
+            <a name="Lagrange"></a>
+            </br></br>
             <h2 class="w3-hide-large  w3-hide-medium"
-                style="font-size: x-large; border-style: double; margin-right: 80px; text-align: center;">Método de
-                Newton</h2>
-
+                style="font-size: x-large; border-style: double; margin-right: 50px; text-align: center;">Método de Lagrange</h2>
             <h3 class="w3-hide-small"
-                style="margin-left: 200px; margin-right: 800px; border-style: double; font-size: large; text-align: center;">
-                Método de Newton</h3>
-            <h4 class="small w3-hide-small" style="margin-left: 150px; margin-right: 50px; text-align: justify">
-                Este método es uno de los mas utilizados para localizar raíces ya que en general es muy eficiente y
-                siempre converge para una función polinomial.
-                <br>
-                Se requiere que las funciones sean diferenciables, y por tanto, continuas, para poder aplicar este
-                método.
-                <br>
-                Se debe partir de un valor inicial para la raíz: xi , este puede ser cualquier valor, el método
-                convergirá a la raíz mas cercana.
-                <br>
-                Si se extiende una tangente desde el punto b , el punto donde esta tangente cruza al eje x representa
-                una aproximación mejorada de la raíz.
+                style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
+                Método de Lagrange</h3>
+            <h6 class="w3-hide-small">
+                El método de los multiplicadores de Lagrange, llamados así en honor a Joseph Louis Lagrange, es un procedimiento para encontrar los máximos y mínimos de funciones de múltiples variables sujetas a restricciones. Este método reduce el problema restringido con n variables a uno sin restricciones de n + k variables, donde k es igual al número de restricciones, y cuyas ecuaciones pueden ser resueltas más fácilmente. Estas nuevas variables escalares desconocidas, una para cada restricción, son llamadas multiplicadores de Lagrange.</br></br>
 
-                </br></br></br></br>
-            </h4>
-            <h5 class="w3-hide-large w3-hide-medium" style="text-align: justify;">
-                Este método es uno de los mas utilizados para localizar raíces ya que en general es muy eficiente y
-                siempre converge para una función polinomial.
-                <br>
-                Se requiere que las funciones sean diferenciables, y por tanto, continuas, para poder aplicar este
-                método.
-                <br>
-                Se debe partir de un valor inicial para la raíz: xi , este puede ser cualquier valor, el método
-                convergirá a la raíz mas cercana.
-                <br>
-                Si se extiende una tangente desde el punto b , el punto donde esta tangente cruza al eje x representa
-                una aproximación mejorada de la raíz.
-                <br><br>
-            </br></br></br></br>
+                El método dice que los puntos donde la función tiene un extremo condicionado con k restricciones, están entre los puntos estacionarios de una nueva función sin restricciones construida como una combinación lineal de la función y las funciones implicadas en las restricciones, cuyos coeficientes son los multiplicadores.</br></br>
+
+                Sea f(x) una función definida en un conjunto abierto n-dimensional {x ∈ Rn}. Se definen s restricciones g<sub>k</sub>(x) = 0, k=1,..., s, y se observa (si las restricciones son satisfechas) que: </br>
+                    <p style="margin-left: 125px;">
+                        h(x, &#955;)= f+ <math xmlns="http://www.w3.org/1998/Math/MathML"><munderover><mo>&#x2211;</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mn>s</mn></munderover></math> &#955;<sub>k</sub> g<sub>k</sub>
+                    </br></br>
+                     </p>
+                Se procede a buscar un extremo para h </br>
+                     <p style="margin-left: 125px;">
+                         <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo>&#x2202;</mo><mi>h</mi></mrow><mrow><mo>&#x2202;</mo><msub><mi>x</mi><mi>i</mi></msub></mrow></mfrac><mo>=</mo><mn>0</mn></math>
+                     </br></br>
+                     </p>
+                Lo que es equivalente a </br>
+                    <p style="margin-left: 125px;">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo>&#x2202;</mo><mi>f</mi></mrow><mrow><mo>&#x2202;</mo><msub><mi>x</mi><mi>i</mi></msub></mrow></mfrac><mo>=</mo><munderover><mrow><mo>&#x2211;</mo><mo>&#xA0;</mo></mrow><mi>k</mi><mi>s</mi></munderover><mo>&#xA0;</mo><msub><mi>&#x3BB;</mi><mi>k</mi></msub><mfrac><mstyle displaystyle="true"><mo>&#x2202;</mo><msub><mi>g</mi><mi>k</mi></msub></mstyle><mstyle displaystyle="true"><mo>&#x2202;</mo><msub><mi>x</mi><mi>i</mi></msub></mstyle></mfrac></math>
+                  </br></br>
+                </p>
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+                El método de los multiplicadores de Lagrange, llamados así en honor a Joseph Louis Lagrange, es un procedimiento para encontrar los máximos y mínimos de funciones de múltiples variables sujetas a restricciones. Este método reduce el problema restringido con n variables a uno sin restricciones de n + k variables, donde k es igual al número de restricciones, y cuyas ecuaciones pueden ser resueltas más fácilmente. Estas nuevas variables escalares desconocidas, una para cada restricción, son llamadas multiplicadores de Lagrange.</br></br>
+
+                El método dice que los puntos donde la función tiene un extremo condicionado con k restricciones, están entre los puntos estacionarios de una nueva función sin restricciones construida como una combinación lineal de la función y las funciones implicadas en las restricciones, cuyos coeficientes son los multiplicadores.</br></br>
+
+                Sea f(x) una función definida en un conjunto abierto n-dimensional {x ∈ Rn}. Se definen s restricciones g<sub>k</sub>(x) = 0, k=1,..., s, y se observa (si las restricciones son satisfechas) que: </br>
+                    <p style="font-size: 15px; text-align: center;">
+                        h(x, &#955;)= f+ <math xmlns="http://www.w3.org/1998/Math/MathML"><munderover><mo>&#x2211;</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mn>s</mn></munderover></math> &#955;<sub>k</sub> g<sub>k</sub>
+                    </br></br>
+                     </p>
+                Se procede a buscar un extremo para h </br>
+                     <p style="font-size: 15px; text-align: center;">
+                         <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo>&#x2202;</mo><mi>h</mi></mrow><mrow><mo>&#x2202;</mo><msub><mi>x</mi><mi>i</mi></msub></mrow></mfrac><mo>=</mo><mn>0</mn></math>
+                     </br></br>
+                     </p>
+                Lo que es equivalente a </br>
+                    <p style="font-size: 15px; text-align: center;">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo>&#x2202;</mo><mi>f</mi></mrow><mrow><mo>&#x2202;</mo><msub><mi>x</mi><mi>i</mi></msub></mrow></mfrac><mo>=</mo><munderover><mrow><mo>&#x2211;</mo><mo>&#xA0;</mo></mrow><mi>k</mi><mi>s</mi></munderover><mo>&#xA0;</mo><msub><mi>&#x3BB;</mi><mi>k</mi></msub><mfrac><mstyle displaystyle="true"><mo>&#x2202;</mo><msub><mi>g</mi><mi>k</mi></msub></mstyle><mstyle displaystyle="true"><mo>&#x2202;</mo><msub><mi>x</mi><mi>i</mi></msub></mstyle></mfrac></math>
+                  </br></br>
             </h5>
             </body>
         </div>

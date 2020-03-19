@@ -1,20 +1,21 @@
 <style>
-    .button {
-        background-color: #5e3c58;
-        color: whitesmoke;
-        text-align: center;
-        margin: 6px 2px;
-        border-radius: 8px;
-        font-size: 15px;
-        cursor: pointer;
+    .button 
+    {
+      background-color: #5e3c58;
+      color: whitesmoke;
+      text-align: center;
+      margin: 6px 2px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
     }
-
-    .button1 {
+    .button1
+    {
         padding: 10px 16px;
         display: block;
         width: 170px;
     }
-</style>
+ </style>
 {% extends 'base.html' %}
 {% block content %}
     <div class="w3-padding-large" id="punto_fijo">
@@ -25,10 +26,10 @@
     </header>
 
     <!-- Inicio Section -->
-    <div class="w3-content w3-justify w3-text-grey " id="inicio">
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="inicio">
     <h2 class="w3-hide-medium w3-hide-large w3-text-light-grey">Método Punto Fijo</h2>
     <hr style="width:200px" class="w3-opacity">
-    <h3 style="font-size: x-large;">¿Cuántas ecuaciones son? (experimental)</h3>
+    <h3 style="font-size: large;">¿Cuántas ecuaciones son? (experimental)</h3>
 
     <form method="POST">{% csrf_token %}
         {% for field in form %}
@@ -40,10 +41,10 @@
         <input type="submit" class="button" value="     Ir      "/>
     </form>
     <div>
-        <a href="/fijo_ejemplo1" class="button button1"><span>Ejemplo 1 Variable</span></a>
+        <a href="/fijo_ejemplo1" class="button button1" ><span>Ejemplo 1 Variable</span></a>
     </div>
     <div>
-        <a href="/fijo_ejemplo2" class="button button1"><span>Ejemplo 2 Variables</span></a>
+        <a href="/fijo_ejemplo2" class="button button1" ><span>Ejemplo 2 Variables</span></a>
 
     </div>
 {% endblock %}
