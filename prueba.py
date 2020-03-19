@@ -25,7 +25,7 @@ import sympy
 #     return nuevo
 #
 #
-{
+# {
     #
     # print("Newton multivariable")
     # x, y = sympy.symbols('x y')
