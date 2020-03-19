@@ -29,12 +29,10 @@
             <a name="PFijo"></a>
             <a name="Punto_Fijo"></a>
             </br></br></br>
-            <h2 class="w3-hide-large  w3-hide-medium"
-                style="font-size: x-large; border-style: double; margin-right: 165px; text-align: center;">Punto
-                Fijo</h2>
+            <button class="collapsible" style= "font-style:italic; font-size: xx-large;">Punto Fijo</button>
+            <div class = "content">
             <hr class="w3-hide-large w3-hide-medium" style="width:200px" class="w3-opacity">
             <h3 class="w3-hide-small"
-                style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: large; text-align: center;">
                 Punto
                 Fijo</a></h3>
             <h4 class="small w3-hide-small" style="margin-left: 150px; margin-right: 50px; text-align: justify">
@@ -66,6 +64,9 @@
                 </br></br></br></br>
                 <hr class="w3-hide-large w3-hide-medium" style="width:200px" class="w3-opacity">
             </h5>
+        </div>
+        <button class="collapsible"style= "font-style:italic; font-size: xx-large;">Newton</button>
+        <div class = "content">
             <a name="MNewton"></a>
             <a name="Newton"></a>
             </br></br></br>
@@ -109,4 +110,20 @@
             </body>
         </div>
     </div>
+      <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display == "block"){
+      content.style.display = "none" ;
+    } else {
+      content.style.display = "block";
+    } 
+  });
+}
+</script>  
 {% endblock %}
