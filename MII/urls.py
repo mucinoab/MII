@@ -13,6 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import django
+from django.conf.urls import url
+from django.views.generic import TemplateView
+from pkg_resources import parse_version
 from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import RedirectView
@@ -23,6 +27,11 @@ from newton.views import newton_view, newton_calcula, newton_view_multi, newton_
 from punto_fijo.views import fijo_view, fijo_calcula, fijo_ejemplo_1, fijo_ejemplo_2, fijo_ejemplo_3
 from resumenes.views import res_view, metodos_views
 from lagrange.views import lagrange_view
+from cuad import views
+
+django_version = parse_version(django.get_version())
+if django_version <= parse_version("1.9"):
+    from django.conf.urls import patterns
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
@@ -43,4 +52,6 @@ urlpatterns = [
     path('newton_Multi/', newton_view_multi),
     path('newton_Multi_calcula/', newton_multi),
     path('lagrange_', lagrange_view),
+    path('cuad/', views.HomeView.as_view()), 
+    path('api', views.ChartData.as_view()),  
 ]

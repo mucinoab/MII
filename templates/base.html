@@ -9,6 +9,16 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+  
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
 <style>
     body {
         font-family: "Georgia", serif;
@@ -132,7 +142,7 @@
         padding: 10px;
         text-align: center;
     }
-         /* Style the button that is used to open and close the collapsible content */
+ /* boton de los colapsables*/
 .collapsible {
   background-color: #777;
   color: white;
@@ -145,7 +155,7 @@
   font-size: 80 px;
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/* color de los botones*/
 .active, .collapsible:hover {
   background-color: #555;
 }
@@ -158,12 +168,18 @@
   margin-left: 5px;
 }
 
-/* Style the collapsible content. Note: hidden by default */
+/* por si quieren ponerle algo especicifo al container del colapsable */
     .content {
   padding: 18px;
   display: none;
   overflow: hidden;
   background-color: #f2f1f1;
+}
+/* para las graficas*/
+ .chart-container {
+  width: 80%;
+  height: 1000px;
+  margin: 0 auto;
 }
 </style>
 <body>
