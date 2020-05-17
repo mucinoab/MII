@@ -1,14 +1,14 @@
-from .forms import In, datos
-from newton.views import estiliza_string
-from django.shortcuts import render
-from django.forms import formset_factory
-from urllib import parse
 from base64 import b64encode
 from io import BytesIO
+from urllib import parse
 
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy
+from django.shortcuts import render
+
+from newton.views import estiliza_string
+from .forms import datos
 
 
 def lagrange_view(request):
@@ -43,11 +43,11 @@ def poli_lag(grado, datos):
     resul = resul.strip("+")
     return sympy.lambdify(x, resul, "math"), sympy.sympify(resul)
 
-def lagrange_calc(request, datos, gx=""):
 
+def lagrange_calc(request, datos, gx=""):
     # gx funcion objetivo, la que tratamos de emular.
 
-    #resul = {"titulos": ["x", "f(x)"], "datos": []}
+    # resul = {"titulos": ["x", "f(x)"], "datos": []}
     dato2 = []
 
     c = 0
@@ -59,7 +59,7 @@ def lagrange_calc(request, datos, gx=""):
     ccc = 0
     for cc in datos:
         c += 1
-        if c%2 == 0:
+        if c % 2 == 0:
             dato2[ccc][1] = datos[cc]
             ccc += 1
 
@@ -74,7 +74,7 @@ def lagrange_calc(request, datos, gx=""):
     m = []
 
     fig, ax = plt.subplots()
-    #plt.rc_context({"axes.titlesize": "large", 'legend.fontsize': 'large'})
+    # plt.rc_context({"axes.titlesize": "large", 'legend.fontsize': 'large'})
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.grid(color="gray")
@@ -95,7 +95,7 @@ def lagrange_calc(request, datos, gx=""):
         for n in t:
             s.append(f(n))
 
-    #ax.plot(t, s, label=f"Polinomio de Lagrange = {estiliza_string(str(sympy.simplify(fx)))}", color='#40E0D0')
+    # ax.plot(t, s, label=f"Polinomio de Lagrange = {estiliza_string(str(sympy.simplify(fx)))}", color='#40E0D0')
     ax.plot(t, s, label="Función Resultante", color='#40E0D0')
 
     if len(datos) > 1:
@@ -120,4 +120,3 @@ def lagrange_calc(request, datos, gx=""):
                "image": uri}
 
     return render(request, "lagange_calculado.html", context)
-
