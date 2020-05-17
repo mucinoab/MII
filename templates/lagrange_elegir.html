@@ -20,7 +20,7 @@
     <div class="w3-padding-large" id="punto_fijo">
     <!-- Header/Home -->
     <header class="w3-container  w3-center " id="punto_fijo">
-        <h1 class="w3-jumbo"><span class="w3-hide-small">Interpolación polinómica de Lagrange</span></h1>
+        <h1 class="w3-jumbo"><span class="w3-hide-small">Interpolación Polinómica de Lagrange</span></h1>
 
     </header>
 
@@ -28,13 +28,13 @@
     <div class="w3-content w3-justify w3-text-grey " id="inicio">
     <h2 class="w3-hide-medium w3-hide-large" style="text-align: center;">Interpolación Polinómica de Lagrange</h2>
     <hr style="width:200px" class="w3-opacity">
-    <h3 style="font-size: large;">¿Con cuántos datos cuentas? </h3>
-    <p>Recuerda...</p>
-    <form method="POST">{% csrf_token %}
+    <h3 style="font-size: large;">Necesitas al menos 5 datos </h3>
+    <form method="GET">{% csrf_token %}
         {{ form }}
         <input type="submit" class="button" value="Ir"/>
     </form>
 
+{% endblock %}
 {#    <form method="GET">#}
 {#    {% csrf_token %}#}
 {#    {{ datos}}#}
@@ -48,21 +48,3 @@
 
 
 {#    <table align="center">#}
-<form method="POST">
-       {% csrf_token %}
-        {% for titulo in datos.titulos%}
-            <th>{{ titulo }}</th>
-        {% endfor %}
-        {% for value in datos.datos %}
-            <td>{{ value }}</td>
-        {% endfor %}
-{#    </table>#}
-
-
-        <input type="submit" class="button" value="Ir"/>
-        </form>
-<form>
- {{ datos.as_table }}
-</form>
-{% endblock %}
-

@@ -55,7 +55,6 @@ def newton_view_multi(request):
         if form.is_valid():
             if form.cleaned_data['n'] == 2:
                 return newton_input(request, 2)
-
             elif form.cleaned_data['n'] == 3:
                 return newton_input(request, 3)
             else:

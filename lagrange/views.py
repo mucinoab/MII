@@ -12,23 +12,14 @@ import sympy
 
 
 def lagrange_view(request):
-    form = In()
+    form = datos()
     context = {"form": form}
 
-    if request.method == 'POST':
-        datosf = datos(int(request.POST["numero_datos"]))
-        context["datos"] = datosf
-        if datosf is None:
-            print("nada")
-        else:
-            print(context)
-        return render(request, "lagrange_elegir.html", context)
+    if request.method == 'GET':
+        form = datos(request.GET)
 
-    # if request.method == "GET":
-    #     print(context["datos"]["X1"])
-
-    # if request.method == 'POST':
-
+        if form.is_valid():
+            return lagrange_calc(request, form.cleaned_data)
 
     return render(request, "lagrange_elegir.html", context)
 
@@ -52,21 +43,38 @@ def poli_lag(grado, datos):
     resul = resul.strip("+")
     return sympy.lambdify(x, resul, "math"), sympy.sympify(resul)
 
-
 def lagrange_calc(request, datos, gx=""):
 
     # gx funcion objetivo, la que tratamos de emular.
 
-    x = sympy.symbols('x')
+    #resul = {"titulos": ["x", "f(x)"], "datos": []}
+    dato2 = []
 
+    c = 0
+    for cc in datos:
+        c += 1
+        if c & 1:
+            dato2.append([datos[cc], 0])
+    c = 0
+    ccc = 0
+    for cc in datos:
+        c += 1
+        if c%2 == 0:
+            dato2[ccc][1] = datos[cc]
+            ccc += 1
+
+    datos = dato2
+
+    x = sympy.symbols('x')
     f, fx = poli_lag(len(datos) - 1, datos)
+    print(fx)
 
     t = np.arange(datos[0][0] - 2, datos[-1][0] + 2, .5)
     s = []
     m = []
 
     fig, ax = plt.subplots()
-    plt.rc_context({"axes.titlesize": "large", 'legend.fontsize': 'large'})
+    #plt.rc_context({"axes.titlesize": "large", 'legend.fontsize': 'large'})
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.grid(color="gray")
@@ -82,18 +90,24 @@ def lagrange_calc(request, datos, gx=""):
             m.append(g(n))
 
         ax.plot(t, m, label=f'Función Original = {estiliza_string(gx)}', color='green')
-    else:
 
+    else:
         for n in t:
             s.append(f(n))
 
-    ax.plot(t, s, label=f'Polinomio de Lagrange = {estiliza_string(str(sympy.simplify(fx)))}', color='#40E0D0')
+    #ax.plot(t, s, label=f"Polinomio de Lagrange = {estiliza_string(str(sympy.simplify(fx)))}", color='#40E0D0')
+    ax.plot(t, s, label="Función Resultante", color='#40E0D0')
 
     if len(datos) > 1:
         for n in range(len(datos) - 1):
             plt.plot(datos[n][0], datos[n][1], marker='o', markersize=5, color="red")
 
-    plt.plot(datos[-1][0], datos[-1][1], marker='o', markersize=5, color="red", label=f"Puntos dados")
+    plt.plot(datos[-1][0], datos[-1][1], marker='o', markersize=5, color="red", label="Puntos Dados")
+
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.grid(color="gray")
+    plt.legend(loc='best')
 
     buf = BytesIO()
     fig.savefig(buf, format='jpg', quality=90, dpi=160, facecolor="#f3f2f1", edgecolor='#f3f2f1')
@@ -102,7 +116,8 @@ def lagrange_calc(request, datos, gx=""):
 
     context = {"ss": str(fx),
                "Fun_obj": str(sympy.latex(fx)),
-               "result": str(sympy.simplify(fx)),
+               "result": str(sympy.latex(sympy.simplify(fx))),
                "image": uri}
 
-    return render(request, "html", context)
+    return render(request, "lagange_calculado.html", context)
+

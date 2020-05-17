@@ -7,22 +7,22 @@ import numpy as np
 import sympy
 
 #
-# def estiliza_string(fucn):
-#     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
-#                        "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
-#     nuevo = ''
-#     c = 0
-#     p = len(fucn)
+def estiliza_string(fucn):
+    superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
+                       "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
+    nuevo = ''
+    c = 0
+    p = len(fucn)
 #
-#     while c < p:
-#         if fucn[c] == '*':
-#             if fucn[c + 1] == '*':
-#                 nuevo += superscript_map[fucn[c + 2]]
-#                 c += 2
-#         else:
-#             nuevo += fucn[c]
-#         c += 1
-#     return nuevo
+    while c < p:
+        if fucn[c] == '*':
+            if fucn[c + 1] == '*':
+                nuevo += superscript_map[fucn[c + 2]]
+                c += 2
+        else:
+            nuevo += fucn[c]
+        c += 1
+    return nuevo
 #
 #
 # {
@@ -125,63 +125,62 @@ import sympy
     # end = time.time()
     # print(end - start)
 # }
-# -----------------------------------------
-# print("Polinomio de Lagrange")
-# #         x|f(x)
-# #        -------
-# #         0|1
+#-----------------------------------------
+print("Polinomio de Lagrange")
+#         x|f(x)
+#        -------
+#         0|1
 #
-# start = time.time()
-# datos = [(1, 1),
-#          (2, 8),
-#          (3, 27)]
-# grado = 0
+start = time.time()
+datos = [(1, 1),
+         (2, 8),
+         (3, 27)]
+grado = 0
+
+x = sympy.symbols('x')
+
+
+def poli_lag(grado, datos):
+    x = sympy.symbols('x')
+    resul = ""
+
+    for i in range(0, grado + 1):
+        resul += f"{datos[i][1]}"
+        for j in range(0, grado + 1):
+            if j != i:
+                resul += f"*((x-{datos[j][0]})/({datos[i][0]}-{datos[j][0]}))"
+
+        resul += '+'
+    resul = resul.strip("+")
+    print(resul)
+    return sympy.lambdify(x, resul, "math"), sympy.sympify(resul)
+
+
+f, fx = poli_lag(len(datos) - 1, datos)
+t = np.arange(datos[0][0] - 2, datos[-1][0] + 2, (datos[1][0] - datos[0][0]) / 5)
+s = []
+m = []
+gx = "x**3"
+g = sympy.lambdify(x, gx, "math")
+for n in t:
+    s.append(f(n))
+    m.append(g(n))
 #
-# x = sympy.symbols('x')
+fig, ax = plt.subplots()
+plt.rc_context({"axes.titlesize": "large", 'legend.fontsize': 'large'})
 #
+ax.plot(t, s, label=f'Polinomio de Lagrange = {estiliza_string(str(sympy.simplify(fx)))}', color='#40E0D0')
+ax.plot(t, m, label=f'Función Original = {estiliza_string(gx)}', color='green')
 #
-# def poli_lag(grado, datos):
-#     x = sympy.symbols('x')
-#     resul = ""
-#
-#     for i in range(0, grado + 1):
-#         resul += f"{datos[i][1]}"
-#         for j in range(0, grado + 1):
-#             if j != i:
-#                 resul += f"*((x-{datos[j][0]})/({datos[i][0]}-{datos[j][0]}))"
-#
-#         resul += '+'
-#     resul = resul.strip("+")
-#     print(resul)
-#     return sympy.lambdify(x, resul, "math"), sympy.sympify(resul)
-#
-#
-# f, fx = poli_lag(len(datos) - 1, datos)
-#
-# t = np.arange(datos[0][0] - 2, datos[-1][0] + 2, (datos[1][0] - datos[0][0]) / 5)
-# s = []
-# m = []
-# gx = "x**3"
-# g = sympy.lambdify(x, gx, "math")
-# for n in t:
-#     s.append(f(n))
-#     m.append(g(n))
-#
-# fig, ax = plt.subplots()
-# plt.rc_context({"axes.titlesize": "large", 'legend.fontsize': 'large'})
-#
-# ax.plot(t, s, label=f'Polinomio de Lagrange = {estiliza_string(str(sympy.simplify(fx)))}', color='#40E0D0')
-# ax.plot(t, m, label=f'Función Original = {estiliza_string(gx)}', color='green')
-#
-# for n in range(len(datos) - 1):
-#     plt.plot(datos[n][0], datos[n][1], marker='o', markersize=5, color="red")
-# plt.plot(datos[-1][0], datos[-1][1], marker='o', markersize=5, color="red", label=f"Puntos dados")
-# ax.set_xlabel('X')
-# ax.set_ylabel('Y')
-# ax.grid(color="gray")
-# plt.legend(loc='best')
-# # plt.tight_layout()
-#
-# print("Simplificando: ", estiliza_string(str(sympy.simplify(fx))))
-# print("Todo en " + str(time.time() - start) + " segundos.")
-# plt.show()
+for n in range(len(datos) - 1):
+    plt.plot(datos[n][0], datos[n][1], marker='o', markersize=5, color="red")
+plt.plot(datos[-1][0], datos[-1][1], marker='o', markersize=5, color="red", label=f"Puntos dados")
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.grid(color="gray")
+plt.legend(loc='best')
+plt.tight_layout()
+
+print("Simplificando: ", estiliza_string(str(sympy.simplify(fx))))
+print("Todo en " + str(time.time() - start) + " segundos.")
+plt.show()
