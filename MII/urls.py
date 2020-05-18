@@ -18,6 +18,7 @@ from django.views.generic.base import RedirectView
 
 from error.views import errors_view
 from inicio.views import home_view
+from DifDiv.views import DifDiv_view
 from lagrange.views import lagrange_view
 from newton.views import newton_view, newton_calcula, newton_view_multi, newton_multi
 from punto_fijo.views import fijo_view, fijo_calcula, fijo_ejemplo_1, fijo_ejemplo_2, fijo_ejemplo_3
@@ -43,5 +44,6 @@ urlpatterns = [
     path('fijo_ejemplo3/', fijo_ejemplo_3),
     path('newton_Multi/', newton_view_multi),
     path('newton_Multi_calcula/', newton_multi),
-    path('lagrange_', lagrange_view),
+    path('lagrange_/', lagrange_view),
+    path('DifDiv/', DifDiv_view),
 ]

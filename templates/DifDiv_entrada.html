@@ -1,0 +1,34 @@
+<style>
+    .button {
+        background-color: #5e3c58;
+        color: whitesmoke;
+        text-align: center;
+        margin: 6px 2px;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .button1 {
+        padding: 10px 16px;
+        display: block;
+        width: 170px;
+    }
+</style>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="w3-padding-large" id="punto_fijo">
+    <!-- Header/Home -->
+    <header class="w3-container  w3-center " id="punto_fijo">
+        <h1 class="w3-jumbo"><span class="w3-hide-small">Diferencias Divididas</span></h1>
+
+    </header>
+    <div class="w3-content w3-justify w3-text-grey " id="inicio">
+    <h2 class="w3-hide-medium w3-hide-large" style="text-align: center;">Diferencias Divididas</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <h3 style="font-size: large;">Necesitas al menos 4 datos</h3>
+    <form method="GET">{% csrf_token %}
+        {{ form }}
+        <input type="submit" class="button" value="Ir"/>
+    </form>
+{% endblock %}

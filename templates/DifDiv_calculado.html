@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="w3-jumbo w3-hide-small" style=" text-align: center; color: #5e3c58"><span>Diferencias Divididas</span>
+    </h1>
+    <h3 class="w3-hide-small"
+        style="margin-left: auto; margin-right: auto; border-style: double; font-size: xx-large; text-align: center;">
+        \[{{ result }}\]</h3>
+    <img src="{{ image }}">
+
+    <div class="w3-padding-64 w3-content w3-text-grey" id="contacto">
+
+    <h2 style="text-align: center">Simplificando</h2>
+    <div>
+        <p style="font-size: small; text-align: left">\[{{ ss }}\]</p>
+    </div>
+
+    <div>
+        <p style="font-size: small; text-align: left">\[\to {{ sucio }}\]</p>
+    </div>
+        <div>
+        <p style="font-size: small; text-align: left">\[\to {{ result }}\]</p>
+    </div>
+
+    <div>
+        <p style="font-size: small; text-align: left">\[\to {{ f }}\]</p>
+    </div>
+
+
+    <a href="/lagrange_" class="button"><span>Regresar</span></a>
+{% endblock %}

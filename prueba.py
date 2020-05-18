@@ -1,9 +1,11 @@
 #import time
- from sympy import init_printing,
- init_printing()
+# from sympy import init_printing,
+# init_printing()
 #import matplotlib.pyplot as plt
 #import numpy as np
 from fractions import Fraction
+
+import sympy
 
 
 
@@ -198,6 +200,8 @@ datos = [(1, Fraction('2/3')),
         (5, -1),
         (6, 0)]
 
+print(datos, "---")
+
 res = ""
 
 for x in range(0, len(datos)):
@@ -223,9 +227,18 @@ for x in range(0, len(datos)):
 
     res+= "+"
 
-#print(res)
-res = res.strip("+")
+res = ""
 
+for x in range(0, len(datos)):
+    res += f"c_{x}"
+    cs  += f" c_{x}"
+
+    for y in range(0, x):
+        res+= f"(x-{datos[y][0]})"
+
+    res+= "+"
+
+res = res.strip("+")
 
 primeras = []
 segundas = []
@@ -248,7 +261,11 @@ print(terceras)
 
 print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0], terceras[0])
 
+poli = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace("c_3", str(terceras[0]))
+ 
+p = sympy.latex((poli))
 
+print(p)
 
 #x = sympy.symbols('x')
 #
