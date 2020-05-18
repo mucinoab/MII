@@ -1,5 +1,6 @@
 from django import forms
 
+
 class datos(forms.Form):
     x0 = forms.FloatField(required=True, label='Valor  x0', initial=1.0,
                           widget=forms.TextInput(attrs={'placeholder': '0.0'}))
@@ -17,4 +18,3 @@ class datos(forms.Form):
                           widget=forms.TextInput(attrs={'placeholder': '0.0'}))
     y3 = forms.FloatField(required=True, label='Valor  y3', initial=1.0,
                           widget=forms.TextInput(attrs={'placeholder': '0.0'}))
-

@@ -1,12 +1,11 @@
 from base64 import b64encode
+from fractions import Fraction
 from io import BytesIO
 from urllib import parse
 
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy
-from fractions import Fraction
-
 from django.shortcuts import render
 
 from newton.views import estiliza_string
@@ -14,7 +13,6 @@ from .forms import datos
 
 
 def DifDiv_view(request):
-
     form = datos()
     context = {"form": form}
 
@@ -26,17 +24,17 @@ def DifDiv_view(request):
 
     return render(request, "DifDiv_entrada.html", context)
 
-def div_dif(datos):
 
+def div_dif(datos):
     res = ""
 
     for x in range(0, len(datos)):
         res += f"c_{x}"
 
         for y in range(0, x):
-            res+= f"*(x-{datos[y][0]})"
+            res += f"*(x-{datos[y][0]})"
 
-        res+= "+"
+        res += "+"
 
     res = res.strip("+")
     polisucio = res
@@ -45,22 +43,24 @@ def div_dif(datos):
     segundas = []
     terceras = []
 
-    for x in range(len(datos)-1):
-        primeras.append(Fraction(( datos[x+1][1] - datos[x][1] )/( datos[x+1][0] - datos[x][0] )))
+    for x in range(len(datos) - 1):
+        primeras.append(Fraction((datos[x + 1][1] - datos[x][1]) / (datos[x + 1][0] - datos[x][0])))
 
-    #print(primeras)
+    # print(primeras)
 
-    for x in range(len(datos)-2):
-        segundas.append(Fraction(( primeras[x+1] - primeras[x] )/( datos[x+2][0] - datos[x][0] )))
+    for x in range(len(datos) - 2):
+        segundas.append(Fraction((primeras[x + 1] - primeras[x]) / (datos[x + 2][0] - datos[x][0])))
 
-    #print(segundas)
+    # print(segundas)
 
-    for x in range(len(datos)-3):
-        terceras.append(Fraction(( segundas[x+1] - segundas[x] )/( datos[x+3][0] - datos[x][0] )))
+    for x in range(len(datos) - 3):
+        terceras.append(Fraction((segundas[x + 1] - segundas[x]) / (datos[x + 3][0] - datos[x][0])))
 
-    #print(terceras)
+    # print(terceras)
 
-    poli = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace("c_3", str(terceras[0]))
+    poli = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2",
+                                                                                         str(segundas[0])).replace(
+        "c_3", str(terceras[0]))
 
     x = sympy.symbols('x')
     p = sympy.latex(sympy.sympify(poli))
@@ -69,7 +69,6 @@ def div_dif(datos):
 
 
 def DifDiv_calc(request, datos):
-
     dato2 = []
 
     c = 0
@@ -97,7 +96,6 @@ def DifDiv_calc(request, datos):
     ax.set_ylabel('Y')
     ax.grid(color="gray")
     plt.legend(loc='best')
-
 
     for n in t:
         s.append(f(n))
@@ -127,4 +125,3 @@ def DifDiv_calc(request, datos):
                "image": uri}
 
     return render(request, "DifDiv_calculado.html", context)
-

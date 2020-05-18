@@ -1,17 +1,16 @@
-#import time
+# import time
 # from sympy import init_printing,
 # init_printing()
-#import matplotlib.pyplot as plt
-#import numpy as np
+# import matplotlib.pyplot as plt
+# import numpy as np
 from fractions import Fraction
 
 import sympy
 
 
-
 def estiliza_string(fucn):
     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
-            "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
+                       "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
     nuevo = ''
     c = 0
     p = len(fucn)
@@ -191,14 +190,14 @@ def estiliza_string(fucn):
 
 
 # -----------------------------------------
-#p_n, empezando desde 0
-#P_n(x) = c0 + c1(x-x0) + c2(x-x0)(x-x1) + ... + cn(x-x0)(x-x1)...(x-xn-1)
+# p_n, empezando desde 0
+# P_n(x) = c0 + c1(x-x0) + c2(x-x0)(x-x1) + ... + cn(x-x0)(x-x1)...(x-xn-1)
 print("Diferencias Divididas\n\n")
 #        x | f(x_i)
 datos = [(1, Fraction('2/3')),
-        (3, 1),
-        (5, -1),
-        (6, 0)]
+         (3, 1),
+         (5, -1),
+         (6, 0)]
 
 print(datos, "---")
 
@@ -208,9 +207,9 @@ for x in range(0, len(datos)):
     res += f"c{x}"
 
     for y in range(0, x):
-        res+= f"(x-x{y})"
+        res += f"(x-x{y})"
 
-    res+= "+"
+    res += "+"
 
 res = res.strip("+")
 print(res)
@@ -220,23 +219,23 @@ cs = ""
 
 for x in range(0, len(datos)):
     res += f"c_{x}"
-    cs  += f" c_{x}"
+    cs += f" c_{x}"
 
     for y in range(0, x):
-        res+= f"*(x-{datos[y][0]})"
+        res += f"*(x-{datos[y][0]})"
 
-    res+= "+"
+    res += "+"
 
 res = ""
 
 for x in range(0, len(datos)):
     res += f"c_{x}"
-    cs  += f" c_{x}"
+    cs += f" c_{x}"
 
     for y in range(0, x):
-        res+= f"(x-{datos[y][0]})"
+        res += f"(x-{datos[y][0]})"
 
-    res+= "+"
+    res += "+"
 
 res = res.strip("+")
 
@@ -244,30 +243,32 @@ primeras = []
 segundas = []
 terceras = []
 
-for x in range(len(datos)-1):
-    primeras.append(Fraction(( datos[x+1][1] - datos[x][1] )/( datos[x+1][0] - datos[x][0] )))
+for x in range(len(datos) - 1):
+    primeras.append(Fraction((datos[x + 1][1] - datos[x][1]) / (datos[x + 1][0] - datos[x][0])))
 
 print(primeras)
 
-for x in range(len(datos)-2):
-    segundas.append(Fraction(( primeras[x+1] - primeras[x] )/( datos[x+2][0] - datos[x][0] )))
+for x in range(len(datos) - 2):
+    segundas.append(Fraction((primeras[x + 1] - primeras[x]) / (datos[x + 2][0] - datos[x][0])))
 
 print(segundas)
 
-for x in range(len(datos)-3):
-    terceras.append(Fraction(( segundas[x+1] - segundas[x] )/( datos[x+3][0] - datos[x][0] )))
+for x in range(len(datos) - 3):
+    terceras.append(Fraction((segundas[x + 1] - segundas[x]) / (datos[x + 3][0] - datos[x][0])))
 
 print(terceras)
 
-print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0], terceras[0])
+print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0],
+      terceras[0])
 
-poli = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace("c_3", str(terceras[0]))
- 
+poli = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace(
+    "c_3", str(terceras[0]))
+
 p = sympy.latex((poli))
 
 print(p)
 
-#x = sympy.symbols('x')
+# x = sympy.symbols('x')
 #
 # cs += ' x'
 # print(cs)
