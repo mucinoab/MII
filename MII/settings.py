@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'newton',
     'lagrange',
     'DifDiv',
+    'InterNew',
 ]
 
 MIDDLEWARE = [
