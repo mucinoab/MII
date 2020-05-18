@@ -114,7 +114,7 @@ def lagrange_calc(request, datos, gx=""):
     buf.seek(0)
     uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
 
-    context = {"ss": str(fx),
+    context = {"ss": estiliza_string(str((fx))),
                "Fun_obj": str(sympy.latex(fx)),
                "result": str(sympy.latex(sympy.simplify(fx))),
                "image": uri}

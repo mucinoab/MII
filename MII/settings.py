@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'tutorial',
     'newton',
     'lagrange',
+    'DifDiv',
 ]
 
 MIDDLEWARE = [
