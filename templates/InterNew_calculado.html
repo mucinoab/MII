@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="w3-jumbo w3-hide-small" style=" text-align: center; color: #5e3c58"><span>Interpolación de Newton></span>
+    </h1>
+    <h3 class="w3-hide-small"
+        style="margin-left: auto; margin-right: auto; border-style: double; font-size: large; text-align: center;">
+        </h3>
+    <img src="{{ image }}">
+
+    <div class="w3-padding-64 w3-content w3-text-grey" id="contacto">
+
+    <h2 style="text-align: center">Polinomio Interpolador Hacia Adelante</h2>
+    <div>
+        <p style="font-size: small; text-align: left">\[{{ sucio }}\]</p>
+    </div>
+
+    <h2 style="text-align: center">Polinomio Interpolador Hacia Atrás</h2>
+    <div>
+        <p style="font-size: small; text-align: left">\[ {{ sucio }}\]</p>
+    </div>
+
+<table>
+  <tr>
+    <th>x</th>
+    <th>fx</th>
+    <th>primeras</th>
+    <th>segundas</th>
+    <th>terceras</th>
+  </tr>
+
+        {% for value in results.datos %}
+            <tr>
+                {% for foo in value %}
+                    <td>{{ foo }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+</table>
+    <a href="/lagrange_" class="button"><span>Regresar</span></a>
+{% endblock %}

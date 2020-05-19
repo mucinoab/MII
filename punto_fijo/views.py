@@ -162,10 +162,6 @@ def fijo_calcula(request):
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
         context['image'] = uri
 
-        # print(sys.getsizeof(buf))
-        # end = time.time()
-        # print(end - start)
-
     return render(request, "fijo_calculado.html", context)
 
 

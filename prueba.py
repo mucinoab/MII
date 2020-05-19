@@ -258,28 +258,23 @@ for x in range(len(datos) - 3):
 
 print(terceras)
 
-print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0],
-      terceras[0])
+print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0], terceras[0])
 
-poli = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace(
-    "c_3", str(terceras[0]))
+poliD = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace("c_3", str(terceras[0]))
 
-p = sympy.latex((poli))
+res = ""
 
-print(p)
+for x in range(0, len(datos)):
+    res += f"c_{x}"
 
-# x = sympy.symbols('x')
-#
-# cs += ' x'
-# print(cs)
-#
-# # for x in range(0, len(datos)):
-# #     symbols[x] =
-# c_0, c_1, c_2, c_3, x = sympy.symbols(cs)
-#
-# f = sympy.lambdify([c_0, c_1, c_2, c_3, x], res, "math")
-# fx = sympy.sympify(res)
-#
-# print("f(1)", sympy.solve(f(c_0, c_1, c_2, c_3, 1)==0))
-# # print(sympy.solve(fx, x))
-# # print(sympy.solve(fx, x, c_1, c_2))
+    for y in range(x, -1, -1):
+        res += f"(x-{datos[y][0]})"
+
+    res += "+"
+
+res = res.strip("+")
+print(res)
+poliA = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2", str(segundas[-1])).replace("c_3", str(terceras[-1]))
+
+print(poliD)
+print(poliA)

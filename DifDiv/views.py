@@ -65,7 +65,12 @@ def div_dif(datos):
     x = sympy.symbols('x')
     p = sympy.latex(sympy.sympify(poli))
 
-    return sympy.lambdify(x, poli, "math"), sympy.sympify(poli), p, poli, polisucio
+
+    resul = {'titulos': ['n', 'Xn', 'Yn'], 'filas': primeras}
+
+    context = {'context': resul}
+
+    return sympy.lambdify(x, poli, "math"), sympy.sympify(poli), p, poli, polisucio, context
 
 
 def DifDiv_calc(request, datos):
@@ -86,7 +91,7 @@ def DifDiv_calc(request, datos):
 
     datos = dato2
 
-    f, fx, poli, p, polisucio = div_dif(datos)
+    f, fx, poli, p, polisucio, con = div_dif(datos)
 
     t = np.arange(datos[0][0] - 2, datos[-1][0] + 2, .5)
     s = []
