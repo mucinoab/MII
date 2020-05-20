@@ -35,6 +35,9 @@
                 <a style="margin-left: 180px; font-size: larger;" href="#Lagrange">3. Método de Lagrange</a> </br>
                 <a style="margin-left: 180px; font-size: larger;" href="#DifDiv">4. Diferencias Divididas</a> </br>
                 <a style="margin-left: 180px; font-size: larger;" href="#InterNew">5. Interpolación de Newton</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#RT">6. Regla Trapezoidal</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#S13">7. Regla de Simpson 1/3</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#S38">8. Regla de Simpson 3/8</a> </br>
             </div>
 
             <!-- Indice celular -->
@@ -43,8 +46,11 @@
                 <a style="margin-left: 30px; font-size: larger;" href="#PFijo">1. Punto Fijo</a> </br>
                 <a style="margin-left: 30px; font-size: larger;" href="#MNewton">2. Método de Newton</a> </br>
                 <a style="margin-left: 30px; font-size: larger;" href="#MLagrange">3. Método de Lagrange</a> </br>
-                <a style="margin-left: 30px; font-size: larger;" href="#DifDIv">4. Diferencias Divididas</a> </br>
-                <a style="margin-left: 30px; font-size: larger;" href="#InterNew">5. Interpolación de Newton</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#DDIv">4. Diferencias Divididas</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#INew">5. Interpolación de Newton</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#RTrap">6. Regla Trapezoidal</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#RS13">7. Regla de Simpson 1/3</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#RS38">8. Regla de Simpson 3/8</a> </br>
             </div>
 
 
@@ -107,7 +113,7 @@
                 style="font-size: x-large; border-style: double; margin-right: 70px; text-align: center;">
                 Método de Newton</h2>
             <h3 class="w3-hide-small"
-                style="margin-left: 200px; margin-right: 800px; border-style: double; font-size: 25px; text-align: center;">
+                style="margin-left: 200px; margin-right: 880px; border-style: double; font-size: 25px; text-align: center;">
                 Método de Newton</h3>
             <h6 class=" w3-hide-small">
                 Este método se basa en utilizar el desarrollo de Taylor; es de los mas utilizados para localizar raíces
@@ -360,81 +366,325 @@
             </h5>
 
             <a name="DifDiv"></a>
-            <a name="DifDiv"></a>
-            </br></br></br>
+            <a name="DDiv"></a>
+            </br></br>
             <h2 class="w3-hide-large  w3-hide-medium"
-                style="font-size: x-large; border-style: double; margin-right: 150px; text-align: center;">Diferencias
+                style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">Diferencias
                 Divididas</h2>
             <h3 class="w3-hide-small"
-                style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: 25px; text-align: center;">
-                Diferencias Divididas</h3>
-            <h6 class="w3-hide-small">
+                style="margin-left: 200px; margin-right: 850px; border-style: double; font-size: 25px; text-align: center;">
+                Diferencias Divididas </h3>
+            <h6 class="w3-hide-small" id="pre-wrap">
 
-                Resumen diferencias divididas aqui
+                Este se utiliza paara calcular un polinomio interpolador de grado elevado.</br><br>
+                Sea f<sub>n</sub> una variable discreta de n elementos y sea x<sub>n</sub> otra variable discreta de n elementos los cuales corresponden, por parejas, a la imagen u ordenada y abcisa de los datos que se quieran interpolar, respectivamente, tales que:
+                <p style="font-size: 17px; text-align: center;">f(x<sub>k</sub>)= f<sub>k</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k=1, ..., n </p> </br>
 
+                Podemos calcular los a<sub>i</sub> usando el hecho de que P(x<sub>i</sub>) = y<sub>i</sub>.</br>
+
+                <p style="font-size: 17px; text-align: center;">
+                        
+                    P(x<sub>0</sub>)= y<sub>0</sub> = a<sub>0</sub> &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>0</sub>=y <sub>0</sub> </br>
+                
+                    P(x<sub>1</sub>) = y<sub>1</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>1</sub> =  <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+                        <mfrac>
+                            <mrow>
+                                <mo> <msub>
+                                    <mi>y</mi>
+                                    <mn>1</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>y</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                            </mrow>
+                            <mrow>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                            </mrow>
+                        </mfrac>
+                    </math>             
+                </p>
+
+                <p style="font-size: 17px; text-align: center;">
+                     P(x<sub>2</sub>) = y<sub>2</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) + a<sub>2</sub> (x<sub>2</sub>- x<sub>0</sub>)(x<sub>2</sub>- x<sub>1</sub>) &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>2</sub> =
+                     <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+                        <mfrac>
+                            <mrow>
+                                <mo> <msub>
+                                    <mi>y</mi>
+                                    <mn>2</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>a</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>a</mi>
+                                    <mn>1</mn>
+                                </msub></mo>
+                                <mo>(</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                                <mo>)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>(</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                                <mo>)(</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                </msub></mo>
+                                <mo>)</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>                
+                </p>
+
+                
+                Usando esta nueva notación tendríamos que la forma de Newton del polinomio interpolante es;
+
+                <p style="font-size: 17px; text-align: center;">
+                    P(x)= f(x<sub>0</sub>) + f(x<sub>0</sub>, x<sub>1</sub>)(x-x<sub>0</sub>)+ f(x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>)(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + f(x<sub>0</sub>, ..., x<sub>n</sub>)(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>)
+                </p>
             </h6>
             <h5 class="w3-hide-large w3-hide-medium">
 
-                Resumen diferencias divididas aqui
+                
+                Este se utiliza paara calcular un polinomio interpolador de grado elevado.</br><br>
+                Sea f<sub>n</sub> una variable discreta de n elementos y sea x<sub>n</sub> otra variable discreta de n elementos los cuales corresponden, por parejas, a la imagen u ordenada y abcisa de los datos que se quieran interpolar, respectivamente, tales que:
+                <p style="font-size: 15px; text-align: center;">f(x<sub>k</sub>)= f<sub>k</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k=1, ..., n </p> </br>
 
-                <a name="DifDiv"></a>
-                <a name="DifDiv"></a>
+                Podemos calcular los a<sub>i</sub> usando el hecho de que P(x<sub>i</sub>) = y<sub>i</sub>.</br>
+
+                <p style="font-size: 15px; text-align: center;">
+                        
+                    P(x<sub>0</sub>)= y<sub>0</sub> = a<sub>0</sub> &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>0</sub>=y <sub>0</sub> </br>
+                
+                    P(x<sub>1</sub>) = y<sub>1</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>1</sub> =  <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+                        <mfrac>
+                            <mrow>
+                                <mo> <msub>
+                                    <mi>y</mi>
+                                    <mn>1</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>y</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                            </mrow>
+                            <mrow>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                            </mrow>
+                        </mfrac>
+                    </math>             
+                </p>
+
+                <p style="font-size: 15px; text-align: center;">
+                     P(x<sub>2</sub>) = y<sub>2</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) + a<sub>2</sub> (x<sub>2</sub>- x<sub>0</sub>)(x<sub>2</sub>- x<sub>1</sub>) &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>2</sub> =
+                     <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+                        <mfrac>
+                            <mrow>
+                                <mo> <msub>
+                                    <mi>y</mi>
+                                    <mn>2</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>a</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>a</mi>
+                                    <mn>1</mn>
+                                </msub></mo>
+                                <mo>(</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                                <mo>)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>(</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub></mo>
+                                <mo>)(</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msub></mo>
+                                <mo>-</mo>
+                                <mo> <msub>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                </msub></mo>
+                                <mo>)</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>                
+                </p>
+
+                
+                Usando esta nueva notación tendríamos que la forma de Newton del polinomio interpolante es;
+
+                <p style="font-size: 15px; text-align: center;">
+                    P(x)= f(x<sub>0</sub>) + f(x<sub>0</sub>, x<sub>1</sub>)(x-x<sub>0</sub>)+ f(x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>)(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + f(x<sub>0</sub>, ..., x<sub>n</sub>)(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>)
+                </p>
+
+            </h5> 
+
+            <a name="InterNew"></a>
+            <a name="INew"></a>
+            </br></br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 10px; text-align: center;">Interpolación
+                de Newton</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 840px; border-style: double; font-size: 25px; text-align: center;">
+                Interpolación de Newton</h3>
+            <h6 class="w3-hide-small">
+
+                Es un método de interpolación polinómica. Aunque sólo existe un único polinomio que interpola una serie de puntos, existen diferentes formas de calcularlo. Este método es útil para situaciones que requieran un número bajo de puntos para interpolar, ya que a medida que crece el número de puntos, también lo hace el grado del polinomio.<br></br>
+
+                Los polinomios se obtienen de las siguientes formulas:</br>
+                <p style="font-size: 17px; margin-left: 50px;">
+                    P<sub>1</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>)<br>
+
+                    P<sub>2</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)<br>
+
+                    P<sub>n</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + a<sub>n</sub>(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>) <br>
+
+                </p>
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+
+                Es un método de interpolación polinómica. Aunque sólo existe un único polinomio que interpola una serie de puntos, existen diferentes formas de calcularlo. Este método es útil para situaciones que requieran un número bajo de puntos para interpolar, ya que a medida que crece el número de puntos, también lo hace el grado del polinomio.<br></br>
+
+                Los polinomios se obtienen de las siguientes formulas:</br>
+                <p style="font-size: 15px; margin-left: 30px;">
+                    P<sub>1</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>)<br>
+
+                    P<sub>2</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)<br>
+
+                    P<sub>n</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + a<sub>n</sub>(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>) <br>
+
+                </p>
+            </h5>
+
+
+            <a name="RT"></a>
+            <a name="RTrap"></a>
                 </br></br></br>
                 <h2 class="w3-hide-large  w3-hide-medium"
-                    style="font-size: x-large; border-style: double; margin-right: 150px; text-align: center;">
-                    Diferencias Divididas</h2>
+                    style="font-size: x-large; border-style: double; margin-right: 55px; text-align: center;">
+                    Regla Trapezoidal</h2>
                 <h3 class="w3-hide-small"
-                    style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: 25px; text-align: center;">
-                    Diferencias Divididas</h3>
+                    style="margin-left: 200px; margin-right: 900px; border-style: double; font-size: 25px; text-align: center;">
+                    Regla Trapezoidal</h3>
                 <h6 class="w3-hide-small">
 
-                    Resumen diferencias divididas aqui
+                    Resumen trapezoidal
 
                 </h6>
                 <h5 class="w3-hide-large w3-hide-medium">
 
-                    Resumen diferencias divididas aqui
+                    Resumen trapezoidal
 
                 </h5>
             </h5>
 
-
-            <a name="InterNew"></a>
-            <a name="InterNew"></a>
-            </br></br></br>
-            <h2 class="w3-hide-large  w3-hide-medium"
-                style="font-size: x-large; border-style: double; margin-right: 150px; text-align: center;">Interpolación
-                de Newton</h2>
-            <h3 class="w3-hide-small"
-                style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: 25px; text-align: center;">
-                Interpolación de Newton</h3>
-            <h6 class="w3-hide-small">
-
-                Resumen Interpolación de Newton
-
-            </h6>
-            <h5 class="w3-hide-large w3-hide-medium">
-
-                Resume Interpolación de Newtonn
-
-                <a name="InterNew"></a>
-                <a name="InterNew"></a>
+            <a name="S13"></a>
+                <a name="RS13"></a>
                 </br></br></br>
                 <h2 class="w3-hide-large  w3-hide-medium"
-                    style="font-size: x-large; border-style: double; margin-right: 150px; text-align: center;"
-                    Interpolación de Newton</h2>
+                    style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">
+                    Regla de Simpson 1/3</h2>
                 <h3 class="w3-hide-small"
-                    style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: 25px; text-align: center;">
-                    Interpolación de Newton</h3>
+                    style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
+                    Regla de Simpson 1/3</h3>
                 <h6 class="w3-hide-small">
 
-
-                    Resumen interpolacion newton aqui
+                    Resumen simpson 1/3
 
                 </h6>
                 <h5 class="w3-hide-large w3-hide-medium">
 
-                    Resumen interpolacion newton aqui
+                    Resumen simpson 1/3
+
+                </h5>
+            </h5>
+
+            <a name="S38"></a>
+                <a name="RS38"></a>
+                </br></br></br>
+                <h2 class="w3-hide-large  w3-hide-medium"
+                    style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">
+                    Regla de Simpson 3/8</h2>
+                <h3 class="w3-hide-small"
+                    style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
+                    Regla de Simpson 3/8</h3>
+                <h6 class="w3-hide-small">
+
+                    Resumen simpson 3/8
+
+                </h6>
+                <h5 class="w3-hide-large w3-hide-medium">
+
+                    Resumen simpson 3/8
 
                 </h5>
             </h5>
