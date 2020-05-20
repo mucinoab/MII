@@ -8,8 +8,8 @@ import numpy as np
 import sympy
 from django.shortcuts import render
 
-from newton.views import estiliza_string
 from DifDiv.forms import datos
+from newton.views import estiliza_string
 
 
 def InterNew_view(request):
@@ -23,6 +23,7 @@ def InterNew_view(request):
             return InterNew_calc(request, form.cleaned_data)
 
     return render(request, "InterNew_entrada.html", context)
+
 
 def Inter_New(datos):
     res = ""
@@ -42,15 +43,15 @@ def Inter_New(datos):
     segundas = []
     terceras = []
 
-    #primeras
+    # primeras
     for x in range(len(datos) - 1):
         primeras.append(Fraction((datos[x + 1][1] - datos[x][1]) / (datos[x + 1][0] - datos[x][0])))
 
-    #segundas
+    # segundas
     for x in range(len(datos) - 2):
         segundas.append(Fraction((primeras[x + 1] - primeras[x]) / (datos[x + 2][0] - datos[x][0])))
 
-    #terceras
+    # terceras
     for x in range(len(datos) - 3):
         terceras.append(Fraction((segundas[x + 1] - segundas[x]) / (datos[x + 3][0] - datos[x][0])))
 
@@ -64,18 +65,19 @@ def Inter_New(datos):
         res += f"c_{x}"
 
         for y in range(0, x):
-            print(y)
-            res += f"*(x-{datos[abs(y-len(datos)+1)][0]})"
+            res += f"*(x-{datos[abs(y - len(datos) + 1)][0]})"
 
         res += "+"
 
     res = res.strip("+")
-    atras = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2", str(segundas[-1])).replace("c_3", str(terceras[-1]))
+    atras = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2",
+                                                                                            str(segundas[-1])).replace(
+        "c_3", str(terceras[-1]))
 
     x = sympy.symbols('x')
     p = sympy.latex(sympy.sympify(poli))
 
-    return sympy.lambdify(x, poli, "math"), sympy.sympify(poli), p, poli, polisucio, atras,
+    return sympy.lambdify(x, poli, "math"), sympy.sympify(poli), p, poli, polisucio, atras, primeras, segundas, terceras
 
 
 def InterNew_calc(request, datos):
@@ -96,7 +98,7 @@ def InterNew_calc(request, datos):
 
     datos = dato2
 
-    f, fx, poli, p, polisucio, atras = Inter_New(datos)
+    f, fx, poli, p, polisucio, atras, primeras, segundas, terceras = Inter_New(datos)
 
     t = np.arange(datos[0][0] - 2, datos[-1][0] + 2, .5)
     s = []
@@ -128,13 +130,14 @@ def InterNew_calc(request, datos):
     buf.seek(0)
     uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
 
-    context = {"ss": estiliza_string(str(polisucio)),
-               "sucio": estiliza_string(p),
+    context = {"sucio": estiliza_string(p),
                "sucioa": estiliza_string(atras),
-               "result": str(sympy.latex(poli)),
                "f": str(sympy.latex(sympy.simplify(fx))),
                "fa": str(sympy.latex(sympy.simplify(sympy.sympify(atras)))),
                "image": uri,
-               "results": datos}
+               "datos" : datos,
+               "primeras": primeras,
+               "segundas": segundas,
+               "terceras":  terceras}
 
     return render(request, "InterNew_calculado.html", context)

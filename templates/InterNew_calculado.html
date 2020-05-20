@@ -13,7 +13,7 @@
         <p style="font-size: large; text-align: left">\[ \to\> {{ f }}\]</p>
     </div>
 
-   &nbsp;
+    &nbsp;
 
     <h2 style="text-align: center">Polinomio Interpolador Hacia Atrás</h2>
     <div style="overflow: auto; overflow-y: hidden;  scrollbar-width: thin;  border: 1px solid gray;">
@@ -21,21 +21,71 @@
         <p style="font-size: large; text-align: left">\[ \to\> {{ fa }}\]</p>
     </div>
     &nbsp;
-<table>
-  <tr>
-    <th>x</th>
-    <th>fx</th>
-    <th>primeras</th>
-    <th>segundas</th>
-    <th>terceras</th>
-  </tr>
-        {% for value in results.datos %}
-            <tr>
-                {% for foo in value %}
-                    <td>{{ foo }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-</table>
+    <div style="overflow: auto; overflow-y: hidden;  scrollbar-width: thin;  border: 1px solid gray;">
+    <table>
+        <thead>
+        <tr>
+            <th st>\[x_i\]</ths>
+            <th>\[f(x_i)\]</th>
+            <th>Primeras</th>
+            <th>Segundas</th>
+            <th>Terceras</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td> {{ datos.0.0 }}</td>
+            <td>{{ datos.0.1 }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>{{ primeras.0 }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> {{ datos.1.0 }}</td>
+            <td> {{ datos.1.1 }}</td>
+            <td></td>
+            <td>{{ segundas.0 }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>{{ primeras.1 }}</td>
+            <td></td>
+            <td>{{ terceras.0 }}</td>
+        </tr>
+        <tr>
+            <td> {{ datos.2.0 }}</td>
+            <td> {{ datos.2.1 }}</td>
+            <td></td>
+            <td>{{ segundas.1 }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>{{ primeras.2 }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> {{ datos.3.0 }}</td>
+            <td> {{ datos.3.1 }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    &nbsp;
     <a href="/lagrange_" class="button"><span>Regresar</span></a>
 {% endblock %}

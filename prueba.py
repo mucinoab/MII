@@ -5,8 +5,6 @@
 # import numpy as np
 from fractions import Fraction
 
-import sympy
-
 
 def estiliza_string(fucn):
     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
@@ -72,48 +70,48 @@ def estiliza_string(fucn):
 # # print(end - start)
 # print(x)
 # {
-    #
-    # print("Newton multivariable")
-    # x, y = sympy.symbols('x y')
-    #
-    # f1 = sympy.sympify("x**2-y**2-1")
-    # f2 = sympy.sympify("x**2+y**2+x*y-4")
-    #
-    # # derivadas parciales
-    # f1x = sympy.diff(f1, x)
-    # f1y = sympy.diff(f1, y)
-    #
-    # f2x = sympy.diff(f2, x)
-    # f2y = sympy.diff(f2, y)
-    #
-    # # vector de las funciones iniciales
-    # v = sympy.Matrix([[f1], [f2]])
-    #
-    # j = sympy.Matrix([[f1x, f1y],
-    #                   [f2x, f2y]])
-    #
-    # j_inv = j ** -1  # inversa,de la jacobiana
-    #
-    # jaco = sympy.lambdify([x, y], j_inv, 'numpy')
-    # fxfy = sympy.lambdify([x, y], v, 'numpy')
-    #
-    # x = np.ones((2, 1))
-    #
-    # iteraciones = 1000
-    #
-    # start = time.time()
-    #
-    # for n in range(iteraciones):
-    #     j = jaco(x[0][0], x[1][0]).dot(fxfy(x[0][0], x[1][0]))
-    #     x = x - j
-    # sol = fxfy(x[0][0], x[1][0])
-    #
-    # print(sol)
-    # print(f'{float(sol[0]):.6f}')
-    #
-    # end = time.time()
-    # # print(end - start)
-    # print(x)
+#
+# print("Newton multivariable")
+# x, y = sympy.symbols('x y')
+#
+# f1 = sympy.sympify("x**2-y**2-1")
+# f2 = sympy.sympify("x**2+y**2+x*y-4")
+#
+# # derivadas parciales
+# f1x = sympy.diff(f1, x)
+# f1y = sympy.diff(f1, y)
+#
+# f2x = sympy.diff(f2, x)
+# f2y = sympy.diff(f2, y)
+#
+# # vector de las funciones iniciales
+# v = sympy.Matrix([[f1], [f2]])
+#
+# j = sympy.Matrix([[f1x, f1y],
+#                   [f2x, f2y]])
+#
+# j_inv = j ** -1  # inversa,de la jacobiana
+#
+# jaco = sympy.lambdify([x, y], j_inv, 'numpy')
+# fxfy = sympy.lambdify([x, y], v, 'numpy')
+#
+# x = np.ones((2, 1))
+#
+# iteraciones = 1000
+#
+# start = time.time()
+#
+# for n in range(iteraciones):
+#     j = jaco(x[0][0], x[1][0]).dot(fxfy(x[0][0], x[1][0]))
+#     x = x - j
+# sol = fxfy(x[0][0], x[1][0])
+#
+# print(sol)
+# print(f'{float(sol[0]):.6f}')
+#
+# end = time.time()
+# # print(end - start)
+# print(x)
 # print((' '.join(map(str, j))))
 
 # -----------------------------------------------------------------------------------------
@@ -300,9 +298,11 @@ for x in range(len(datos) - 3):
 
 print(terceras)
 
-print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0], terceras[0])
+print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0],
+      terceras[0])
 
-poliD = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace("c_3", str(terceras[0]))
+poliD = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace(
+    "c_3", str(terceras[0]))
 
 res = ""
 
@@ -311,26 +311,17 @@ for x in range(0, len(datos)):
 
     for y in range(0, x):
         print(y)
-        res += f"(x-{datos[abs(y-len(datos)+1)][0]})"
+        res += f"(x-{datos[abs(y - len(datos) + 1)][0]})"
 
     res += "+"
 
 res = res.strip("+")
-poliA = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2", str(segundas[-1])).replace("c_3", str(terceras[-1]))
+poliA = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2",
+                                                                                        str(segundas[-1])).replace(
+    "c_3", str(terceras[-1]))
 
 print(res)
 print()
 print(poliD)
 print()
 print(poliA)
-
-
-
-
-
-
-
-
-
-
-

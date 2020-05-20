@@ -361,9 +361,53 @@
                         </mfrac>
                     </math>
                     </br></br>
-                    <p style="font-size: 15px; text-align: center;">
-                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo>&#x2202;</mo><mi>f</mi></mrow><mrow><mo>&#x2202;</mo><msub><mi>x</mi><mi>i</mi></msub></mrow></mfrac><mo>=</mo><munderover><mrow><mo>&#x2211;</mo><mo>&#xA0;</mo></mrow><mi>k</mi><mi>s</mi></munderover><mo>&#xA0;</mo><msub><mi>&#x3BB;</mi><mi>k</mi></msub><mfrac><mstyle displaystyle="true"><mo>&#x2202;</mo><msub><mi>g</mi><mi>k</mi></msub></mstyle><mstyle displaystyle="true"><mo>&#x2202;</mo><msub><mi>x</mi><mi>i</mi></msub></mstyle></mfrac></math>
-                  </br></br>
+                <p style="font-size: 15px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <munderover>
+                            <mrow>
+                                <mo>&#x2211;</mo>
+                                <mo>&#xA0;</mo>
+                            </mrow>
+                            <mi>k</mi>
+                            <mi>s</mi>
+                        </munderover>
+                        <mo>&#xA0;</mo>
+                        <msub>
+                            <mi>&#x3BB;</mi>
+                            <mi>k</mi>
+                        </msub>
+                        <mfrac>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>g</mi>
+                                    <mi>k</mi>
+                                </msub>
+                            </mstyle>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mstyle>
+                        </mfrac>
+                    </math>
+                    </br></br>
 
             </h5>
 
@@ -379,215 +423,285 @@
             <h6 class="w3-hide-small" id="pre-wrap">
 
                 Este se utiliza paara calcular un polinomio interpolador de grado elevado.</br><br>
-                Sea f<sub>n</sub> una variable discreta de n elementos y sea x<sub>n</sub> otra variable discreta de n elementos los cuales corresponden, por parejas, a la imagen u ordenada y abcisa de los datos que se quieran interpolar, respectivamente, tales que:
-                <p style="font-size: 17px; text-align: center;">f(x<sub>k</sub>)= f<sub>k</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k=1, ..., n </p> </br>
+                Sea f<sub>n</sub> una variable discreta de n elementos y sea x<sub>n</sub> otra variable discreta de n
+                elementos los cuales corresponden, por parejas, a la imagen u ordenada y abcisa de los datos que se
+                quieran interpolar, respectivamente, tales que:
+                <p style="font-size: 17px; text-align: center;">f(x<sub>k</sub>)= f<sub>k</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    k=1, ..., n </p> </br>
 
                 Podemos calcular los a<sub>i</sub> usando el hecho de que P(x<sub>i</sub>) = y<sub>i</sub>.</br>
 
                 <p style="font-size: 17px; text-align: center;">
-                        
-                    P(x<sub>0</sub>)= y<sub>0</sub> = a<sub>0</sub> &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>0</sub>=y <sub>0</sub> </br>
-                
-                    P(x<sub>1</sub>) = y<sub>1</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>1</sub> =  <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+
+                    P(x<sub>0</sub>)= y<sub>0</sub> = a<sub>0</sub> &nbsp;&nbsp; => &nbsp;&nbsp; a<sub>0</sub>=y
+                    <sub>0</sub> </br>
+
+                    P(x<sub>1</sub>) = y<sub>1</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>)
+                    &nbsp;&nbsp; => &nbsp;&nbsp; a<sub>1</sub> =
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
                         <mfrac>
                             <mrow>
-                                <mo> <msub>
-                                    <mi>y</mi>
-                                    <mn>1</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>y</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                             </mrow>
                             <mrow>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>1</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                             </mrow>
                         </mfrac>
-                    </math>             
+                    </math>
                 </p>
 
                 <p style="font-size: 17px; text-align: center;">
-                     P(x<sub>2</sub>) = y<sub>2</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) + a<sub>2</sub> (x<sub>2</sub>- x<sub>0</sub>)(x<sub>2</sub>- x<sub>1</sub>) &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>2</sub> =
-                     <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+                    P(x<sub>2</sub>) = y<sub>2</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) +
+                    a<sub>2</sub> (x<sub>2</sub>- x<sub>0</sub>)(x<sub>2</sub>- x<sub>1</sub>) &nbsp;&nbsp; => &nbsp;&nbsp;
+                    a<sub>2</sub> =
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
                         <mfrac>
                             <mrow>
-                                <mo> <msub>
-                                    <mi>y</mi>
-                                    <mn>2</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>a</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>a</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>a</mi>
-                                    <mn>1</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>a</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
                                 <mo>(</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>2</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                                 <mo>)</mo>
                             </mrow>
                             <mrow>
                                 <mo>(</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>2</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                                 <mo>)(</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>2</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>1</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
                                 <mo>)</mo>
                             </mrow>
                         </mfrac>
-                    </math>                
+                    </math>
                 </p>
 
-                
+
                 Usando esta nueva notación tendríamos que la forma de Newton del polinomio interpolante es;
 
                 <p style="font-size: 17px; text-align: center;">
-                    P(x)= f(x<sub>0</sub>) + f(x<sub>0</sub>, x<sub>1</sub>)(x-x<sub>0</sub>)+ f(x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>)(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + f(x<sub>0</sub>, ..., x<sub>n</sub>)(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>)
+                    P(x)= f(x<sub>0</sub>) + f(x<sub>0</sub>, x<sub>1</sub>)(x-x<sub>0</sub>)+ f(x<sub>0</sub>,
+                    x<sub>1</sub>, x<sub>2</sub>)(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + f(x<sub>0</sub>, ..., x<sub>n</sub>)(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>)
                 </p>
             </h6>
             <h5 class="w3-hide-large w3-hide-medium">
 
-                
+
                 Este se utiliza paara calcular un polinomio interpolador de grado elevado.</br><br>
-                Sea f<sub>n</sub> una variable discreta de n elementos y sea x<sub>n</sub> otra variable discreta de n elementos los cuales corresponden, por parejas, a la imagen u ordenada y abcisa de los datos que se quieran interpolar, respectivamente, tales que:
-                <p style="font-size: 15px; text-align: center;">f(x<sub>k</sub>)= f<sub>k</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k=1, ..., n </p> </br>
+                Sea f<sub>n</sub> una variable discreta de n elementos y sea x<sub>n</sub> otra variable discreta de n
+                elementos los cuales corresponden, por parejas, a la imagen u ordenada y abcisa de los datos que se
+                quieran interpolar, respectivamente, tales que:
+                <p style="font-size: 15px; text-align: center;">f(x<sub>k</sub>)= f<sub>k</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    k=1, ..., n </p> </br>
 
                 Podemos calcular los a<sub>i</sub> usando el hecho de que P(x<sub>i</sub>) = y<sub>i</sub>.</br>
 
                 <p style="font-size: 15px; text-align: center;">
-                        
-                    P(x<sub>0</sub>)= y<sub>0</sub> = a<sub>0</sub> &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>0</sub>=y <sub>0</sub> </br>
-                
-                    P(x<sub>1</sub>) = y<sub>1</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>1</sub> =  <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+
+                    P(x<sub>0</sub>)= y<sub>0</sub> = a<sub>0</sub> &nbsp;&nbsp; => &nbsp;&nbsp; a<sub>0</sub>=y
+                    <sub>0</sub> </br>
+
+                    P(x<sub>1</sub>) = y<sub>1</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>)
+                    &nbsp;&nbsp; => &nbsp;&nbsp; a<sub>1</sub> =
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
                         <mfrac>
                             <mrow>
-                                <mo> <msub>
-                                    <mi>y</mi>
-                                    <mn>1</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>y</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                             </mrow>
                             <mrow>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>1</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                             </mrow>
                         </mfrac>
-                    </math>             
+                    </math>
                 </p>
 
                 <p style="font-size: 15px; text-align: center;">
-                     P(x<sub>2</sub>) = y<sub>2</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) + a<sub>2</sub> (x<sub>2</sub>- x<sub>0</sub>)(x<sub>2</sub>- x<sub>1</sub>) &nbsp;&nbsp;  => &nbsp;&nbsp; a<sub>2</sub> =
-                     <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+                    P(x<sub>2</sub>) = y<sub>2</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) +
+                    a<sub>2</sub> (x<sub>2</sub>- x<sub>0</sub>)(x<sub>2</sub>- x<sub>1</sub>) &nbsp;&nbsp; => &nbsp;&nbsp;
+                    a<sub>2</sub> =
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
                         <mfrac>
                             <mrow>
-                                <mo> <msub>
-                                    <mi>y</mi>
-                                    <mn>2</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>a</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>a</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>a</mi>
-                                    <mn>1</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>a</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
                                 <mo>(</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>2</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                                 <mo>)</mo>
                             </mrow>
                             <mrow>
                                 <mo>(</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>2</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>0</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
                                 <mo>)(</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>2</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
                                 <mo>-</mo>
-                                <mo> <msub>
-                                    <mi>x</mi>
-                                    <mn>1</mn>
-                                </msub></mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
                                 <mo>)</mo>
                             </mrow>
                         </mfrac>
-                    </math>                
+                    </math>
                 </p>
 
-                
+
                 Usando esta nueva notación tendríamos que la forma de Newton del polinomio interpolante es;
 
                 <p style="font-size: 15px; text-align: center;">
-                    P(x)= f(x<sub>0</sub>) + f(x<sub>0</sub>, x<sub>1</sub>)(x-x<sub>0</sub>)+ f(x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>)(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + f(x<sub>0</sub>, ..., x<sub>n</sub>)(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>)
+                    P(x)= f(x<sub>0</sub>) + f(x<sub>0</sub>, x<sub>1</sub>)(x-x<sub>0</sub>)+ f(x<sub>0</sub>,
+                    x<sub>1</sub>, x<sub>2</sub>)(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + f(x<sub>0</sub>, ..., x<sub>n</sub>)(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>)
                 </p>
 
-            </h5> 
+            </h5>
 
             <a name="InterNew"></a>
             <a name="INew"></a>
@@ -600,7 +714,10 @@
                 Interpolación de Newton</h3>
             <h6 class="w3-hide-small">
 
-                Es un método de interpolación polinómica. Aunque sólo existe un único polinomio que interpola una serie de puntos, existen diferentes formas de calcularlo. Este método es útil para situaciones que requieran un número bajo de puntos para interpolar, ya que a medida que crece el número de puntos, también lo hace el grado del polinomio.<br></br>
+                Es un método de interpolación polinómica. Aunque sólo existe un único polinomio que interpola una serie
+                de puntos, existen diferentes formas de calcularlo. Este método es útil para situaciones que requieran
+                un número bajo de puntos para interpolar, ya que a medida que crece el número de puntos, también lo hace
+                el grado del polinomio.<br></br>
 
                 Los polinomios se obtienen de las siguientes formulas:</br>
                 <p style="font-size: 17px; margin-left: 50px;">
@@ -608,13 +725,17 @@
 
                     P<sub>2</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)<br>
 
-                    P<sub>n</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + a<sub>n</sub>(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>) <br>
+                    P<sub>n</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)
+                    + ... + a<sub>n</sub>(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>) <br>
 
                 </p>
             </h6>
             <h5 class="w3-hide-large w3-hide-medium">
 
-                Es un método de interpolación polinómica. Aunque sólo existe un único polinomio que interpola una serie de puntos, existen diferentes formas de calcularlo. Este método es útil para situaciones que requieran un número bajo de puntos para interpolar, ya que a medida que crece el número de puntos, también lo hace el grado del polinomio.<br></br>
+                Es un método de interpolación polinómica. Aunque sólo existe un único polinomio que interpola una serie
+                de puntos, existen diferentes formas de calcularlo. Este método es útil para situaciones que requieran
+                un número bajo de puntos para interpolar, ya que a medida que crece el número de puntos, también lo hace
+                el grado del polinomio.<br></br>
 
                 Los polinomios se obtienen de las siguientes formulas:</br>
                 <p style="font-size: 15px; margin-left: 30px;">
@@ -622,7 +743,8 @@
 
                     P<sub>2</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)<br>
 
-                    P<sub>n</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + a<sub>n</sub>(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>) <br>
+                    P<sub>n</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)
+                    + ... + a<sub>n</sub>(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>) <br>
 
                 </p>
             </h5>
@@ -630,65 +752,65 @@
 
             <a name="RT"></a>
             <a name="RTrap"></a>
-                </br></br></br>
-                <h2 class="w3-hide-large  w3-hide-medium"
-                    style="font-size: x-large; border-style: double; margin-right: 55px; text-align: center;">
-                    Regla Trapezoidal</h2>
-                <h3 class="w3-hide-small"
-                    style="margin-left: 200px; margin-right: 900px; border-style: double; font-size: 25px; text-align: center;">
-                    Regla Trapezoidal</h3>
-                <h6 class="w3-hide-small">
+            </br></br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 55px; text-align: center;">
+                Regla Trapezoidal</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 900px; border-style: double; font-size: 25px; text-align: center;">
+                Regla Trapezoidal</h3>
+            <h6 class="w3-hide-small">
 
-                    Resumen trapezoidal
+                Resumen trapezoidal
 
-                </h6>
-                <h5 class="w3-hide-large w3-hide-medium">
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
 
-                    Resumen trapezoidal
+                Resumen trapezoidal
 
-                </h5>
+            </h5>
             </h5>
 
             <a name="S13"></a>
-                <a name="RS13"></a>
-                </br></br></br>
-                <h2 class="w3-hide-large  w3-hide-medium"
-                    style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">
-                    Regla de Simpson 1/3</h2>
-                <h3 class="w3-hide-small"
-                    style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
-                    Regla de Simpson 1/3</h3>
-                <h6 class="w3-hide-small">
+            <a name="RS13"></a>
+            </br></br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">
+                Regla de Simpson 1/3</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
+                Regla de Simpson 1/3</h3>
+            <h6 class="w3-hide-small">
 
-                    Resumen simpson 1/3
+                Resumen simpson 1/3
 
-                </h6>
-                <h5 class="w3-hide-large w3-hide-medium">
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
 
-                    Resumen simpson 1/3
+                Resumen simpson 1/3
 
-                </h5>
+            </h5>
             </h5>
 
             <a name="S38"></a>
-                <a name="RS38"></a>
-                </br></br></br>
-                <h2 class="w3-hide-large  w3-hide-medium"
-                    style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">
-                    Regla de Simpson 3/8</h2>
-                <h3 class="w3-hide-small"
-                    style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
-                    Regla de Simpson 3/8</h3>
-                <h6 class="w3-hide-small">
+            <a name="RS38"></a>
+            </br></br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">
+                Regla de Simpson 3/8</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
+                Regla de Simpson 3/8</h3>
+            <h6 class="w3-hide-small">
 
-                    Resumen simpson 3/8
+                Resumen simpson 3/8
 
-                </h6>
-                <h5 class="w3-hide-large w3-hide-medium">
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
 
-                    Resumen simpson 3/8
+                Resumen simpson 3/8
 
-                </h5>
+            </h5>
             </h5>
 
 
