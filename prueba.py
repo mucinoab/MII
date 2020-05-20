@@ -309,14 +309,28 @@ res = ""
 for x in range(0, len(datos)):
     res += f"c_{x}"
 
-    for y in range(x, -1, -1):
-        res += f"(x-{datos[y][0]})"
+    for y in range(0, x):
+        print(y)
+        res += f"(x-{datos[abs(y-len(datos)+1)][0]})"
 
     res += "+"
 
 res = res.strip("+")
-print(res)
 poliA = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2", str(segundas[-1])).replace("c_3", str(terceras[-1]))
 
+print(res)
+print()
 print(poliD)
+print()
 print(poliA)
+
+
+
+
+
+
+
+
+
+
+
