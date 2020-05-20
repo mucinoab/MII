@@ -33,7 +33,6 @@ def estiliza_string(fucn):
 # print("Newton multivariable")
 # x, y = sympy.symbols('x y')
 #
-<<<<<<< HEAD
 # f1 = sympy.sympify("x**2-y**2-1")
 # f2 = sympy.sympify("x**2+y**2+x*y-4")
 #
@@ -72,7 +71,6 @@ def estiliza_string(fucn):
 # end = time.time()
 # # print(end - start)
 # print(x)
-=======
 # {
     #
     # print("Newton multivariable")
@@ -116,8 +114,6 @@ def estiliza_string(fucn):
     # end = time.time()
     # # print(end - start)
     # print(x)
->>>>>>> 11428a2fdece74835601495b663aad431447b862
-
 # print((' '.join(map(str, j))))
 
 # -----------------------------------------------------------------------------------------
