@@ -1,9 +1,10 @@
 # import time
 # from sympy import init_printing,
-# init_printing()
 # import matplotlib.pyplot as plt
-# import numpy as np
+import numpy as np
+import sympy
 from fractions import Fraction
+sympy.init_printing()
 
 
 def estiliza_string(fucn):
@@ -232,96 +233,144 @@ def estiliza_string(fucn):
 # -----------------------------------------
 # p_n, empezando desde 0
 # P_n(x) = c0 + c1(x-x0) + c2(x-x0)(x-x1) + ... + cn(x-x0)(x-x1)...(x-xn-1)
-print("Diferencias Divididas\n\n")
+#print("Diferencias Divididas\n\n")
 #        x | f(x_i)
-datos = [(1, Fraction('2/3')),
-         (3, 1),
-         (5, -1),
-         (6, 0)]
+# datos = [(1, Fraction('2/3')),
+#          (3, 1),
+#          (5, -1),
+#          (6, 0)]
+# 
+# print(datos, "---")
+# 
+# res = ""
+# 
+# for x in range(0, len(datos)):
+#     res += f"c{x}"
+# 
+#     for y in range(0, x):
+#         res += f"(x-x{y})"
+# 
+#     res += "+"
+# 
+# res = res.strip("+")
+# print(res)
+# 
+# res = ""
+# cs = ""
+# 
+# for x in range(0, len(datos)):
+#     res += f"c_{x}"
+#     cs += f" c_{x}"
+# 
+#     for y in range(0, x):
+#         res += f"*(x-{datos[y][0]})"
+# 
+#     res += "+"
+# 
+# res = ""
+# 
+# for x in range(0, len(datos)):
+#     res += f"c_{x}"
+#     cs += f" c_{x}"
+# 
+#     for y in range(0, x):
+#         res += f"(x-{datos[y][0]})"
+# 
+#     res += "+"
+# 
+# res = res.strip("+")
+# 
+# primeras = []
+# segundas = []
+# terceras = []
+# 
+# for x in range(len(datos) - 1):
+#     primeras.append(Fraction((datos[x + 1][1] - datos[x][1]) / (datos[x + 1][0] - datos[x][0])))
+# 
+# print(primeras)
+# 
+# for x in range(len(datos) - 2):
+#     segundas.append(Fraction((primeras[x + 1] - primeras[x]) / (datos[x + 2][0] - datos[x][0])))
+# 
+# print(segundas)
+# 
+# for x in range(len(datos) - 3):
+#     terceras.append(Fraction((segundas[x + 1] - segundas[x]) / (datos[x + 3][0] - datos[x][0])))
+# 
+# print(terceras)
+# 
+# print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0],
+#       terceras[0])
+# 
+# poliD = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace(
+#     "c_3", str(terceras[0]))
+# 
+# res = ""
+# 
+# for x in range(0, len(datos)):
+#     res += f"c_{x}"
+# 
+#     for y in range(0, x):
+#         print(y)
+#         res += f"(x-{datos[abs(y - len(datos) + 1)][0]})"
+# 
+#     res += "+"
+# 
+# res = res.strip("+")
+# poliA = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2",
+#                                                                                         str(segundas[-1])).replace(
+#     "c_3", str(terceras[-1]))
+# 
+# print(res)
+# print()
+# print(poliD)
+# print()
+# print(poliA)
 
-print(datos, "---")
+#----------------------------------------------------------------------------
+print("Regla Tra")
 
-res = ""
 
-for x in range(0, len(datos)):
-    res += f"c{x}"
+funcion = input("Ingresa la función a Integrar:  ")
+I1 = float(input("Primer Intervalo:  "))
+I2 = float(input("Segundo Intervalo: "))
+    
+x, y, z, w, t  = sympy.symbols('x y z w t')
+fsym = sympy.sympify(funcion)
+fx = sympy.lambdify(x, fsym, "math")
 
-    for y in range(0, x):
-        res += f"(x-x{y})"
+rango = int(I2-I1)+1
 
-    res += "+"
+h = 1
+x_i = np.arange(I1, I2+1, h)
+c_i = np.ones(rango)
+fx_i = []
+c_i[0] = .5
+c_i[-1] = .5
 
-res = res.strip("+")
-print(res)
+sum = []
+sigma = 0
+ 
+for n in x_i:
+    fx_i.append(fx(n))
 
-res = ""
-cs = ""
+for n in range(0, rango):
+    sum.append(c_i[n]*fx_i[n])
 
-for x in range(0, len(datos)):
-    res += f"c_{x}"
-    cs += f" c_{x}"
-
-    for y in range(0, x):
-        res += f"*(x-{datos[y][0]})"
-
-    res += "+"
-
-res = ""
-
-for x in range(0, len(datos)):
-    res += f"c_{x}"
-    cs += f" c_{x}"
-
-    for y in range(0, x):
-        res += f"(x-{datos[y][0]})"
-
-    res += "+"
-
-res = res.strip("+")
-
-primeras = []
-segundas = []
-terceras = []
-
-for x in range(len(datos) - 1):
-    primeras.append(Fraction((datos[x + 1][1] - datos[x][1]) / (datos[x + 1][0] - datos[x][0])))
-
-print(primeras)
-
-for x in range(len(datos) - 2):
-    segundas.append(Fraction((primeras[x + 1] - primeras[x]) / (datos[x + 2][0] - datos[x][0])))
-
-print(segundas)
-
-for x in range(len(datos) - 3):
-    terceras.append(Fraction((segundas[x + 1] - segundas[x]) / (datos[x + 3][0] - datos[x][0])))
-
-print(terceras)
-
-print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0],
-      terceras[0])
-
-poliD = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace(
-    "c_3", str(terceras[0]))
-
-res = ""
-
-for x in range(0, len(datos)):
-    res += f"c_{x}"
-
-    for y in range(0, x):
-        print(y)
-        res += f"(x-{datos[abs(y - len(datos) + 1)][0]})"
-
-    res += "+"
-
-res = res.strip("+")
-poliA = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2",
-                                                                                        str(segundas[-1])).replace(
-    "c_3", str(terceras[-1]))
-
-print(res)
 print()
-print(poliD)
-print()
-print(poliA)
+print(fx_i, len(fx_i))
+print(c_i, len(c_i))
+print(sum, len(sum))
+print(f"\[\int_{I1}^{I2} \> {funcion} \> dx =   \]")
+
+for n in sum:
+    sigma += n
+
+print(sigma)
+print("Valor real: ", sympy.integrate(fsym, (x, I1, I2)))
+
+
+
+
+
+
