@@ -135,9 +135,9 @@ def InterNew_calc(request, datos):
                "f": str(sympy.latex(sympy.simplify(fx))),
                "fa": str(sympy.latex(sympy.simplify(sympy.sympify(atras)))),
                "image": uri,
-               "datos" : datos,
+               "datos": datos,
                "primeras": primeras,
                "segundas": segundas,
-               "terceras":  terceras}
+               "terceras": terceras}
 
     return render(request, "InterNew_calculado.html", context)

@@ -3,7 +3,7 @@
 # import matplotlib.pyplot as plt
 import numpy as np
 import sympy
-from fractions import Fraction
+
 sympy.init_printing()
 
 
@@ -233,7 +233,7 @@ def estiliza_string(fucn):
 # -----------------------------------------
 # p_n, empezando desde 0
 # P_n(x) = c0 + c1(x-x0) + c2(x-x0)(x-x1) + ... + cn(x-x0)(x-x1)...(x-xn-1)
-#print("Diferencias Divididas\n\n")
+# print("Diferencias Divididas\n\n")
 #        x | f(x_i)
 # datos = [(1, Fraction('2/3')),
 #          (3, 1),
@@ -327,22 +327,21 @@ def estiliza_string(fucn):
 # print()
 # print(poliA)
 
-#----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 print("Regla Tra")
-
 
 funcion = input("Ingresa la función a Integrar:  ")
 I1 = float(input("Primer Intervalo:  "))
 I2 = float(input("Segundo Intervalo: "))
-    
-x, y, z, w, t  = sympy.symbols('x y z w t')
+
+x, y, z, w, t = sympy.symbols('x y z w t')
 fsym = sympy.sympify(funcion)
 fx = sympy.lambdify(x, fsym, "math")
 
-rango = int(I2-I1)+1
+rango = int(I2 - I1) + 1
 
 h = 1
-x_i = np.arange(I1, I2+1, h)
+x_i = np.arange(I1, I2 + 1, h)
 c_i = np.ones(rango)
 fx_i = []
 c_i[0] = .5
@@ -350,12 +349,12 @@ c_i[-1] = .5
 
 sum = []
 sigma = 0
- 
+
 for n in x_i:
     fx_i.append(fx(n))
 
 for n in range(0, rango):
-    sum.append(c_i[n]*fx_i[n])
+    sum.append(c_i[n] * fx_i[n])
 
 print()
 print(fx_i, len(fx_i))
@@ -368,9 +367,3 @@ for n in sum:
 
 print(sigma)
 print("Valor real: ", sympy.integrate(fsym, (x, I1, I2)))
-
-
-
-
-
-
