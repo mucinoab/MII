@@ -55,9 +55,9 @@ def Inter_New(datos):
     for x in range(len(datos) - 3):
         terceras.append(Fraction((segundas[x + 1] - segundas[x]) / (datos[x + 3][0] - datos[x][0])))
 
-    poli = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2",
-                                                                                         str(segundas[0])).replace(
-        "c_3", str(terceras[0]))
+    poli = res.replace("c_0", str(float(datos[0][1]))).replace("c_1", str(float(primeras[0]))).replace("c_2",
+                                                                                         str(float(segundas[0]))).replace(
+        "c_3", str(float(terceras[0])))
 
     res = ""
 
@@ -70,12 +70,28 @@ def Inter_New(datos):
         res += "+"
 
     res = res.strip("+")
-    atras = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2",
-                                                                                            str(segundas[-1])).replace(
-        "c_3", str(terceras[-1]))
+    atras = res.replace("c_0", str(float(datos[-1][1]))).replace("c_1", str(float(primeras[-1]))).replace("c_2",
+                                                                                            str(float(segundas[-1]))).replace(
+        "c_3", str(float(terceras[-1])))
 
     x = sympy.symbols('x')
     p = sympy.latex(sympy.sympify(poli))
+
+    pr = []
+    s = []
+    t = []
+
+    for n in primeras:
+        pr.append(float(n))
+    primeras = pr
+
+    for n in segundas:
+        s.append(float(n))
+    segundas = s
+
+    for n in terceras:
+        t.append(float(n))
+    terceras = t
 
     return sympy.lambdify(x, poli, "math"), sympy.sympify(poli), p, poli, polisucio, atras, primeras, segundas, terceras
 

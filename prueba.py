@@ -3,7 +3,8 @@
 # import matplotlib.pyplot as plt
 import numpy as np
 import sympy
-
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
 sympy.init_printing()
 
 
@@ -367,3 +368,35 @@ for n in sum:
 
 print(sigma)
 print("Valor real: ", sympy.integrate(fsym, (x, I1, I2)))
+#--------- graficacion ------------
+t = np.linspace(I1-(I2//I1), I2+(I2//I1))
+s = []
+
+for n in t:
+    s.append(fx(n))
+
+plt.rc_context({'axes.edgecolor': 'black', 'xtick.color': 'black', 'ytick.color': 'black'})
+fig, ax = plt.subplots()
+
+
+ax.plot(t, s, label=f'f(x) = {funcion}', color='#40E0D0')
+# ax.grid(color="gray")
+ax.set_ylim(bottom=0)
+
+ix = np.linspace(I1, I2)
+iy = fx(ix)
+verts = [(I1, 0), *zip(ix, iy), (I2, 0)]
+poly = Polygon(verts, facecolor='0.9', edgecolor='0.5')
+ax.add_patch(poly)
+ax.text(0.5 * (I1+I2), 30, f"$\int_{ {I1} }^{ {I2} } {sympy.latex(fsym)}\>dx$",
+        horizontalalignment='center', fontsize=20)
+
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+ax.xaxis.set_ticks_position('bottom')
+
+ax.set_xticks((I1, I2))
+ax.set_xticklabels(('$a$', '$b$'))
+ax.set_yticks([])
+
+plt.show()
