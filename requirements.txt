@@ -10,7 +10,7 @@ gunicorn==20.0.4
 kiwisolver==1.1.0
 matplotlib==3.2.1
 mpmath==1.1.0
-numpy==1.18.1
+numpy==1.18.4
 pandas==1.0.3
 Pillow==7.0.0
 psycopg2==2.8.5
