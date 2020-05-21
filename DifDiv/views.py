@@ -65,7 +65,6 @@ def div_dif(datos):
     x = sympy.symbols('x')
     p = sympy.latex(sympy.sympify(poli))
 
-
     resul = {'titulos': ['n', 'Xn', 'Yn'], 'filas': primeras}
 
     context = {'context': resul}

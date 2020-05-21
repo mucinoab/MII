@@ -17,6 +17,7 @@ from django.urls import path
 from django.views.generic.base import RedirectView
 
 from DifDiv.views import DifDiv_view
+from Regla_Trapezoidal.views import RegTra_views
 from InterNew.views import InterNew_view
 from error.views import errors_view
 from inicio.views import home_view
@@ -48,4 +49,5 @@ urlpatterns = [
     path('lagrange_/', lagrange_view),
     path('DifDiv/', DifDiv_view),
     path('InterNew/', InterNew_view),
+    path('RegTra/', RegTra_views),
 ]
