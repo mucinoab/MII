@@ -13,7 +13,7 @@ mpmath==1.1.0
 numpy==1.18.1
 pandas==1.0.3
 Pillow==7.0.0
-psycopg2==2.8.4
+psycopg2==2.8.5
 psycopg2-binary==2.8.4
 pyparsing==2.4.6
 python-dateutil==2.8.1
