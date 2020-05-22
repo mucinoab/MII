@@ -60,7 +60,7 @@ def RegTra_Calcula(request, form):
         for n in sum:
             sigma += n
 
-        titulos = ["\[x_i\]", "\[f(x_i)\]", "\[c_i\]", "\[c_if(x_i)\]", ]
+        titulos = ["\(x_i\)", "\(f(x_i)\)", "\(c_i\)", "\(c_if(x_i)\)", ]
         tabla = []
         for n in range(0, rango):
             tabla.append([f"{x_i[n]:.3f}", f"{fx_i[n]:.3f}", f"{c_i[n]:.3f}", f"{(sum[n]):.3f}"])
