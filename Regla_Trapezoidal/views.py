@@ -11,6 +11,7 @@ from urllib import parse
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 
+
 def RegTra_views(request):
     form = forma()
     context = {"form": form}
@@ -25,8 +26,7 @@ def RegTra_views(request):
 
 
 def RegTra_Calcula(request, form):
-
-    #cierra las graficas hechas anteriormente, libera memoria
+    # cierra las graficas hechas anteriormente, libera memoria
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
 
@@ -51,10 +51,10 @@ def RegTra_Calcula(request, form):
         sum = []
         sigma = 0
 
-        for n in x_i: #evalua en los puntos
+        for n in x_i:  # evalua en los puntos
             fx_i.append(fx(n))
 
-        for n in range(0, rango): #multiplica por intervalos
+        for n in range(0, rango):  # multiplica por intervalos
             sum.append(c_i[n] * fx_i[n])
 
         for n in sum:
@@ -65,7 +65,7 @@ def RegTra_Calcula(request, form):
         for n in range(0, rango):
             tabla.append([f"{x_i[n]:.3f}", f"{fx_i[n]:.3f}", f"{c_i[n]:.3f}", f"{(sum[n]):.3f}"])
 
-        #--------- graficacion ------------
+        # --------- graficacion ------------
 
         t = np.linspace(I1, I2)
         s = []
@@ -110,7 +110,3 @@ def RegTra_Calcula(request, form):
         return errors_view(request)
 
     return render(request, "RegTra_calculado.html", context)
-
-
-
-

@@ -56,7 +56,9 @@ def Inter_New(datos):
         terceras.append(Fraction((segundas[x + 1] - segundas[x]) / (datos[x + 3][0] - datos[x][0])))
 
     poli = res.replace("c_0", str(float(datos[0][1]))).replace("c_1", str(float(primeras[0]))).replace("c_2",
-                                                                                         str(float(segundas[0]))).replace(
+                                                                                                       str(float(
+                                                                                                           segundas[
+                                                                                                               0]))).replace(
         "c_3", str(float(terceras[0])))
 
     res = ""
@@ -71,7 +73,9 @@ def Inter_New(datos):
 
     res = res.strip("+")
     atras = res.replace("c_0", str(float(datos[-1][1]))).replace("c_1", str(float(primeras[-1]))).replace("c_2",
-                                                                                            str(float(segundas[-1]))).replace(
+                                                                                                          str(float(
+                                                                                                              segundas[
+                                                                                                                  -1]))).replace(
         "c_3", str(float(terceras[-1])))
 
     x = sympy.symbols('x')

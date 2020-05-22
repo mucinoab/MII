@@ -6,41 +6,42 @@
 
     <div class="w3-padding-64 w3-content w3-text-grey" id="contacto">
 
-    <h2 style="text-align: center">Aproximación</h2>
+        <h2 style="text-align: center">Aproximación</h2>
 
-    <div>
-        <p style="font-size: large; text-align: left">\[   \int_{ {{ I1 }} }^{ {{ I2 }} } {{ funcion }} \> dx \approx {{ sigma }} \]</p>
-    </div>
+        <div>
+            <p style="font-size: large; text-align: left">\[ \int_{ {{ I1 }} }^{ {{ I2 }} } {{ funcion }} \> dx
+                \approx {{ sigma }} \]</p>
+        </div>
 
-     <h2 style="text-align: center">Valor Real</h2>
+        <h2 style="text-align: center">Valor Real</h2>
 
-     <div>
-        <p style="font-size: large; text-align: left">
-            \[   \int_{ {{ I1 }} }^{ {{ I2 }} } {{ funcion }} \> dx =  {{ real }} \]</p>
-    </div>
+        <div>
+            <p style="font-size: large; text-align: left">
+                \[ \int_{ {{ I1 }} }^{ {{ I2 }} } {{ funcion }} \> dx = {{ real }} \]</p>
+        </div>
 
-    <div style="overflow: auto; overflow-y: hidden;  scrollbar-width: thin;">
-        <table style="margin: 0 auto;">
-            <thead>
-            <tr>
-                {% for n in titulos%}
-                <th>{{ n }}</th>
+        <div style="overflow: auto; overflow-y: hidden;  scrollbar-width: thin;">
+            <table style="margin: 0 auto;">
+                <thead>
+                <tr>
+                    {% for n in titulos %}
+                        <th>{{ n }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in tabla %}
+
+                    <tr>
+                        {% for m in n %}
+                            <td> {{ m }} </td>
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
-            </tr>
-            </thead>
-            <tbody>
-          {% for n in tabla%}
+                </tbody>
+            </table>
+        </div>
 
-              <tr>
-                  {% for m in n%}
-                      <td> {{ m }} </td>
-                  {% endfor %}
-              </tr>
-          {% endfor %}
-            </tbody>
-</table>
-    </div>
-
-    <a href="/RegTra" class="button"><span>Regresar</span></a>
+        <a href="/RegTra" class="button"><span>Regresar</span></a>
     </div>
 {% endblock %}
