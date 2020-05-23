@@ -1,0 +1,34 @@
+<style>
+    .button {
+        background-color: #5e3c58;
+        color: whitesmoke;
+        padding: 12px 28x;
+        text-align: center;
+        border-radius: 8px;
+        font-size: 15px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="w3-padding-large" id="punto_fijo">
+    <!-- Header/Home -->
+    <header class="w3-container w3-padding-32 w3-center " id="punto_fijo">
+        <h1 class="w3-jumbo"><span class="w3-hide-small">Regla de Simpson \(\frac{3}{8}\)</span></h1>
+    </header>
+
+    <!-- Inicio Section -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="MNewton">
+    <h2 class="w3-hide-medium w3-hide-large w3-text-light-grey">Regla de Simpson \(\frac{3}{8}\) </h2>
+    <hr style="width:200px" class="w3-opacity">
+    <form method="GET">
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        <input type="submit" class="button" value="Calcular y Graficar"/>
+    </form>
+{% endblock %}

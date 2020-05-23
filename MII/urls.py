@@ -21,6 +21,8 @@ from Regla_Trapezoidal.views import RegTra_views
 from InterNew.views import InterNew_view
 from error.views import errors_view
 from inicio.views import home_view
+from Simpson1_3.views import Sim13_views
+from Simpson3_8.views import Sim38_views
 from lagrange.views import lagrange_view
 from newton.views import newton_view, newton_calcula, newton_view_multi, newton_multi
 from punto_fijo.views import fijo_view, fijo_calcula, fijo_ejemplo_1, fijo_ejemplo_2, fijo_ejemplo_3
@@ -50,4 +52,6 @@ urlpatterns = [
     path('DifDiv/', DifDiv_view),
     path('InterNew/', InterNew_view),
     path('RegTra/', RegTra_views),
+    path('Sim13/', Sim13_views),
+    path('Sim38/', Sim38_views),
 ]
