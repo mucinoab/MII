@@ -1,35 +1,30 @@
 # import time
 # from sympy import init_printing,
 # import matplotlib.pyplot as plt
-import numpy as np
-import sympy
-import matplotlib.pyplot as plt
-from matplotlib.patches import Polygon
+# import numpy as np
+# import sympy
+# import matplotlib.pyplot as plt
+# from matplotlib.patches import Polygon
 
-sympy.init_printing()
-
-
-def estiliza_string(fucn):
-    superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
-                       "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
-    nuevo = ''
-    c = 0
-    p = len(fucn)
-    #
-    while c < p:
-        if fucn[c] == '*':
-            if fucn[c + 1] == '*':
-                nuevo += superscript_map[fucn[c + 2]]
-                c += 2
-        else:
-            nuevo += fucn[c]
-        c += 1
-    return nuevo
+# sympy.init_printing()
 
 
-#
-#
-# {
+# def estiliza_string(fucn):
+#     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
+#                        "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
+#     nuevo = ''
+#     c = 0
+#     p = len(fucn)
+#     #
+#     while c < p:
+#         if fucn[c] == '*':
+#             if fucn[c + 1] == '*':
+#                 nuevo += superscript_map[fucn[c + 2]]
+#                 c += 2
+#         else:
+#             nuevo += fucn[c]
+#         c += 1
+#     return nuevo
 #
 # print("Newton multivariable")
 # x, y = sympy.symbols('x y')
@@ -241,88 +236,88 @@ def estiliza_string(fucn):
 #          (3, 1),
 #          (5, -1),
 #          (6, 0)]
-# 
+#
 # print(datos, "---")
-# 
+#
 # res = ""
-# 
+#
 # for x in range(0, len(datos)):
 #     res += f"c{x}"
-# 
+#
 #     for y in range(0, x):
 #         res += f"(x-x{y})"
-# 
+#
 #     res += "+"
-# 
+#
 # res = res.strip("+")
 # print(res)
-# 
+#
 # res = ""
 # cs = ""
-# 
+#
 # for x in range(0, len(datos)):
 #     res += f"c_{x}"
 #     cs += f" c_{x}"
-# 
+#
 #     for y in range(0, x):
 #         res += f"*(x-{datos[y][0]})"
-# 
+#
 #     res += "+"
-# 
+#
 # res = ""
-# 
+#
 # for x in range(0, len(datos)):
 #     res += f"c_{x}"
 #     cs += f" c_{x}"
-# 
+#
 #     for y in range(0, x):
 #         res += f"(x-{datos[y][0]})"
-# 
+#
 #     res += "+"
-# 
+#
 # res = res.strip("+")
-# 
+#
 # primeras = []
 # segundas = []
 # terceras = []
-# 
+#
 # for x in range(len(datos) - 1):
 #     primeras.append(Fraction((datos[x + 1][1] - datos[x][1]) / (datos[x + 1][0] - datos[x][0])))
-# 
+#
 # print(primeras)
-# 
+#
 # for x in range(len(datos) - 2):
 #     segundas.append(Fraction((primeras[x + 1] - primeras[x]) / (datos[x + 2][0] - datos[x][0])))
-# 
+#
 # print(segundas)
-# 
+#
 # for x in range(len(datos) - 3):
 #     terceras.append(Fraction((segundas[x + 1] - segundas[x]) / (datos[x + 3][0] - datos[x][0])))
-# 
+#
 # print(terceras)
-# 
+#
 # print("\n\nCoeficientes newton diferencias divididas hacia adelante\n", datos[0][1], primeras[0], segundas[0],
 #       terceras[0])
-# 
+#
 # poliD = res.replace("c_0", str(datos[0][1])).replace("c_1", str(primeras[0])).replace("c_2", str(segundas[0])).replace(
 #     "c_3", str(terceras[0]))
-# 
+#
 # res = ""
-# 
+#
 # for x in range(0, len(datos)):
 #     res += f"c_{x}"
-# 
+#
 #     for y in range(0, x):
 #         print(y)
 #         res += f"(x-{datos[abs(y - len(datos) + 1)][0]})"
-# 
+#
 #     res += "+"
-# 
+#
 # res = res.strip("+")
 # poliA = res.replace("c_0", str(datos[-1][1])).replace("c_1", str(primeras[-1])).replace("c_2",
 #                                                                                         str(segundas[-1])).replace(
 #     "c_3", str(terceras[-1]))
-# 
+#
 # print(res)
 # print()
 # print(poliD)
@@ -330,73 +325,168 @@ def estiliza_string(fucn):
 # print(poliA)
 
 # ----------------------------------------------------------------------------
-print("Regla Tra")
+# print("Regla Tra")
+#
+# funcion = input("Ingresa la función a Integrar:  ")
+# I1 = float(input("Primer Intervalo:  "))
+# I2 = float(input("Segundo Intervalo: "))
+#
+# x, y, z, w, t = sympy.symbols('x y z w t')
+# fsym = sympy.sympify(funcion)
+# fx = sympy.lambdify(x, fsym, "math")
+#
+# rango = int(I2 - I1) + 1
+#
+# h = 1
+# x_i = np.arange(I1, I2 + 1, h)
+# c_i = np.ones(rango)
+# fx_i = []
+# c_i[0] = .5
+# c_i[-1] = .5
+#
+# sum = []
+# sigma = 0
+#
+# for n in x_i:
+#     fx_i.append(fx(n))
+#
+# for n in range(0, rango):
+#     sum.append(c_i[n] * fx_i[n])
+#
+# print()
+# print(fx_i, len(fx_i))
+# print(c_i, len(c_i))
+# print(sum, len(sum))
+# print(f"\[\int_{I1}^{I2} \> {funcion} \> dx =   \]")
+#
+# for n in sum:
+#     sigma += n
+#
+# print(sigma)
+# print("Valor real: ", sympy.integrate(fsym, (x, I1, I2)))
+# # --------- graficacion ------------
+# t = np.linspace(I1 - (I2 // I1), I2 + (I2 // I1))
+# s = []
+#
+# for n in t:
+#     s.append(fx(n))
+#
+# plt.rc_context({'axes.edgecolor': 'black', 'xtick.color': 'black', 'ytick.color': 'black'})
+# fig, ax = plt.subplots()
+#
+# ax.plot(t, s, label=f'f(x) = {funcion}', color='#40E0D0')
+# # ax.grid(color="gray")
+# ax.set_ylim(bottom=0)
+#
+# ix = np.linspace(I1, I2)
+# iy = fx(ix)
+# verts = [(I1, 0), *zip(ix, iy), (I2, 0)]
+# poly = Polygon(verts, facecolor='0.9', edgecolor='0.5')
+# ax.add_patch(poly)
+# ax.text(0.5 * (I1 + I2), 30, f"$\int_{{I1}}^{{I2}} {sympy.latex(fsym)}\>dx$",
+#         horizontalalignment='center', fontsize=20)
+#
+# ax.spines['right'].set_visible(False)
+# ax.spines['top'].set_visible(False)
+# ax.xaxis.set_ticks_position('bottom')
+#
+# ax.set_xticks((I1, I2))
+# ax.set_xticklabels(('$a$', '$b$'))
+# ax.set_yticks([])
+#
+# plt.show()
 
-funcion = input("Ingresa la función a Integrar:  ")
-I1 = float(input("Primer Intervalo:  "))
-I2 = float(input("Segundo Intervalo: "))
+#--------------------------------------------------------------------------------------------
 
-x, y, z, w, t = sympy.symbols('x y z w t')
-fsym = sympy.sympify(funcion)
-fx = sympy.lambdify(x, fsym, "math")
+# import time
+# from sympy import init_printing,
+# import matplotlib.pyplot as plt
+# import numpy as np
+import sympy
+# import matplotlib.pyplot as plt
+# from matplotlib.patches import Polygon
 
-rango = int(I2 - I1) + 1
+# sympy.init_printing()
+print("Simpson 1/3")
 
-h = 1
-x_i = np.arange(I1, I2 + 1, h)
-c_i = np.ones(rango)
-fx_i = []
-c_i[0] = .5
-c_i[-1] = .5
+funcion = input("Función a integrar: ")
+I1 = float(input("Primer intervalo: "))
+I2 = float(input("Segundo intervalo: "))
 
-sum = []
-sigma = 0
+x = sympy.symbols('x')
+f = sympy.sympify(funcion)
+fx = sympy.lambdify(x, f)
 
-for n in x_i:
-    fx_i.append(fx(n))
+fnueva = funcion.replace('x', str(I1))
+deltax = (I2-I1)/10
 
-for n in range(0, rango):
-    sum.append(c_i[n] * fx_i[n])
+i = 0
+p = 1
+# 
+# while i <= I2:
+#     if (p%2) != 0:
+#         fnueva += f" + 4*({funcion.replace('x', str(i))})*x"
+#     else:
+#         fnueva += f" + 2*{funcion.replace('x', str(i))}*x"
+# 
+#     i += deltax
+#     p += 1
+# 
+# 
+# fnueva += "+"+funcion.replace('x', str(I2))
+# fnueva = f"{deltax}/3*("+ fnueva + ")"
+# #print(fnueva)
+# g = sympy.sympify(fnueva)
+# gx = sympy.lambdify(x, g)
+# 
+# 
+# curi = f"((({I2-I1})/2)/3)*({funcion.replace('x', str(I1))}+4*({funcion.replace('x', str((I1+I2)/2))}+{funcion.replace('x', str(I2))})) "
+print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")#, f"valor calculado: {gx(1)}", curi, sympy.sympify(curi))
 
-print()
-print(fx_i, len(fx_i))
-print(c_i, len(c_i))
-print(sum, len(sum))
-print(f"\[\int_{I1}^{I2} \> {funcion} \> dx =   \]")
+def simpson(f, fn, a, b, n):
+    fun = ""
+    h=(b-a)/n
+    k=0.0
+    x=a + h
+    print(a, f(a), 1)
 
-for n in sum:
-    sigma += n
+    for i in range(1, int(n/2) + 1):
+        print(x, f(x), 4)
+        k += 4*f(x)
+        x += 2*h
+        fun += f"+4*({fn.replace('x', str(x))})"
 
-print(sigma)
-print("Valor real: ", sympy.integrate(fsym, (x, I1, I2)))
-# --------- graficacion ------------
-t = np.linspace(I1 - (I2 // I1), I2 + (I2 // I1))
-s = []
+    x = a + 2*h
 
-for n in t:
-    s.append(fx(n))
+    for i in range(1,int(n/2)):
+        print(x, f(x), 2)
+        k += 2*f(x)
+        x += 2*h
+        fun += f"+2*({fn.replace('x', str(x))})"
 
-plt.rc_context({'axes.edgecolor': 'black', 'xtick.color': 'black', 'ytick.color': 'black'})
-fig, ax = plt.subplots()
+    print(b, f(b), 1)
 
-ax.plot(t, s, label=f'f(x) = {funcion}', color='#40E0D0')
-# ax.grid(color="gray")
-ax.set_ylim(bottom=0)
+    fun = f"({fn.replace('x', str(a))})" + fun + f"+ ({fn.replace('x', str(b))})"
+    print(fun)
+    return (h/3)*(f(a)+f(b)+k)
 
-ix = np.linspace(I1, I2)
-iy = fx(ix)
-verts = [(I1, 0), *zip(ix, iy), (I2, 0)]
-poly = Polygon(verts, facecolor='0.9', edgecolor='0.5')
-ax.add_patch(poly)
-ax.text(0.5 * (I1 + I2), 30, f"$\int_{{I1}}^{{I2}} {sympy.latex(fsym)}\>dx$",
-        horizontalalignment='center', fontsize=20)
+print(simpson(fx,funcion, (I1), (I2), 4))
 
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax.xaxis.set_ticks_position('bottom')
 
-ax.set_xticks((I1, I2))
-ax.set_xticklabels(('$a$', '$b$'))
-ax.set_yticks([])
 
-plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

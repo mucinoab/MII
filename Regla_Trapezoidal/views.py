@@ -65,6 +65,8 @@ def RegTra_Calcula(request, form):
         for n in range(0, rango):
             tabla.append([f"{x_i[n]:.3f}", f"{fx_i[n]:.3f}", f"{c_i[n]:.3f}", f"{(sum[n]):.3f}"])
 
+        real = sympy.integrate(fsym, (x, I1, I2))
+
         # --------- graficacion ------------
 
         t = np.linspace(I1, I2)
@@ -100,9 +102,10 @@ def RegTra_Calcula(request, form):
             'I2': I2,
             "sigma": f"{sigma:.3f}",
             "funcion": sympy.latex(fsym),
-            "real": f"{sympy.integrate(fsym, (x, I1, I2)):.3f}",
+            "real": f"{real:.3f}",
             "tabla": tabla,
-            "titulos": titulos
+            "titulos": titulos,
+            "error": f"{abs(real - sigma):.3f}"
         }
 
     except Exception as e:
