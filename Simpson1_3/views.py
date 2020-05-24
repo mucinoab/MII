@@ -1,18 +1,16 @@
-from newton.views import errors_view
-from django.shortcuts import render
-from .forms import forma
-
-import numpy as np
-import sympy
-
-from operator import itemgetter
-
 from base64 import b64encode
 from io import BytesIO
+from operator import itemgetter
 from urllib import parse
+
 import matplotlib.pyplot as plt
+import numpy as np
+import sympy
+from django.shortcuts import render
 from matplotlib.patches import Polygon
-import matplotlib.lines as mlines
+
+from newton.views import errors_view
+from .forms import forma
 
 
 def Sim13_views(request):
@@ -26,6 +24,7 @@ def Sim13_views(request):
             return Sim13_Calcula(request, form)
 
     return render(request, "Sim13_input.html", context)
+
 
 def Sim13_Calcula(request, form):
     plt.rcParams.update(plt.rcParamsDefault)
@@ -43,25 +42,25 @@ def Sim13_Calcula(request, form):
 
         tabla = []
         k = 0.0
-        h = (b-a)/n
+        h = (b - a) / n
         x = a + h
 
         aux = f(a)
         tabla.append([a, f"{aux:.3f}", 1, f"{(aux):.3f}"])
 
-        for i in range(1, int(n/2) + 1):
+        for i in range(1, int(n / 2) + 1):
             aux = f(x)
-            tabla.append([x, f"{aux:.3f}", 4, f"{(aux*4):.3f}"])
-            k += 4*aux
-            x += 2*h
+            tabla.append([x, f"{aux:.3f}", 4, f"{(aux * 4):.3f}"])
+            k += 4 * aux
+            x += 2 * h
 
-        x = a + 2*h
+        x = a + 2 * h
 
-        for i in range(1, int(n/2)):
+        for i in range(1, int(n / 2)):
             aux = f(x)
-            tabla.append([x, f"{aux:.3f}", 2, f"{(aux*2):.3f}"])
-            k += 2*aux
-            x += 2*h
+            tabla.append([x, f"{aux:.3f}", 2, f"{(aux * 2):.3f}"])
+            k += 2 * aux
+            x += 2 * h
 
         aux = f(b)
         tabla.append([b, f"{aux:.3f}", 1, f"{(aux):.3f}"])
@@ -71,7 +70,7 @@ def Sim13_Calcula(request, form):
         for n in tabla:
             n[0] = f"{(n[0]):.3f}"
 
-        sigma = (h/3)*(f(a)+aux+k)
+        sigma = (h / 3) * (f(a) + aux + k)
 
         titulos = ["\(x_i\)", "\(f(x_i)\)", "\(c_i\)", "\(c_if(x_i)\)"]
 

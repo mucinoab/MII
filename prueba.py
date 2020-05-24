@@ -396,108 +396,132 @@
 #
 # plt.show()
 
-#--------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+
+# from operator import itemgetter
 
 # import time
 # from sympy import init_printing,
 # import matplotlib.pyplot as plt
 # import numpy as np
 import sympy
-from operator import itemgetter
+
 # import matplotlib.pyplot as plt
 # from matplotlib.patches import Polygon
 
 # sympy.init_printing()
-print("Simpson 1/3")
+# 
+# funcion = input("Función a integrar: ")
+# I1 = float(input("Primer intervalo: "))
+# I2 = float(input("Segundo intervalo: "))
+# 
+# x = sympy.symbols('x')
+# f = sympy.sympify(funcion)
+# fx = sympy.lambdify(x, f, "math")
+# 
+# fnueva = funcion.replace('x', str(I1))
+# deltax = (I2 - I1) / 10
+# 
+# i = 0
+# p = 1
+# # 
+# # while i <= I2:
+# #     if (p%2) != 0:
+# #         fnueva += f" + 4*({funcion.replace('x', str(i))})*x"
+# #     else:
+# #         fnueva += f" + 2*{funcion.replace('x', str(i))}*x"
+# # 
+# #     i += deltax
+# #     p += 1
+# # 
+# # 
+# # fnueva += "+"+funcion.replace('x', str(I2))
+# # fnueva = f"{deltax}/3*("+ fnueva + ")"
+# # #print(fnueva)
+# # g = sympy.sympify(fnueva)
+# # gx = sympy.lambdify(x, g)
+# # 
+# # 
+# # curi = f"((({I2-I1})/2)/3)*({funcion.replace('x', str(I1))}+4*({funcion.replace('x', str((I1+I2)/2))}+{funcion.replace('x', str(I2))})) "
+# print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")  # , f"valor calculado: {gx(1)}", curi, sympy.sympify(curi))
+# 
+# 
+# def simpson(f, a, b, n):
+#     tabla = []
+#     k = 0.0
+#     h = (b - a) / n
+#     x = a + h
+# 
+#     aux = f(a)
+# 
+#     tabla.append([1, aux, 1, aux])
+# 
+#     for i in range(1, int(n / 2) + 1):
+#         aux = f(x)
+#         tabla.append([x, aux, 4, aux * 4])
+#         k += 4 * aux
+#         x += 2 * h
+# 
+#     x = a + 2 * h
+# 
+#     for i in range(1, int(n / 2)):
+#         aux = f(x)
+#         tabla.append([x, aux, 2, aux * 2])
+#         k += 2 * aux
+#         x += 2 * h
+# 
+#     aux = f(b)
+#     tabla.append([b, aux, 1, aux])
+# 
+#     tabla.sort(key=itemgetter(0))
+# 
+#     for n in tabla:
+#         print(n)
+# 
+#     return (h / 3) * (f(a) + aux + k)
+# 
+# 
+# print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")  # , f"valor calculado: {gx(1)}", curi, sympy.sympify(curi))
+# print(f"valor colculado: {simpson(fx, (I1), (I2), 200)}")
+# 
+
+print("Simpson 3/8")
+
 
 funcion = input("Función a integrar: ")
-I1 = float(input("Primer intervalo: "))
-I2 = float(input("Segundo intervalo: "))
+a = float(input("Primer intervalo: "))
+b = float(input("Segundo intervalo: "))
+n = float(input("saltos: "))
 
 x = sympy.symbols('x')
 f = sympy.sympify(funcion)
 fx = sympy.lambdify(x, f, "math")
 
-fnueva = funcion.replace('x', str(I1))
-deltax = (I2-I1)/10
-
-i = 0
-p = 1
-# 
-# while i <= I2:
-#     if (p%2) != 0:
-#         fnueva += f" + 4*({funcion.replace('x', str(i))})*x"
-#     else:
-#         fnueva += f" + 2*{funcion.replace('x', str(i))}*x"
-# 
-#     i += deltax
-#     p += 1
-# 
-# 
-# fnueva += "+"+funcion.replace('x', str(I2))
-# fnueva = f"{deltax}/3*("+ fnueva + ")"
-# #print(fnueva)
-# g = sympy.sympify(fnueva)
-# gx = sympy.lambdify(x, g)
-# 
-# 
-# curi = f"((({I2-I1})/2)/3)*({funcion.replace('x', str(I1))}+4*({funcion.replace('x', str((I1+I2)/2))}+{funcion.replace('x', str(I2))})) "
-print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")#, f"valor calculado: {gx(1)}", curi, sympy.sympify(curi))
-
-def simpson(f, a, b, n):
-
-    tabla = []
-    k = 0.0
-    h = (b-a)/n
-    x = a + h
-
+print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")
+def calculate(f, a, b, n):
+    sum = 0
+    h = (float(b - a) / n)
     aux = f(a)
+    sum = aux + f(b);
 
-    tabla.append([1, aux, 1, aux])
+    print(a, aux, 1, aux)
 
-    for i in range(1, int(n/2) + 1):
-        aux = f(x)
-        tabla.append([x, aux, 4, aux*4])
-        k += 4*aux
-        x += 2*h
+    for i in range(1, n):
+        aux = f(a + i * h)
+        if (i % 3) == 0:
+            print(a+i*h, aux, 2, 2*aux)
+            sum = sum + 2 * (aux)
 
-    x = a + 2*h
-
-    for i in range(1,int(n/2)):
-        aux = f(x)
-        tabla.append([x, aux, 2, aux*2])
-        k += 2*aux
-        x += 2*h
+        else:
+            print(a+i*h, aux, 3, 3*aux)
+            sum = sum + 3 * (aux)
 
     aux = f(b)
-    tabla.append([b, aux, 1, aux])
+    print(b, aux, 1, aux)
 
-    tabla.sort(key=itemgetter(0))
-
-
-    for n in tabla:
-        print(n)
-
-    return (h/3)*(f(a)+aux+k)
-
-print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")#, f"valor calculado: {gx(1)}", curi, sympy.sympify(curi))
-print(f"valor colculado: {simpson(fx, (I1), (I2), 200)}")
+    return ((float(3 * h) / 8) * sum)
 
 
+integral_res = calculate(fx, a, b, n)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(integral_res)

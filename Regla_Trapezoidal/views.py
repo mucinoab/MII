@@ -1,14 +1,15 @@
-from newton.views import errors_view
-from django.shortcuts import render
-from .forms import forma
-import numpy as np
-import sympy
-
 from base64 import b64encode
 from io import BytesIO
 from urllib import parse
+
 import matplotlib.pyplot as plt
+import numpy as np
+import sympy
+from django.shortcuts import render
 from matplotlib.patches import Polygon
+
+from newton.views import errors_view
+from .forms import forma
 
 
 def RegTra_views(request):
