@@ -403,6 +403,7 @@
 # import matplotlib.pyplot as plt
 # import numpy as np
 import sympy
+from operator import itemgetter
 # import matplotlib.pyplot as plt
 # from matplotlib.patches import Polygon
 
@@ -415,7 +416,7 @@ I2 = float(input("Segundo intervalo: "))
 
 x = sympy.symbols('x')
 f = sympy.sympify(funcion)
-fx = sympy.lambdify(x, f)
+fx = sympy.lambdify(x, f, "math")
 
 fnueva = funcion.replace('x', str(I1))
 deltax = (I2-I1)/10
@@ -443,34 +444,44 @@ p = 1
 # curi = f"((({I2-I1})/2)/3)*({funcion.replace('x', str(I1))}+4*({funcion.replace('x', str((I1+I2)/2))}+{funcion.replace('x', str(I2))})) "
 print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")#, f"valor calculado: {gx(1)}", curi, sympy.sympify(curi))
 
-def simpson(f, fn, a, b, n):
-    fun = ""
-    h=(b-a)/n
-    k=0.0
-    x=a + h
-    print(a, f(a), 1)
+def simpson(f, a, b, n):
+
+    tabla = []
+    k = 0.0
+    h = (b-a)/n
+    x = a + h
+
+    aux = f(a)
+
+    tabla.append([1, aux, 1, aux])
 
     for i in range(1, int(n/2) + 1):
-        print(x, f(x), 4)
-        k += 4*f(x)
+        aux = f(x)
+        tabla.append([x, aux, 4, aux*4])
+        k += 4*aux
         x += 2*h
-        fun += f"+4*({fn.replace('x', str(x))})"
 
     x = a + 2*h
 
     for i in range(1,int(n/2)):
-        print(x, f(x), 2)
-        k += 2*f(x)
+        aux = f(x)
+        tabla.append([x, aux, 2, aux*2])
+        k += 2*aux
         x += 2*h
-        fun += f"+2*({fn.replace('x', str(x))})"
 
-    print(b, f(b), 1)
+    aux = f(b)
+    tabla.append([b, aux, 1, aux])
 
-    fun = f"({fn.replace('x', str(a))})" + fun + f"+ ({fn.replace('x', str(b))})"
-    print(fun)
-    return (h/3)*(f(a)+f(b)+k)
+    tabla.sort(key=itemgetter(0))
 
-print(simpson(fx,funcion, (I1), (I2), 4))
+
+    for n in tabla:
+        print(n)
+
+    return (h/3)*(f(a)+aux+k)
+
+print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")#, f"valor calculado: {gx(1)}", curi, sympy.sympify(curi))
+print(f"valor colculado: {simpson(fx, (I1), (I2), 200)}")
 
 
 

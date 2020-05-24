@@ -6,7 +6,6 @@ import sympy
 
 from base64 import b64encode
 from io import BytesIO
-from traceback import print_exc
 from urllib import parse
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
@@ -26,17 +25,15 @@ def RegTra_views(request):
 
 
 def RegTra_Calcula(request, form):
-    # cierra las graficas hechas anteriormente, libera memoria
     plt.rcParams.update(plt.rcParamsDefault)
     plt.close('all')
 
     try:
-        form.cleaned_data
         I1 = form.cleaned_data['I1']
         I2 = form.cleaned_data['I2']
         funcion = form.cleaned_data['f']
 
-        x, y, z, w, t = sympy.symbols('x y z w t')
+        x = sympy.symbols('x')
         fsym = sympy.sympify(funcion)
         fx = sympy.lambdify(x, fsym, "math")
 
@@ -60,7 +57,7 @@ def RegTra_Calcula(request, form):
         for n in sum:
             sigma += n
 
-        titulos = ["\(x_i\)", "\(f(x_i)\)", "\(c_i\)", "\(c_if(x_i)\)", ]
+        titulos = ["\(x_i\)", "\(f(x_i)\)", "\(c_i\)", "\(c_if(x_i)\)"]
         tabla = []
         for n in range(0, rango):
             tabla.append([f"{x_i[n]:.3f}", f"{fx_i[n]:.3f}", f"{c_i[n]:.3f}", f"{(sum[n]):.3f}"])
