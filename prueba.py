@@ -1,30 +1,27 @@
-# import time
-# from sympy import init_printing,
-# import matplotlib.pyplot as plt
-# import numpy as np
-# import sympy
-# import matplotlib.pyplot as plt
-# from matplotlib.patches import Polygon
-
-# sympy.init_printing()
+import time
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
 
 
-# def estiliza_string(fucn):
-#     superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
-#                        "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
-#     nuevo = ''
-#     c = 0
-#     p = len(fucn)
-#     #
-#     while c < p:
-#         if fucn[c] == '*':
-#             if fucn[c + 1] == '*':
-#                 nuevo += superscript_map[fucn[c + 2]]
-#                 c += 2
-#         else:
-#             nuevo += fucn[c]
-#         c += 1
-#     return nuevo
+def estiliza_string(fucn):
+    superscript_map = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
+                       "9": "⁹", "x": "ˣ", "y": "ʸ", "z": "ᶻ"}
+    nuevo = ''
+    c = 0
+    p = len(fucn)
+    #
+    while c < p:
+        if fucn[c] == '*':
+            if fucn[c + 1] == '*':
+                nuevo += superscript_map[fucn[c + 2]]
+                c += 2
+        else:
+            nuevo += fucn[c]
+        c += 1
+    return nuevo
 #
 # print("Newton multivariable")
 # x, y = sympy.symbols('x y')
@@ -167,64 +164,69 @@
 # print(end - start)
 # }
 # # -----------------------------------------
-# print("Polinomio de Lagrange")
-# #         x|f(x)
-# #        -------
-# #         0|1
-# #
-# start = time.time()
-# datos = [(1, 1),
-#          (2, 8),
-#          (3, 27)]
-# grado = 0
+print("Polinomio de Lagrange")
+#         x|f(x)
+#        -------
+#         0|1
 #
-# x = sympy.symbols('x')
+start = time.time()
+datos = [(1, 56.5),
+         (5, 113),
+         (20, 181),
+         (40, 214.5)]
+grado = 0
 #
-#
-# def poli_lag(grado, datos):
-#     x = sympy.symbols('x')
-#     resul = ""
-#
-#     for i in range(0, grado + 1):
-#         resul += f"{datos[i][1]}"
-#         for j in range(0, grado + 1):
-#             if j != i:
-#                 resul += f"*((x-{datos[j][0]})/({datos[i][0]}-{datos[j][0]}))"
-#
-#         resul += '+'
-#     resul = resul.strip("+")
-#     print(resul)
-#     return sympy.lambdify(x, resul, "math"), sympy.sympify(resul)
+x = sympy.symbols('x')
 #
 #
-# f, fx = poli_lag(len(datos) - 1, datos)
-# t = np.arange(datos[0][0] - 2, datos[-1][0] + 2, (datos[1][0] - datos[0][0]) / 5)
-# s = []
-# m = []
-# gx = "x**3"
-# g = sympy.lambdify(x, gx, "math")
-# for n in t:
-#     s.append(f(n))
-#     m.append(g(n))
-# #
-# fig, ax = plt.subplots()
-# plt.rc_context({"axes.titlesize": "large", 'legend.fontsize': 'large'})
-# #
+def poli_lag(grado, datos):
+    x = sympy.symbols('x')
+    resul = ""
+#
+    for i in range(0, grado + 1):
+        resul += f"{datos[i][1]}"
+        for j in range(0, grado + 1):
+            if j != i:
+                resul += f"*((x-{datos[j][0]})/({datos[i][0]}-{datos[j][0]}))"
+#
+        resul += '+'
+    resul = resul.strip("+")
+    print(resul)
+    return sympy.lambdify(x, resul, "math"), sympy.sympify(resul)
+#
+#
+f, fx = poli_lag(len(datos) - 1, datos)
+t = np.arange(datos[0][0] - 2, datos[-1][0] + 2, (datos[1][0] - datos[0][0]) / 5)
+s = []
+m = []
+gx = "x**3"
+g = sympy.lambdify(x, gx, "math")
+for n in t:
+    s.append(f(n))
+    m.append(g(n))
+#
+fig, ax = plt.subplots()
+plt.rc_context({"axes.titlesize": "large", 'legend.fontsize': 'large'})
+#
+ax.plot(t, s, color='#40E0D0')
 # ax.plot(t, s, label=f'Polinomio de Lagrange = {estiliza_string(str(sympy.simplify(fx)))}', color='#40E0D0')
 # ax.plot(t, m, label=f'Función Original = {estiliza_string(gx)}', color='green')
-# #
-# for n in range(len(datos) - 1):
-#     plt.plot(datos[n][0], datos[n][1], marker='o', markersize=5, color="red")
-# plt.plot(datos[-1][0], datos[-1][1], marker='o', markersize=5, color="red", label=f"Puntos dados")
-# ax.set_xlabel('X')
-# ax.set_ylabel('Y')
-# ax.grid(color="gray")
-# plt.legend(loc='best')
-# plt.tight_layout()
 #
-# print("Simplificando: ", estiliza_string(str(sympy.simplify(fx))))
-# print("Todo en " + str(time.time() - start) + " segundos.")
-# plt.show()
+for n in range(len(datos) - 1):
+    plt.plot(datos[n][0], datos[n][1], marker='o', markersize=5, color="red")
+
+plt.plot(datos[-1][0], datos[-1][1], marker='o', markersize=5, color="red", label=f"Puntos dados")
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.grid(color="gray")
+plt.legend(loc='best')
+plt.tight_layout()
+
+# print("latex: ", str(sympy.latex(fx)))
+print("Simplificando: ", estiliza_string(str(sympy.simplify(fx))))
+print(f"{f(10)}")
+print("Todo en " + str(time.time() - start) + " segundos.")
+plt.show()
 
 
 # -----------------------------------------
@@ -325,44 +327,58 @@
 # print(poliA)
 
 # ----------------------------------------------------------------------------
+# import sympy
+# import numpy as np
 # print("Regla Tra")
-#
 # funcion = input("Ingresa la función a Integrar:  ")
 # I1 = float(input("Primer Intervalo:  "))
 # I2 = float(input("Segundo Intervalo: "))
-#
+# 
 # x, y, z, w, t = sympy.symbols('x y z w t')
 # fsym = sympy.sympify(funcion)
 # fx = sympy.lambdify(x, fsym, "math")
+
 #
-# rango = int(I2 - I1) + 1
-#
-# h = 1
+# h = .01
+# rango = (int(I2 - I1) + 1)/h
 # x_i = np.arange(I1, I2 + 1, h)
 # c_i = np.ones(rango)
 # fx_i = []
 # c_i[0] = .5
 # c_i[-1] = .5
 #
-# sum = []
-# sigma = 0
-#
+sum = []
+sigma = 0
+# #
 # for n in x_i:
 #     fx_i.append(fx(n))
-#
+# #
 # for n in range(0, rango):
 #     sum.append(c_i[n] * fx_i[n])
-#
-# print()
+# #
+print()
 # print(fx_i, len(fx_i))
 # print(c_i, len(c_i))
 # print(sum, len(sum))
 # print(f"\[\int_{I1}^{I2} \> {funcion} \> dx =   \]")
-#
-# for n in sum:
+# #
 #     sigma += n
-#
-# print(sigma)
+# for n in sum:
+# #
+# def trapezoidal(f, a, b, n):
+#     h = float(b - a) / n
+#     print(f"h = {h}")
+#     s = 0.0
+#     s += f(a)/2.0
+#     print(f"{(a):.4f} || {f(a*h)} || {h} || {(h*f(a*h)):.4f}")
+#     for i in range(1, n):
+#         print(f"{(a+h*i):.4f} || {f(a+i*h)} || {h} || {(h*f(a+i*h)):.4f}")
+#         s += f(a + i*h)
+#     s += f(b)/2.0
+# #     print(f"{(a+h*i):.4f} || {f(a+i*h)} || {h} || {(h*f(a+i*h)):.4f}")
+#     return s * h
+# 
+# print( trapezoidal(fx, 0, .4, 10))
 # print("Valor real: ", sympy.integrate(fsym, (x, I1, I2)))
 # # --------- graficacion ------------
 # t = np.linspace(I1 - (I2 // I1), I2 + (I2 // I1))
@@ -398,7 +414,7 @@
 
 # --------------------------------------------------------------------------------------------
 
-# from operator import itemgetter
+from operator import itemgetter
 
 # import time
 # from sympy import init_printing,
@@ -450,6 +466,7 @@ import sympy
 #     tabla = []
 #     k = 0.0
 #     h = (b - a) / n
+#     print(h, n)
 #     x = a + h
 # 
 #     aux = f(a)
@@ -476,52 +493,53 @@ import sympy
 #     tabla.sort(key=itemgetter(0))
 # 
 #     for n in tabla:
-#         print(n)
+#         print(f"{n[0]:.3f} &{n[1]:.3f} &{n[2]:.3f} &{n[3]:.3f} \\\\\n\hline")
+#         
 # 
 #     return (h / 3) * (f(a) + aux + k)
 # 
 # 
 # print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")  # , f"valor calculado: {gx(1)}", curi, sympy.sympify(curi))
-# print(f"valor colculado: {simpson(fx, (I1), (I2), 200)}")
+# print(f"valor colculado: {simpson(fx, (I1), (I2), 10)}")
 # 
-
-print("Simpson 3/8")
-
-
-funcion = input("Función a integrar: ")
-a = float(input("Primer intervalo: "))
-b = float(input("Segundo intervalo: "))
-n = float(input("saltos: "))
-
-x = sympy.symbols('x')
-f = sympy.sympify(funcion)
-fx = sympy.lambdify(x, f, "math")
-
-print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")
-def calculate(f, a, b, n):
-    sum = 0
-    h = (float(b - a) / n)
-    aux = f(a)
-    sum = aux + f(b);
-
-    print(a, aux, 1, aux)
-
-    for i in range(1, n):
-        aux = f(a + i * h)
-        if (i % 3) == 0:
-            print(a+i*h, aux, 2, 2*aux)
-            sum = sum + 2 * (aux)
-
-        else:
-            print(a+i*h, aux, 3, 3*aux)
-            sum = sum + 3 * (aux)
-
-    aux = f(b)
-    print(b, aux, 1, aux)
-
-    return ((float(3 * h) / 8) * sum)
-
-
-integral_res = calculate(fx, a, b, n)
-
-print(integral_res)
+# 
+# print("Simpson 3/8")
+# 
+# 
+# funcion = input("Función a integrar: ")
+# a = float(input("Primer intervalo: "))
+# b = float(input("Segundo intervalo: "))
+# n = float(input("saltos: "))
+# 
+# x = sympy.symbols('x')
+# f = sympy.sympify(funcion)
+# fx = sympy.lambdify(x, f, "math")
+# 
+# print(f"valor real: {sympy.integrate(f, (x, I1, I2))}")
+# def calculate(f, a, b, n):
+#     sum = 0
+#     h = (float(b - a) / n)
+#     aux = f(a)
+#     sum = aux + f(b);
+# 
+#     print(a, aux, 1, aux)
+# 
+#     for i in range(1, n):
+#         aux = f(a + i * h)
+#         if (i % 3) == 0:
+#             print(a+i*h, aux, 2, 2*aux)
+#             sum = sum + 2 * (aux)
+# 
+#         else:
+#             print(a+i*h, aux, 3, 3*aux)
+#             sum = sum + 3 * (aux)
+# 
+#     aux = f(b)
+#     print(b, aux, 1, aux)
+# 
+#     return ((float(3 * h) / 8) * sum)
+# 
+# 
+# integral_res = calculate(fx, a, b, n)
+# 
+# print(integral_res)
