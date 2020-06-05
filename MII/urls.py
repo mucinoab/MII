@@ -13,22 +13,29 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import RedirectView
 
+from DifDiv.views import DifDiv_view
+from InterNew.views import InterNew_view
+from Regla_Trapezoidal.views import RegTra_views
+from Simpson1_3.views import Sim13_views
+from Simpson3_8.views import Sim38_views
 from error.views import errors_view
 from inicio.views import home_view
+from lagrange.views import lagrange_view
 from newton.views import newton_view, newton_calcula, newton_view_multi, newton_multi
 from punto_fijo.views import fijo_view, fijo_calcula, fijo_ejemplo_1, fijo_ejemplo_2, fijo_ejemplo_3
-from resumenes.views import res_view, metodos_views
+from resumenes.views import res_view, metodos_views, creditos_views, tuto_views
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('', home_view, name="home"),
     path('resumenes/', res_view),
+    path('creditos/', creditos_views),
+    path('tutorial/', tuto_views),
     path('favicon.ico/', favicon_view),
     path('metodo_newton/', newton_view),
     path('metodo_newton/?f=<str:fun>&ini<str:in>/', newton_calcula),
@@ -41,4 +48,10 @@ urlpatterns = [
     path('fijo_ejemplo3/', fijo_ejemplo_3),
     path('newton_Multi/', newton_view_multi),
     path('newton_Multi_calcula/', newton_multi),
+    path('lagrange_/', lagrange_view),
+    path('DifDiv/', DifDiv_view),
+    path('InterNew/', InterNew_view),
+    path('RegTra/', RegTra_views),
+    path('Sim13/', Sim13_views),
+    path('Sim38/', Sim38_views),
 ]

@@ -55,7 +55,6 @@ def newton_view_multi(request):
         if form.is_valid():
             if form.cleaned_data['n'] == 2:
                 return newton_input(request, 2)
-
             elif form.cleaned_data['n'] == 3:
                 return newton_input(request, 3)
             else:
@@ -90,7 +89,6 @@ def newton_calcula(request, form):
 
         x, y, z, t = sympy.symbols('x y z t')
         fx = sympy.sympify(fucn)
-
         dfdx = sympy.diff(fx, x)
 
         e = .00001
@@ -116,13 +114,14 @@ def newton_calcula(request, form):
 
     else:
 
+        fxx = sympy.lambdify(x, fx, "numpy")
         nuevo = estiliza_string(fucn)
 
         t = np.arange(r - 25, r + 25, .5)
         s = []
 
         for n in t:
-            s.append(float(fx.subs(x, n)))
+            s.append(float(fxx(n)))
 
         plt.rc_context({'axes.edgecolor': 'black', 'xtick.color': 'black', 'ytick.color': 'black'})
         # plt.style.use("dark_background")
@@ -135,7 +134,7 @@ def newton_calcula(request, form):
         ax.grid(color="gray")
 
         if b == 1:  # si se encontro corte antes de 50 iteraciones
-            plt.plot(r, fx.subs(x, r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.4f}")
+            plt.plot(r, fxx(r), marker='o', markersize=5, color="red", label=f"Corte con Eje x = {r:.4f}")
             ax.set(xlabel='x', ylabel='f(x)', title=f"Raíz calculada después de {iterations} iteraciones")
 
         else:
@@ -147,8 +146,6 @@ def newton_calcula(request, form):
 
         buf = BytesIO()
         fig.savefig(buf, format='jpg', quality=90, dpi=160, facecolor="#f3f2f1", edgecolor='#f3f2f1')
-        # # p1._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#f3f2f1",
-        #                         edgecolor='#f3f2f1', dpi=150)
         buf.seek(0)
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
 
@@ -210,21 +207,24 @@ def newton_multi(request):
             solucion = solucion - j
 
         context = {'context': resul}
-
+        context["jaco"] = sympy.latex(sympy.Matrix([[f1x, f1y],
+                                                    [f2x, f2y]])).replace("\left[", ' ').strip("\\right]").replace(
+            "matrix", "bmatrix")
         # graficación
         plt.rc_context({'axes.edgecolor': 'w', 'xtick.color': 'w', 'ytick.color': 'w'})
-        plt.style.use("dark_background")
+        # plt.style.use("dark_background")
 
         xs = solucion[0][0]  # x solucion
         ys = solucion[1][0]  # y solucion
 
         titulo = '\n' + estiliza_string(valores['f1']) + ' and ' + estiliza_string(valores['f2']) + '\n'
 
-        p = plot3d(f1, f2, (x, xs - 3, xs + 3), (y, ys - 3, ys + 3), title=titulo, nb_of_points_x=15, nb_of_points_y=15,
+        plt.rc_context({'axes.edgecolor': 'gray', 'xtick.color': 'gray', 'ytick.color': 'gray'})
+        p = plot3d(f1, f2, (x, xs - 3, xs + 3), (y, ys - 3, ys + 3), title=titulo, nb_of_points_x=35, nb_of_points_y=35,
                    xlabel='X', ylabel='Y')
         buf = BytesIO()
-        p._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#000000",
-                               edgecolor='#000000', dpi=150, transparent=True)
+        p._backend.fig.savefig(buf, format='jpg', quality=90, bbox_inches='tight', facecolor="#f3f2f1", dpi=150,
+                               transparent=True)
         buf.seek(0)
         uri = 'data:image/png;base64,' + parse.quote(b64encode(buf.read()))
         context['image'] = uri
@@ -272,7 +272,6 @@ def newton_multi(request):
         solucion = np.array([[x0], [y0], [z0]])
 
         for n in range(1, iteraciones + 1):
-
             # Dandole formato a los valores
             sol = fxfyfz(solucion[0][0], solucion[1][0], solucion[2][0])
             xs = f'{solucion[0][0]:.4f}'
@@ -289,6 +288,12 @@ def newton_multi(request):
                 fxfyfz(solucion[0][0], solucion[1][0], solucion[2][0]))
             solucion -= j
 
-            context = {'context': resul}
+        context = {'context': resul}
+        context["jaco"] = sympy.latex(sympy.Matrix([[f1x, f1y, f1z],
+                                                    [f2x, f2y, f2z],
+                                                    [f3x, f3y, f3z]])).replace("\left[", ' ').strip("\\right]").replace(
+            "matrix", "bmatrix")
 
+    context["inv"] = sympy.latex(j_inv).replace("\left[", ' ').strip("\\right]").replace("matrix", "bmatrix")
+    context["mat"] = sympy.latex(v).replace("\left[", ' ').strip("\\right]").replace("matrix", "bmatrix")
     return render(request, "newton_calculado_multi.html", context)

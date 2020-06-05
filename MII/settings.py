@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'resumenes',
     'tutorial',
     'newton',
+    'lagrange',
+    'DifDiv',
+    'InterNew',
 ]
 
 MIDDLEWARE = [

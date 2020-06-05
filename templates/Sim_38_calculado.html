@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="w3-jumbo w3-hide-small" style=" text-align: center; color: #5e3c58"><span>Regla de Simpson \(\frac{3}{8}\)</span>
+    </h1>
+
+    <img src="{{ image }}">
+
+    <div class="w3-padding-64 w3-content w3-text-grey" id="contacto">
+
+        <h2 style="text-align: center">Aproximación</h2>
+
+        <div>
+            <p style="font-size: large; text-align: left">\[ \int_{ {{ I1 }} }^{ {{ I2 }} } {{ funcion }} \> dx
+                \approx {{ sigma }} \]</p>
+        </div>
+
+        <h2 style="text-align: center">Valor Real</h2>
+
+        <div>
+            <p style="font-size: large; text-align: left">
+                \[ \int_{ {{ I1 }} }^{ {{ I2 }} } {{ funcion }} \> dx = {{ real }} \]</p>
+        </div>
+
+        <h2 style="text-align: center">Error</h2>
+
+        <div>
+            <p style="font-size: large; text-align: left">
+                \[ {{ error }} \]</p>
+        </div>
+
+        <div style="overflow: auto; overflow-y: hidden;  scrollbar-width: thin;">
+            <table style="margin: 0 auto;">
+                <thead>
+                <tr>
+                    {% for n in titulos %}
+                        <th>{{ n }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in tabla %}
+
+                    <tr>
+                        {% for m in n %}
+                            <td> {{ m }} </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="/Sim38" class="button"><span>Regresar</span></a>
+    </div>
+{% endblock %}

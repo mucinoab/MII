@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html>
-<title>Métodos Numéricos II</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+    <title>Métodos Numéricos II</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--  /*latex*/-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Métodos Numéricos II</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--  /*latex*/-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
 <style>
     body {
         font-family: "Georgia", serif;
         background-color: #f3f2f1;
     }
 
-    h1{
+    h1 {
         font-family: "Georgia", serif;
         margin-left: 150px;
         color: #5e3c58;
         padding-top: 50px;
     }
-    h2{
+
+    h2 {
         font-family: "Georgia", serif;
         color: #583747;
     }
 
-    h3{
+    h3 {
         font-family: "Georgia", serif;
         color: #583747;
         font-size: medium;
     }
 
-    p{
-        color: #8a737e;
-        font-size: medium;
+    hr {
+        font-family: "Georgia", serif;
+        color: #583747;
     }
 
-    div{
+    p {
+        color: #45393F;
+        font-size: large;
+    }
+
+    div {
         font-family: "Georgia", serif;
         color: #583747;
         font-size: medium;
@@ -46,23 +65,25 @@
 
     /* Set the width of the sidebar to 120px */
     .w3-sidebar {
-        width: 120px;
+        width: 100px;
         background: #ab9ba3;
     }
 
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
     #main {
-        margin-left: 120px
+        margin-left: 100px
     }
 
     /* Remove margins from "page content" on small screens */
     @media only screen and (max-width: 600px) {#main {
-        margin-left: 0
+        margin-left:
+
+    0
     }
 
     }
     label {
-        color:#F0DD81;
+        color: #F0DD81;
         width: 90vw;
         font-size: 3.3vw;
         margin: 1vw;
@@ -73,14 +94,13 @@
         border-collapse: collapse;
         border-style: double;
         width: fit-content;
-        float: center;
     }
 
     th {
         border: 1px solid #583747;
         border-style: double;
         text-align: center;
-        padding: 1vm;
+        padding: .80vm;
         background: #ab9ba3;
         color: #583747;
         font-size: 2.8vw;
@@ -88,16 +108,16 @@
 
     td {
         border-style: double;
-        border: 2px solid ##583747;
-        font-size: 2.3vw;
+        border: 2px solid #583747;
+        font-size: 2vw;
         text-align: left;
         padding: 8px;
         background: #ab9ba3;
         color: #583747;
     }
 
-    tr:nth-child(even) {
-        background-color: #fdf2f9;
+    tr:nth-child(odd) {
+        background-color: #EFCFB9;
     }
 
     /* Maneja la barra de scroll */
@@ -112,42 +132,51 @@
         max-height: 100%;
         max-width: 100%;
     }
+
+    .grid-container {
+        display: grid;
+        padding: 5px;
+        width: fit-content;
+        grid-template-columns: auto auto auto auto;
+    }
+
+    .grid-item {
+        width: fit-content;
+        border: 1px solid rgba(0, 0, 0, 0);
+        padding: 10px;
+        text-align: center;
+    }
 </style>
 <body>
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-    <br> <br> <br> <br>
+    <br> <br> <br> <br><br>
     <a href="/">
         <i class="fa fa-home w3-xxlarge"></i>
-        <h3>Inicio</h3> <br> <br>
+        <h3>Inicio</h3> <br> <br><br>
     </a>
     <a href="/resumenes">
         <i class="fa fa-book w3-xxlarge"></i>
-        <h3>Resúmenes</h3> <br> <br>
+        <h3>Resúmenes</h3> <br> <br><br>
     </a>
     <a href="/metodos">
         <i class="fa fa-superscript w3-xxlarge"></i>
-        <h3>Métodos</h3> <br> <br>
+        <h3>Métodos</h3> <br> <br><br>
     </a>
-    <a href="#tutorial">
-        <i class="fa fa-play w3-xxlarge"></i>
-        <h3>Tutorial</h3> <br> <br>
-    </a>
-    <a href="#sobre_nosotros">
+    <a href="/creditos">
         <i class="fa fa-users w3-xxlarge"></i>
         <h3>Créditos</h3>
     </a>
 </nav>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<!-- Navbar on small screens  -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-xsmall">
-        <a href="/" class="w3-bar-item w3-button" style="width:15% !important">Inicio</a>
-        <a href="/resumenes" class="w3-bar-item w3-button" style="width:27% !important">Resúmenes</a>
-        <a href="/metodos" class="w3-bar-item w3-button" style="width:21% !important">Métodos</a>
-        <a href="#tutorial" class="w3-bar-item w3-button" style="width:18% !important">Tutorial</a>
-        <a href="#sobre_nosotros" class="w3-bar-item w3-button" style="width:19% !important">Créditos</a>
+        <a href="/" class="w3-bar-item w3-button" style="width:17% !important">Inicio</a>
+        <a href="/resumenes" class="w3-bar-item w3-button" style="width:29% !important">Resúmenes</a>
+        <a href="/metodos" class="w3-bar-item w3-button" style="width:23% !important">Métodos</a>
+        <a href="/creditos" class="w3-bar-item w3-button" style="width:23% !important">Créditos</a>
     </div>
 </div>
 
@@ -155,26 +184,9 @@
 {% block content %}
 {% endblock %}
 </body>
-
-<!-- Contact Section -->
-<div class="w3-padding-64 w3-content w3-text-grey" id="contacto">
-    <h2>Contactanos</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <div>
-        <p><i class="fa fa-map-marker fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> FES Acatlan, Edo.Méx</p>
-        <p><i class="fa fa-phone fa-fw w3-text-black w3-xxlarge w3-margin-right"></i> Phone: 55555555</p>
-        <p><i class="fa fa-envelope fa-fw w3-text-black w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
-    </div>
-    <br>
-
-    <!-- Footer -->
-  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <a href="https://github.com/mucinoab/MII" class="fa fa-github w3-hover-opacity"> Github</a>
-    <p class="w3-medium">Powered by Equipo 1</p>
-  <!-- End footer -->
-  </footer>
-
+<!-- Footer -->
+<footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <a href="https://github.com/mucinoab/MII" class="fa fa-github w3-hover-opacity">Github</a>
+    <p class="w3-medium">By Equipo 1</p>
+</footer>
 </html>
-
-

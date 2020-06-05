@@ -1,95 +1,1902 @@
 {% extends "base.html" %}
+
 {% block content %}
+    <style>
+        h6 {
+            margin-left: 140px;
+            margin-right: 50px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        h5 {
+            text-align: justify;
+            font-size: 15px;
+        }
+    </style>
     <!-- Page Content -->
     <div class="w3-padding-large" id="Resumenes">
         <!-- Header/Home -->
-        <header class="w3-container w3-padding-32 w3-center w3-black" id="Resumenes">
+        <header class="w3-center" id="Resumenes">
             <h1 class="w3-jumbo w3-hide-small" style=" text-align: center; color: #5e3c58"><span>Resúmenes</span></h1>
-            <h2 class="w3-hide-large  w3-hide-medium" style="font-size:xx-large; text-align: center; color: #5e3c58"><span>Resúmenes</span></h2>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size:40px; margin-top: 50px;  text-align: center; color: #5e3c58"><span>Resúmenes</span>
+            </h2>
+
         </header>
         <!-- Resumenes Section -->
         <div class="w3-text-grey" id="Resumenes">
 
             <!-- Indice computadora -->
             <div class="w3-hide-small">
-                <h4 style="margin-left: 155px"> Contenido: </h4> 
-                <a style="margin-left: 180px; font-size: larger;"  href="#Punto_Fijo">1. Punto Fijo</a> </br>
-                <a style="margin-left: 180px; font-size: larger;"  href="#Newton">2. Método de Newton</a> </br>
+                <h4 style="margin-left: 155px"> Contenido </h4>
+                <a style="margin-left: 180px; font-size: larger;" href="#Punto_Fijo">1. Punto Fijo</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#Newton">2. Método de Newton</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#Lagrange">3. Método de Lagrange</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#DifDiv">4. Diferencias Divididas</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#InterNew">5. Interpolación de Newton</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#RT">6. Regla Trapezoidal</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#S13">7. Regla de Simpson 1/3</a> </br>
+                <a style="margin-left: 180px; font-size: larger;" href="#S38">8. Regla de Simpson 3/8</a> </br>
             </div>
 
             <!-- Indice celular -->
             <div class="w3-hide-large  w3-hide-medium">
-                <h4> Contenido: </h4> 
-                 <a style="margin-left: 30px; font-size: larger;"  href="#PFijo">1. Punto Fijo</a> </br>
-                 <a style="margin-left: 30px; font-size: larger;"  href="#MNewton">2. Método de Newton</a> </br>
+                <h4> Contenido </h4>
+                <a style="margin-left: 30px; font-size: larger;" href="#PFijo">1. Punto Fijo</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#MNewton">2. Método de Newton</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#MLagrange">3. Método de Lagrange</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#DDIv">4. Diferencias Divididas</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#INew">5. Interpolación de Newton</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#RTrap">6. Regla Trapezoidal</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#RS13">7. Regla de Simpson 1/3</a> </br>
+                <a style="margin-left: 30px; font-size: larger;" href="#RS38">8. Regla de Simpson 3/8</a> </br>
             </div>
 
-            
+
             <a name="PFijo"></a>
             <a name="Punto_Fijo"></a>
             </br></br></br>
-            <h2 class="w3-hide-large  w3-hide-medium" style= "font-size: x-large; border-style: double; margin-right: 165px; text-align: center;">Punto Fijo</h2>
-            <hr class="w3-hide-large w3-hide-medium" style="width:200px" class="w3-opacity">
-            <h3 class="w3-hide-small"style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: large; text-align: center;">Punto
-                Fijo</a></h3>
-            <h4 class="small w3-hide-small" style="margin-left: 150px; margin-right: 50px; text-align: justify">
-                Un punto fijo de una función G, es un número P tal que G(P)=P. El problema de encontrar las soluciones
-                de una ecuación f(x)=0 y el de encontrar los puntos fijos de una función h(x) son equivalentes en el
-                siguiente sentido: dado el problema de encontar las soluciones de una ecuación f(x)=0, podemos definir
-                una función G con un punto fijo P de muchas formas; por ejemplo, f(x)=x - G(x). En forma inversa, si la
-                función G tiene un punto fijo en P, entonces la función definida por f(x)=x - G(x) posee un cero en
-                P.<br><br>
-
-                El método de punto fijo inicia con una aproximación inicial x0 y x{n+1} = G(xn) genera una sucesión de
-                aproximaciones la cual converge a la solución de la ecuación f(x)=0. A la función G se le conoce como
-                función iteradora. Se puede demostrar que dicha sucesión (x_n) converge siempre y cuando |G'(x)| < 1.
-                <br><br>
-                </br></br></br></br>
-            </h4>
-            <h5 class="w3-hide-large w3-hide-medium" style="text-align: justify;">
-                Un punto fijo de una función G, es un número P tal que G(P)=P. El problema de encontrar las soluciones
-                de una ecuación f(x)=0 y el de encontrar los puntos fijos de una función h(x) son equivalentes en el
-                siguiente sentido: dado el problema de encontar las soluciones de una ecuación f(x)=0, podemos definir
-                una función G con un punto fijo P de muchas formas; por ejemplo, f(x)=x - G(x). En forma inversa, si la
-                función G tiene un punto fijo en P, entonces la función definida por f(x)=x - G(x) posee un cero en
-                P.<br><br>
-
-                El método de punto fijo inicia con una aproximación inicial x0 y x{n+1} = G(xn) genera una sucesión de
-                aproximaciones la cual converge a la solución de la ecuación f(x)=0. A la función G se le conoce como
-                función iteradora. Se puede demostrar que dicha sucesión (x_n) converge siempre y cuando |G'(x)| < 1.
-                
-                </br></br></br></br>
-                <hr class="w3-hide-large w3-hide-medium" style="width:200px" class="w3-opacity">
-             </h5>  
-             <a name="MNewton"></a>
-             <a name="Newton"></a>
-            </br></br></br> 
-            <h2 class="w3-hide-large  w3-hide-medium" style= "font-size: x-large; border-style: double; margin-right: 80px; text-align: center;">Método de Newton</h2>
-            
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 150px; text-align: center;">Punto
+                Fijo</h2>
             <h3 class="w3-hide-small"
-                style="margin-left: 200px; margin-right: 800px; border-style: double; font-size: large; text-align: center;">Método de Newton</h3>
-            <h4 class="small w3-hide-small" style="margin-left: 150px; margin-right: 50px; text-align: justify">
-                Este método es uno de los mas utilizados para localizar raíces ya que en general es muy eficiente y siempre converge para una función polinomial.
-                <br>
-                Se requiere que las funciones sean diferenciables, y por tanto, continuas, para poder aplicar este método.
-                <br>
-                Se debe partir de  un valor inicial para la raíz: xi , este puede ser cualquier valor, el método convergirá a la raíz mas cercana.
-                <br>
-                Si se extiende una tangente desde el punto b , el punto donde esta tangente cruza al eje x representa una aproximación mejorada de la raíz.
-                
-                </br></br></br></br>
-            </h4>
-            <h5 class="w3-hide-large w3-hide-medium" style="text-align: justify;">
-                Este método es uno de los mas utilizados para localizar raíces ya que en general es muy eficiente y siempre converge para una función polinomial.
-                <br>
-                Se requiere que las funciones sean diferenciables, y por tanto, continuas, para poder aplicar este método.
-                <br>
-                Se debe partir de  un valor inicial para la raíz: xi , este puede ser cualquier valor, el método convergirá a la raíz mas cercana.
-                <br>
-                Si se extiende una tangente desde el punto b , el punto donde esta tangente cruza al eje x representa una aproximación mejorada de la raíz.
+                style="margin-left: 200px; margin-right: 930px; border-style: double; font-size: 25px; text-align: center;">
+                PuntoFijo</h3>
+            <h6 class="w3-hide-small">
+                Un punto fijo de una función G, es un número P tal que G(P)=P. El problema de encontrar las soluciones
+                de una ecuación f(x)=0 y el de encontrar los puntos fijos de una función h(x) son equivalentes en el
+                siguiente sentido: dado el problema de encontar las soluciones de una ecuación f(x)=0, podemos definir
+                una función G con un punto fijo P de muchas formas; por ejemplo, f(x)= x-G(x). En forma inversa, si la
+                función G tiene un punto fijo en P, entonces la función definida por f(x)= x- G(x) posee un cero en
+                P.<br><br>
+
+                El método de punto fijo inicia con una aproximación inicial x<sub>0</sub> y x<sub>n+1</sub> =
+                G(x<sub>n</sub>) genera una sucesión de
+                aproximaciones la cual converge a la solución de la ecuación f(x)=0. A la función G se le conoce como
+                función iteradora. Se puede demostrar que dicha sucesión (x<sub>n</sub>) converge siempre y cuando
+                |G'(x)| < 1.
                 <br><br>
-                 </br></br></br></br>
+                Teorema para ecuación no lineal: <br>
+                Sea ϕ : [a, b] → [a, b] una función continua en [a, b] y derivable en [a, b] y además que cumple que
+                |ϕ<sup>'</sup>(x)|≤ k < 1, ∀x ∈ [a, b]. Entonces existe un único punto C ∈ [a, b] tal que ϕ(C) = c.
+                Además para todo x<sub>0</sub> ∈ [a, b], la sucesión {x<sub>0</sub>, x<sub>1</sub>}, ..., x<sub>n</sub>},
+                donde n va desde 0 hasta infinito, obtenida de la forma x<sub>n</sub> = ϕ(x<sub>n-1</sub>) converge a c.
+                <br><br>
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+                Un punto fijo de una función G, es un número P tal que G(P)=P. El problema de encontrar las soluciones
+                de una ecuación f(x)=0 y el de encontrar los puntos fijos de una función h(x) son equivalentes en el
+                siguiente sentido: dado el problema de encontar las soluciones de una ecuación f(x)=0, podemos definir
+                una función G con un punto fijo P de muchas formas; por ejemplo, f(x)= x-G(x). En forma inversa, si la
+                función G tiene un punto fijo en P, entonces la función definida por f(x)= x-G(x) posee un cero en
+                P.<br><br>
+
+                El método de punto fijo inicia con una aproximación inicial x<sub>0</sub> y x<sub>n+1</sub> =
+                G(x<sub>n</sub>) genera una sucesión de
+                aproximaciones la cual converge a la solución de la ecuación f(x)=0. A la función G se le conoce como
+                función iteradora. Se puede demostrar que dicha sucesión (x<sub>n</sub>) converge siempre y cuando
+                |G'(x)| < 1.
+                <br><br>
+                Teorema para ecuación no lineal: <br>
+                Sea ϕ : [a, b] → [a, b] una función continua en [a, b] y derivable en [a, b] y además que cumple que
+                |ϕ<sup>'</sup>(x)|≤ k < 1, ∀x ∈ [a, b]. Entonces existe un único punto C ∈ [a, b] tal que ϕ(C) = c.
+                Además para todo x<sub>0</sub> ∈ [a, b], la sucesión {x<sub>0</sub>, x<sub>1</sub>}, ..., x<sub>n</sub>},
+                donde n va desde 0 hasta infinito, obtenida de la forma x<sub>n</sub> = ϕ(x<sub>n-1</sub>) converge a c.
+                </br></br>
             </h5>
+
+            <a name="MNewton"></a>
+            <a name="Newton"></a>
+            </br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 70px; text-align: center;">
+                Método de Newton</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 880px; border-style: double; font-size: 25px; text-align: center;">
+                Método de Newton</h3>
+            <h6 class=" w3-hide-small">
+                Este método se basa en utilizar el desarrollo de Taylor; es de los mas utilizados para localizar raíces
+                ya que en general es muy eficiente y
+                siempre converge para una función polinomial.
+                <br>
+                Consiste en suponer que f: [a, b] → R es continua en [a, b] y tal que f<sup>''</sup>(x) no cambia de
+                signo en [a, b] con f(a)f(b) < 0. El proceso para encontrar un x tal que f(x) = 0 consiste enlo
+                siguiente:</br>
+                <ol style="margin-left: 25px;">
+                    <li>Fijamos c = a o b, tal que f (c)f<sup>''</sup>(x) > 0, ∀ x ∈ (a, b).</li>
+                    <li>x<sub>0</sub> = c.</li>
+                    <li>Hallamos la ecuación de la tangente que pasa por (x<sub>0</sub>, f(x<sub>0</sub>)) y el punto de
+                        corte de dicha tangente con el eje X. El proceso se repite hasta conseguir una sucesión de
+                        aproximaciones que converge a la raíz de f(x) = 0.
+                    </li>
+                    </ul>
+                </ol>
+
+                Para aplicar este procedimiento para un sistema de n ecuaciones con n incógnitas, representamos la
+                variable x por x1 y la variable y por x2. El sistema de dos ecuaciones se escribe de una forma más
+                general.</br>
+                <p style="margin-left: 125px;">
+                    f<sub>1</sub>(x<sub>1</sub>,x<sub>2</sub>)=0</br>
+                    f<sub>2</sub>(x<sub>1</sub>,x<sub>2</sub>)=0</br>
+                </p>
+
+                Supongamos que en la etapa k de proceso de cálculo partimos de un punto (x<sub>1</sub>, x<sub>2</sub>)
+                cualesquiera y nos movemos a otro muy próximo (x<sub>1</sub>+Δx<sub>1</sub>,
+                x<sub>2</sub>+Δx<sub>2</sub>). Los valores de las funciones son f<sub>1</sub> y f<sub>2</sub> en dicho
+                punto son aproximadamente:
+                <p style="margin-left: 125px;">
+                    f<sub>1</sub>(x<sub>1</sub>+Δx<sub>1</sub>,x<sub>2</sub>+Δx<sub>2</sub>) &#8776;
+                    f<sub>1</sub>(x<sub>1</sub>,x<sub>2</sub>)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>1</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>1</mi>
+                            </msub>
+                        </mo>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>2</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>2</mi>
+                            </msub>
+                        </mo>
+                    </math>
+                </p>
+                <p style="margin-left: 125px;">
+                    f<sub>2</sub>(x<sub>1</sub>+Δx<sub>1</sub>,x<sub>2</sub>+Δx<sub>2</sub>) &#8776;
+                    f<sub>2</sub>(x<sub>1</sub>,x<sub>2</sub>)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>1</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>1</mi>
+                            </msub>
+                        </mo>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>2</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>2</mi>
+                            </msub>
+                        </mo>
+                    </math>
+                </p>
+
+                Si el punto (x<sub>1</sub>+Δx<sub>1</sub>, x<sub>2</sub>+Δx<sub>2</sub>) es una solución del sistema de
+                ecuaciones, entonces:
+
+                <p style="margin-left: 125px;">
+                    f<sub>1</sub>(x<sub>1</sub>,x<sub>2</sub>)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>1</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>1</mi>
+                            </msub>
+                        </mo>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>2</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>2</mi>
+                            </msub>
+                        </mo>
+                        <mo>= 0</mo>
+                    </math>
+                </p>
+                <p style="margin-left: 125px;">
+                    f<sub>2</sub>(x<sub>1</sub>,x<sub>2</sub>)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>1</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>1</mi>
+                            </msub>
+                        </mo>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>2</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>2</mi>
+                            </msub>
+                        </mo>
+                        <mo>= 0</mo>
+                    </math>
+                </p>
+
+                Denominamos vector x al vector (x1,x2), el vector función F está formado por dos elementos que son las
+                funciones (f1,f2) y la matriz cuadrada de dimensión dos es el Jacobiano J. Despejamos Δx1 y Δx2 del
+                sistema de ecuaciones o el vector Δx.</br>
+
+                <p style="margin-left: 125px;">
+                    F(x)+ JΔx=0
+                    Δx= -J<sup>-1</sup>F
+                </p>
+
+                Donde J<sup>-1</sup> es la matriz inversa de J y Δx es el vector diferencia entre el vector que nos da
+                las coordenadas del nuevo punto x<sub>k+1</sub>, conocidas las del punto previo x<sub>k</sub>.</br>
+
+                <p style="margin-left: 125px;">
+                    x<sub>k+1</sub>= x<sub>k</sub>- J<sup>-1</sup>F
+                </p>
+
+                <img height="350px"
+                     src="https://siqueiresaprenderingenieria.files.wordpress.com/2014/05/800px-newton_iteration.png">
+
+
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+                Este método se basa en utilizar el desarrollo de Taylor; es de los mas utilizados para localizar raíces
+                ya que en general es muy eficiente y
+                siempre converge para una función polinomial.
+                <br>
+                Consiste en suponer que f: [a, b] → R es continua en [a, b] y tal que f<sup>''</sup>(x) no cambia de
+                signo en [a, b] con f(a)f(b) < 0. El proceso para encontrar un x tal que f(x) = 0 consiste enlo
+                siguiente:</br>
+                <ol style="margin-left: 25px;">
+                    <li>Fijamos c = a o b, tal que f (c)f<sup>''</sup>(x) > 0, ∀ x ∈ (a, b).</li>
+                    <li>x<sub>0</sub> = c.</li>
+                    <li>Hallamos la ecuación de la tangente que pasa por (x<sub>0</sub>, f(x<sub>0</sub>)) y el punto de
+                        corte de dicha tangente con el eje X. El proceso se repite hasta conseguir una sucesión de
+                        aproximaciones que converge a la raíz de f(x) = 0.
+                    </li>
+                    </ul>
+                </ol>
+
+                Para aplicar este procedimiento para un sistema de n ecuaciones con n incógnitas, representamos la
+                variable x por x1 y la variable y por x2. El sistema de dos ecuaciones se escribe de una forma más
+                general.</br>
+                <p style="text-align: center; font-size: 15px;">
+                    f<sub>1</sub>(x<sub>1</sub>,x<sub>2</sub>)=0</br>
+                    f<sub>2</sub>(x<sub>1</sub>,x<sub>2</sub>)=0</br>
+                </p>
+
+                Supongamos que en la etapa k de proceso de cálculo partimos de un punto (x<sub>1</sub>, x<sub>2</sub>)
+                cualesquiera y nos movemos a otro muy próximo (x<sub>1</sub>+Δx<sub>1</sub>,
+                x<sub>2</sub>+Δx<sub>2</sub>). Los valores de las funciones son f<sub>1</sub> y f<sub>2</sub> en dicho
+                punto son aproximadamente:
+                <p style="text-align: center; font-size: 15px;">
+                    f<sub>1</sub>(x<sub>1</sub>+Δx<sub>1</sub>,x<sub>2</sub>+Δx<sub>2</sub>) &#8776;
+                    f<sub>1</sub>(x<sub>1</sub>,x<sub>2</sub>)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>1</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>1</mi>
+                            </msub>
+                        </mo>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>2</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>2</mi>
+                            </msub>
+                        </mo>
+                    </math>
+                </p>
+                <p style="text-align: center; font-size: 15px;">
+                    f<sub>2</sub>(x<sub>1</sub>+Δx<sub>1</sub>,x<sub>2</sub>+Δx<sub>2</sub>) &#8776;
+                    f<sub>2</sub>(x<sub>1</sub>,x<sub>2</sub>)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>1</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>1</mi>
+                            </msub>
+                        </mo>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>2</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>2</mi>
+                            </msub>
+                        </mo>
+                    </math>
+                </p>
+
+                Si el punto (x<sub>1</sub>+Δx<sub>1</sub>, x<sub>2</sub>+Δx<sub>2</sub>) es una solución del sistema de
+                ecuaciones, entonces:
+
+                <p style="text-align: center; font-size: 15px;">
+                    f<sub>1</sub>(x<sub>1</sub>,x<sub>2</sub>)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>1</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>1</mi>
+                            </msub>
+                        </mo>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>2</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>2</mi>
+                            </msub>
+                        </mo>
+                        <mo>= 0</mo>
+                    </math>
+                </p>
+                <p style="text-align: center; font-size: 15px;">
+                    f<sub>2</sub>(x<sub>1</sub>,x<sub>2</sub>)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>1</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>1</mi>
+                            </msub>
+                        </mo>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>2</mi>
+                                </msub>
+                        </mfrac>
+                        </mrow>
+                        <mo>Δ</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>2</mi>
+                            </msub>
+                        </mo>
+                        <mo>= 0</mo>
+                    </math>
+                </p>
+
+                Denominamos vector x al vector (x1,x2), el vector función F está formado por dos elementos que son las
+                funciones (f1,f2) y la matriz cuadrada de dimensión dos es el Jacobiano J. Despejamos Δx1 y Δx2 del
+                sistema de ecuaciones o el vector Δx.</br>
+
+                <p style="text-align: center; font-size: 15px;">
+                    F(x)+ JΔx=0
+                    Δx= -J<sup>-1</sup>F
+                </p>
+
+                Donde J<sup>-1</sup> es la matriz inversa de J y Δx es el vector diferencia entre el vector que nos da
+                las coordenadas del nuevo punto x<sub>k+1</sub>, conocidas las del punto previo x<sub>k</sub>.</br>
+
+                <p style="text-align: center; font-size: 15px;">
+                    x<sub>k+1</sub>= x<sub>k</sub>- J<sup>-1</sup>F
+                </p>
+
+                <img src="https://siqueiresaprenderingenieria.files.wordpress.com/2014/05/800px-newton_iteration.png">
+            </h5>
+
+            <a name="MLagrange"></a>
+            <a name="Lagrange"></a>
+            </br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 50px; text-align: center;">Método de
+                Lagrange</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
+                Método de Lagrange</h3>
+            <h6 class="w3-hide-small">
+                El método de los multiplicadores de Lagrange, llamados así en honor a Joseph Louis Lagrange, es un
+                procedimiento para encontrar los máximos y mínimos de funciones de múltiples variables sujetas a
+                restricciones. Este método reduce el problema restringido con n variables a uno sin restricciones de n +
+                k variables, donde k es igual al número de restricciones, y cuyas ecuaciones pueden ser resueltas más
+                fácilmente. Estas nuevas variables escalares desconocidas, una para cada restricción, son llamadas
+                multiplicadores de Lagrange.</br></br>
+
+                El método dice que los puntos donde la función tiene un extremo condicionado con k restricciones, están
+                entre los puntos estacionarios de una nueva función sin restricciones construida como una combinación
+                lineal de la función y las funciones implicadas en las restricciones, cuyos coeficientes son los
+                multiplicadores.</br></br>
+
+                Sea f(x) una función definida en un conjunto abierto n-dimensional {x ∈ Rn}. Se definen s restricciones
+                g<sub>k</sub>(x) = 0, k=1,..., s, y se observa (si las restricciones son satisfechas) que: </br>
+                <p style="margin-left: 125px;">
+                    h(x, &#955;)= f+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <munderover>
+                            <mo>&#x2211;</mo>
+                            <mrow>
+                                <mi>k</mi>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                            </mrow>
+                            <mn>s</mn>
+                        </munderover>
+                    </math> &#955;<sub>k</sub> g<sub>k</sub>
+                    </br></br>
+                </p>
+                Se procede a buscar un extremo para h </br>
+                <p style="margin-left: 125px;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>h</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mn>0</mn>
+                    </math>
+                    </br></br>
+                </p>
+                Lo que es equivalente a </br>
+                <p style="margin-left: 125px;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <munderover>
+                            <mrow>
+                                <mo>&#x2211;</mo>
+                                <mo>&#xA0;</mo>
+                            </mrow>
+                            <mi>k</mi>
+                            <mi>s</mi>
+                        </munderover>
+                        <mo>&#xA0;</mo>
+                        <msub>
+                            <mi>&#x3BB;</mi>
+                            <mi>k</mi>
+                        </msub>
+                        <mfrac>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>g</mi>
+                                    <mi>k</mi>
+                                </msub>
+                            </mstyle>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mstyle>
+                        </mfrac>
+                    </math>
+                    </br></br>
+                </p>
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+                El método de los multiplicadores de Lagrange, llamados así en honor a Joseph Louis Lagrange, es un
+                procedimiento para encontrar los máximos y mínimos de funciones de múltiples variables sujetas a
+                restricciones. Este método reduce el problema restringido con n variables a uno sin restricciones de n +
+                k variables, donde k es igual al número de restricciones, y cuyas ecuaciones pueden ser resueltas más
+                fácilmente. Estas nuevas variables escalares desconocidas, una para cada restricción, son llamadas
+                multiplicadores de Lagrange.</br></br>
+
+                El método dice que los puntos donde la función tiene un extremo condicionado con k restricciones, están
+                entre los puntos estacionarios de una nueva función sin restricciones construida como una combinación
+                lineal de la función y las funciones implicadas en las restricciones, cuyos coeficientes son los
+                multiplicadores.</br></br>
+
+                Sea f(x) una función definida en un conjunto abierto n-dimensional {x ∈ Rn}. Se definen s restricciones
+                g<sub>k</sub>(x) = 0, k=1,..., s, y se observa (si las restricciones son satisfechas) que: </br>
+                <p style="font-size: 15px; text-align: center;">
+                    h(x, &#955;)= f+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <munderover>
+                            <mo>&#x2211;</mo>
+                            <mrow>
+                                <mi>k</mi>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                            </mrow>
+                            <mn>s</mn>
+                        </munderover>
+                    </math> &#955;<sub>k</sub> g<sub>k</sub>
+                    </br></br>
+                </p>
+                Se procede a buscar un extremo para h </br>
+                <p style="font-size: 15px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>h</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mn>0</mn>
+                    </math>
+                    </br></br>
+                </p>
+                Lo que es equivalente a </br>
+                <p style="font-size: 15px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <munderover>
+                            <mrow>
+                                <mo>&#x2211;</mo>
+                                <mo>&#xA0;</mo>
+                            </mrow>
+                            <mi>k</mi>
+                            <mi>s</mi>
+                        </munderover>
+                        <mo>&#xA0;</mo>
+                        <msub>
+                            <mi>&#x3BB;</mi>
+                            <mi>k</mi>
+                        </msub>
+                        <mfrac>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>g</mi>
+                                    <mi>k</mi>
+                                </msub>
+                            </mstyle>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mstyle>
+                        </mfrac>
+                    </math>
+                    </br></br>
+                <p style="font-size: 15px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <munderover>
+                            <mrow>
+                                <mo>&#x2211;</mo>
+                                <mo>&#xA0;</mo>
+                            </mrow>
+                            <mi>k</mi>
+                            <mi>s</mi>
+                        </munderover>
+                        <mo>&#xA0;</mo>
+                        <msub>
+                            <mi>&#x3BB;</mi>
+                            <mi>k</mi>
+                        </msub>
+                        <mfrac>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>g</mi>
+                                    <mi>k</mi>
+                                </msub>
+                            </mstyle>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mstyle>
+                        </mfrac>
+                    </math>
+                    </br></br>
+
+                <p style="font-size: 15px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <mi>f</mi>
+                            </mrow>
+                            <mrow>
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <munderover>
+                            <mrow>
+                                <mo>&#x2211;</mo>
+                                <mo>&#xA0;</mo>
+                            </mrow>
+                            <mi>k</mi>
+                            <mi>s</mi>
+                        </munderover>
+                        <mo>&#xA0;</mo>
+                        <msub>
+                            <mi>&#x3BB;</mi>
+                            <mi>k</mi>
+                        </msub>
+                        <mfrac>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>g</mi>
+                                    <mi>k</mi>
+                                </msub>
+                            </mstyle>
+                            <mstyle displaystyle="true">
+                                <mo>&#x2202;</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mstyle>
+                        </mfrac>
+                    </math>
+                    </br></br>
+
+            </h5>
+
+            <a name="DifDiv"></a>
+            <a name="DDiv"></a>
+            </br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">Diferencias
+                Divididas</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 850px; border-style: double; font-size: 25px; text-align: center;">
+                Diferencias Divididas </h3>
+            <h6 class="w3-hide-small" id="pre-wrap">
+
+                Este se utiliza paara calcular un polinomio interpolador de grado elevado.</br><br>
+                Sea f<sub>n</sub> una variable discreta de n elementos y sea x<sub>n</sub> otra variable discreta de n
+                elementos los cuales corresponden, por parejas, a la imagen u ordenada y abcisa de los datos que se
+                quieran interpolar, respectivamente, tales que:
+                <p style="font-size: 17px; text-align: center;">f(x<sub>k</sub>)= f<sub>k</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    k=1, ..., n </p> </br>
+
+                Podemos calcular los a<sub>i</sub> usando el hecho de que P(x<sub>i</sub>) = y<sub>i</sub>.</br>
+
+                <p style="font-size: 17px; text-align: center;">
+
+                    P(x<sub>0</sub>)= y<sub>0</sub> = a<sub>0</sub> &nbsp;&nbsp; => &nbsp;&nbsp; a<sub>0</sub>=y
+                    <sub>0</sub> </br>
+
+                    P(x<sub>1</sub>) = y<sub>1</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>)
+                    &nbsp;&nbsp; => &nbsp;&nbsp; a<sub>1</sub> =
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                            </mrow>
+                            <mrow>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </p>
+
+                <p style="font-size: 17px; text-align: center;">
+                    P(x<sub>2</sub>) = y<sub>2</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) +
+                    a<sub>2</sub> (x<sub>2</sub>- x<sub>0</sub>)(x<sub>2</sub>- x<sub>1</sub>) &nbsp;&nbsp; => &nbsp;&nbsp;
+                    a<sub>2</sub> =
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>a</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>a</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
+                                <mo>(</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                                <mo>)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>(</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                                <mo>)(</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
+                                <mo>)</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </p>
+
+
+                Usando esta nueva notación tendríamos que la forma de Newton del polinomio interpolante es;
+
+                <p style="font-size: 17px; text-align: center;">
+                    P(x)= f(x<sub>0</sub>) + f(x<sub>0</sub>, x<sub>1</sub>)(x-x<sub>0</sub>)+ f(x<sub>0</sub>,
+                    x<sub>1</sub>, x<sub>2</sub>)(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + f(x<sub>0</sub>, ..., x<sub>n</sub>)(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>)
+                </p>
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+
+
+                Este se utiliza paara calcular un polinomio interpolador de grado elevado.</br><br>
+                Sea f<sub>n</sub> una variable discreta de n elementos y sea x<sub>n</sub> otra variable discreta de n
+                elementos los cuales corresponden, por parejas, a la imagen u ordenada y abcisa de los datos que se
+                quieran interpolar, respectivamente, tales que:
+                <p style="font-size: 15px; text-align: center;">f(x<sub>k</sub>)= f<sub>k</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    k=1, ..., n </p> </br>
+
+                Podemos calcular los a<sub>i</sub> usando el hecho de que P(x<sub>i</sub>) = y<sub>i</sub>.</br>
+
+                <p style="font-size: 15px; text-align: center;">
+
+                    P(x<sub>0</sub>)= y<sub>0</sub> = a<sub>0</sub> &nbsp;&nbsp; => &nbsp;&nbsp; a<sub>0</sub>=y
+                    <sub>0</sub> </br>
+
+                    P(x<sub>1</sub>) = y<sub>1</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>)
+                    &nbsp;&nbsp; => &nbsp;&nbsp; a<sub>1</sub> =
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                            </mrow>
+                            <mrow>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </p>
+
+                <p style="font-size: 15px; text-align: center;">
+                    P(x<sub>2</sub>) = y<sub>2</sub> = a<sub>0</sub> + a<sub>1</sub> (x<sub>1</sub>- x<sub>0</sub>) +
+                    a<sub>2</sub> (x<sub>2</sub>- x<sub>0</sub>)(x<sub>2</sub>- x<sub>1</sub>) &nbsp;&nbsp; => &nbsp;&nbsp;
+                    a<sub>2</sub> =
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>a</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>a</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
+                                <mo>(</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                                <mo>)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>(</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                </mo>
+                                <mo>)(</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mo>
+                                <mo>-</mo>
+                                <mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                </mo>
+                                <mo>)</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </p>
+
+
+                Usando esta nueva notación tendríamos que la forma de Newton del polinomio interpolaste es:
+
+                <p style="font-size: 15px; text-align: center;">
+                    P(x)= f(x<sub>0</sub>) + f(x<sub>0</sub>, x<sub>1</sub>)(x-x<sub>0</sub>)+ f(x<sub>0</sub>,
+                    x<sub>1</sub>, x<sub>2</sub>)(x-x<sub>0</sub>)(x-x<sub>1</sub>) + ... + f(x<sub>0</sub>, ..., x<sub>n</sub>)(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>)
+                </p>
+
+            </h5>
+
+            <a name="InterNew"></a>
+            <a name="INew"></a>
+            </br></br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 10px; text-align: center;">Interpolación
+                de Newton</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 840px; border-style: double; font-size: 25px; text-align: center;">
+                Interpolación de Newton</h3>
+            <h6 class="w3-hide-small">
+
+                Es un método de interpolación polinómica. Aunque sólo existe un único polinomio que interpola una serie
+                de puntos, existen diferentes formas de calcularlo. Este método es útil para situaciones que requieran
+                un número bajo de puntos para interpolar, ya que a medida que crece el número de puntos, también lo hace
+                el grado del polinomio.<br></br>
+
+                Los polinomios se obtienen de las siguientes formulas:</br>
+                <p style="font-size: 17px; margin-left: 50px;">
+                    P<sub>1</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>)<br>
+
+                    P<sub>2</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)<br>
+
+                    P<sub>n</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)
+                    + ... + a<sub>n</sub>(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>) <br>
+
+                </p>
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+
+                Es un método de interpolación polinómica. Aunque sólo existe un único polinomio que interpola una serie
+                de puntos, existen diferentes formas de calcularlo. Este método es útil para situaciones que requieran
+                un número bajo de puntos para interpolar, ya que a medida que crece el número de puntos, también lo hace
+                el grado del polinomio.<br></br>
+
+                Los polinomios se obtienen de las siguientes formulas:</br>
+                <p style="font-size: 15px; margin-left: 30px;">
+                    P<sub>1</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>)<br>
+
+                    P<sub>2</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)<br>
+
+                    P<sub>n</sub>(x) = a<sub>0</sub> + a<sub>1</sub>(x-x<sub>0</sub>) + a<sub>2</sub>(x-x<sub>0</sub>)(x-x<sub>1</sub>)
+                    + ... + a<sub>n</sub>(x-x<sub>0</sub>)...(x-x<sub>n-1</sub>) <br>
+
+                </p>
+            </h5>
+
+
+            <a name="RT"></a>
+            <a name="RTrap"></a>
+            </br></br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 55px; text-align: center;">
+                Regla Trapezoidal</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 900px; border-style: double; font-size: 25px; text-align: center;">
+                Regla Trapezoidal</h3>
+            <h6 class="w3-hide-small">
+                El nombre regla del trapecio se debe a la interpretación geométrica que se hace de la fórmula. Cuando el
+                polinomio interpolante es de grado uno, su gráfica representa una línea recta en el intervalo [a, b] que
+                es
+                el área del trapecio que se forma, como se muestra en la figura.</br></br>
+                <img height=350px;
+                     src="https://multimedia.uned.ac.cr/pem/metodos_numericos_ensenanza/modulo4/img/des/trapecio3.jpg"></br></br>
+
+                En análisis numérico la regla del trapecio es un método de integración, es decir, un método para
+                calcular
+                aproximadamente el valor de una integral definida. La regla se basa en aproximar el valor de la integral
+                de
+                f(x) por el de la función lineal, que pasa a través de los puntos [a,f(a)] y [b,f(b)]. La integral de
+                ésta
+                es igual al área del trapecio bajo la gráfica de la función lineal.</br></br>
+
+
+                Para realizar la aproximación por esta regla es necesario usar un polinomio de primer orden, y ésta es
+                representada por:</br>
+
+                <p style="font-size: 17px; text-align: center;">
+                    P<sub>1</sub>(x)= f(a)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo> f(b)</mo>
+                                <mo>-</mo>
+                                <mo> f(a)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>b-a</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                    (x-a)
+                </p>
+
+                Entonces al sustituir en la integral tenemos lo siguiente:
+
+                <p style="font-size: 17px; text-align: center;">
+
+                    I &asymp;
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>f(x)dx &asymp;</mo>
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>
+                            <msub>
+                                <mi>P</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mo>
+                        <mo>(x)dx &asymp;</mo>
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>[f(a) +</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo> f(b)</mo>
+                                <mo>-</mo>
+                                <mo> f(a)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>b-a</mo>
+                            </mrow>
+                        </mfrac>
+                        <mo>(x-a)]dx</mo>
+                    </math>
+                </p>
+                </br>
+                Al resolver la integral nos queda:
+                <p style="font-size: 17px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>f(x)dx &asymp; (b-a)</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo> f(b)</mo>
+                                <mo>+</mo>
+                                <mo> f(a)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>2</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </p>
+                </br>
+                Para calcular el error seguimos la formula:
+                <p style="font-size: 17px; text-align: center;">
+                    E<sub>t</sub> = -
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>1</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>12</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                    f''(&xi;)(b-a)<sup>3</sup>
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+
+                El nombre regla del trapecio se debe a la interpretación geométrica que se hace de la fórmula.
+                Cuando el polinomio interpolante es de grado uno, su gráfica representa una línea recta en el
+                intervalo [a, b] que es el área del trapecio que se forma, como se muestra en la figura.</br></br>
+                <img src="https://multimedia.uned.ac.cr/pem/metodos_numericos_ensenanza/modulo4/img/des/trapecio3.jpg"></br></br>
+
+                En análisis numérico la regla del trapecio es un método de integración, es decir, un método para
+                calcular aproximadamente el valor de una integral definida. La regla se basa en aproximar el valor
+                de la integral de f(x) por el de la función lineal, que pasa a través de los puntos [a,f(a)] y
+                [b,f(b)]. La integral de ésta es igual al área del trapecio bajo la gráfica de la función
+                lineal.</br></br>
+
+                Para realizar la aproximación por esta regla es necesario usar un polinomio de primer orden, y ésta
+                es representada por:</br>
+
+                <p style="font-size: 17px; text-align: center;">
+                    P<sub>1</sub>(x)= f(a)+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo> f(b)</mo>
+                                <mo>-</mo>
+                                <mo> f(a)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>b-a</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                    (x-a)
+                </p>
+
+                Entonces al sustituir en la integral tenemos lo siguiente:
+
+                <p style="font-size: 17px; text-align: center;">
+
+                    I &asymp;
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>f(x)dx &asymp;</mo>
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>
+                            <msub>
+                                <mi>P</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mo>
+                        <mo>(x)dx &asymp;</mo>
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>[f(a) +</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo> f(b)</mo>
+                                <mo>-</mo>
+                                <mo> f(a)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>b-a</mo>
+                            </mrow>
+                        </mfrac>
+                        <mo>(x-a)]dx</mo>
+                    </math>
+                </p>
+                </br>
+                Al resolver la integral nos queda:
+                <p style="font-size: 17px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>f(x)dx &asymp; (b-a)</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo> f(b)</mo>
+                                <mo>+</mo>
+                                <mo> f(a)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>2</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </p>
+                </br>
+                Para calcular el error seguimos la formula:
+                <p style="font-size: 17px; text-align: center;">
+                    E<sub>t</sub> = -
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mo>1</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>12</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                    f''(&xi;)(b-a)<sup>3</sup>
+            </h5>
+
+            <a name="S13"></a>
+            <a name="RS13"></a>
+            </br></br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">
+                Regla de Simpson 1/3</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
+                Regla de Simpson 1/3</h3>
+            <h6 class="w3-hide-small">
+
+                Resumen Simpson 1/3
+                Las reglas de Simpson son las fórmulas que resultan al tomar las integrales bajo los polinomios que
+                conectan a los puntos.</br></br>
+
+                En integración numérica, una forma de aproximar una integral definida en un intervalo [a,b] es mediante
+                la regla del trapecio, es decir, que sobre cada subintervalo en el que se divide [a,b] se aproxima f por
+                un polinomio de primer grado, para luego calcular la integral como suma de las áreas de los trapecios
+                formados en esos subintervalos . El método utilizado para la regla de Simpson sigue la misma filosofía,
+                pero aproximando los subintervalos de f mediante polinomios de segundo grado.</br></br>
+
+                El método de Integración Simpson 1/3 consiste en tomar el área bajo una parábola que conecta tres
+                puntos. Como muestra la siguiente grafica: </br></br>
+                <img src="http://test.cua.uam.mx/MN/Methods/Integracion/Simpson13/Images/image5.gif"> <br></br>
+
+                La formula de integracion de Simpson 1/3 es la siguiente:</br>
+
+                <p style="font-size: 17px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                            </mn>
+                            <mi>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>n</mn>
+                                </msub>
+                            </mi>
+                        </msubsup>
+                        <mo>f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>k</mn>
+                            </msub>
+                        </mo>
+                        <mo>)dx &asymp;</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo> h</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>3</mo>
+                            </mrow>
+                        </mfrac>
+                        <mo>(</mo>
+                        <mo>
+                            <msub>
+                                <mi>y</mi>
+                                <mn>0</mn>
+                            </msub>
+                        </mo>
+                        <mo>+ 4</mo>
+                        <munderover>
+                            <mrow>
+                                <mo>&#x2211;</mo>
+                                <mo>&#xA0;</mo>
+                            </mrow>
+                            <mi>i=1</mi>
+                            <mi>n-2</mi>
+                        </munderover>
+                        <mo>f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>i</mn>
+                            </msub>
+                        </mo>
+                        <mo>) + 2</mo>
+                        <munderover>
+                            <mrow>
+                                <mo>&#x2211;</mo>
+                                <mo>&#xA0;</mo>
+                            </mrow>
+                            <mi>i=2</mi>
+                            <mi>n-2</mi>
+                        </munderover>
+                        <mo>f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>i</mn>
+                            </msub>
+                        </mo>
+                        <mo>) +</mo>
+                        <mo>
+                            <msub>
+                                <mi>y</mi>
+                                <mn>n</mn>
+                            </msub>
+                        </mo>
+                        <mo>)</mo>
+                    </math>
+                </p>
+
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+
+                Resumen simpson 1/3
+                Las reglas de Simpson son las fórmulas que resultan al tomar las integrales bajo los polinomios que
+                conectan a los puntos.</br></br>
+
+                En integración numérica, una forma de aproximar una integral definida en un intervalo [a,b] es mediante
+                la regla del trapecio, es decir, que sobre cada subintervalo en el que se divide [a,b] se aproxima f por
+                un polinomio de primer grado, para luego calcular la integral como suma de las áreas de los trapecios
+                formados en esos subintervalos. <br></br>
+
+                Esta regla a diferencia de la regla del trapecio, donde a mayor número de subdivisiones se obtiene una
+                mejor aproximación, lo que hace es ajustar una curva de orden superior en lugar de la línea recta como
+                sucede con la regla del trapecio.</br></br>
+
+                El método de Integración Simpson 1/3 consiste en tomar el área bajo una parábola que conecta tres
+                puntos. Como muestra la siguiente grafica: </br></br>
+                <img src="http://test.cua.uam.mx/MN/Methods/Integracion/Simpson13/Images/image5.gif"> <br></br>
+
+                La formula de integracion de Simpson 1/3 es la siguiente:</br>
+
+                <p style="font-size: 17px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                            </mn>
+                            <mi>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>n</mn>
+                                </msub>
+                            </mi>
+                        </msubsup>
+                        <mo>f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>k</mn>
+                            </msub>
+                        </mo>
+                        <mo>)dx &asymp;</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo> h</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>3</mo>
+                            </mrow>
+                        </mfrac>
+                        <mo>(</mo>
+                        <mo>
+                            <msub>
+                                <mi>y</mi>
+                                <mn>0</mn>
+                            </msub>
+                        </mo>
+                        <mo>+ 4</mo>
+                        <munderover>
+                            <mrow>
+                                <mo>&#x2211;</mo>
+                                <mo>&#xA0;</mo>
+                            </mrow>
+                            <mi>i=1</mi>
+                            <mi>n-2</mi>
+                        </munderover>
+                        <mo>f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>i</mn>
+                            </msub>
+                        </mo>
+                        <mo>) + 2</mo>
+                        <munderover>
+                            <mrow>
+                                <mo>&#x2211;</mo>
+                                <mo>&#xA0;</mo>
+                            </mrow>
+                            <mi>i=2</mi>
+                            <mi>n-2</mi>
+                        </munderover>
+                        <mo>f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>i</mn>
+                            </msub>
+                        </mo>
+                        <mo>) +</mo>
+                        <mo>
+                            <msub>
+                                <mi>y</mi>
+                                <mn>n</mn>
+                            </msub>
+                        </mo>
+                        <mo>)</mo>
+                    </math>
+                </p>
+            </h5>
+            </h5>
+
+            <a name="S38"></a>
+            <a name="RS38"></a>
+            </br></br></br>
+            <h2 class="w3-hide-large  w3-hide-medium"
+                style="font-size: x-large; border-style: double; margin-right: 30px; text-align: center;">
+                Regla de Simpson 3/8</h2>
+            <h3 class="w3-hide-small"
+                style="margin-left: 200px; margin-right: 870px; border-style: double; font-size: 25px; text-align: center;">
+                Regla de Simpson 3/8</h3>
+            <h6 class="w3-hide-small">
+
+                Resumen simpson 3/8
+                Esta Regla la empleamos para determinar el área bajo una función aproximándolo mediante el área bajo un
+                polinomio de grado 3 que conecta 4 puntos sobre una curva dada. Resulta útil cuando se tiene una
+                cantidad de puntos par.</br></br>
+
+                De la misma manera como se hizo en la regla de trapecio, la regla de Simpson se puede ampliar si se
+                subdivide el intervalo [a, b] en n subintervalos, todos de la misma longitud h =
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac>
+                        <mrow>
+                            <mo>b-a</mo>
+                        </mrow>
+                        <mrow>
+                            <mo>n</mo>
+                        </mrow>
+                    </mfrac>
+                </math>
+                . Cuando el número de subdivisiones que se haga sea igual a tres, entonces el método recibe el nombre de
+                la Regla de Simpson 3/8. Se le da ese nombre debido al factor
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac>
+                        <mrow>
+                            <mo>3h</mo>
+                        </mrow>
+                        <mrow>
+                            <mo>8</mo>
+                        </mrow>
+                    </mfrac>
+                </math>
+                que aparece en la fórmula.</br></br>
+
+                Para calcular el área bajo la curva aplicando la regla de Simpson 3/8 se utiliza la siguiente
+                fórmula:</br>
+                <p style="font-size: 17px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>f(x)dx &asymp;</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>3h</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>8</mo>
+                            </mrow>
+                        </mfrac>
+                        <mo>[f(a) + 3f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>n-1</mn>
+                            </msub>
+                        </mo>
+                        <mo>) + 3f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>n</mn>
+                            </msub>
+                        </mo>
+                        <mo>+ f(b)]</mo>
+                    </math>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Con
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>h =</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>b-a</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>3</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </p>
+
+                En la gráfica se muestra una parábola que aproxima a una función real. Observe que se calcula el área o
+                la integral bajo la parábola que pasa por los cuatro puntos.</br></br>
+                <img height="350px" ;
+                     src="https://multimedia.uned.ac.cr/pem/metodos_numericos_ensenanza/modulo4/img/des/Simpson2.jpg"></br></br>
+
+                Es importante señalar que para la regla de Simpson 3/8 compuesta, el número de subintervalos solo puede
+                ser un múltiplo de 3, en caso contrario no es posible aplicar la regla.</br>
+
+            </h6>
+            <h5 class="w3-hide-large w3-hide-medium">
+
+                Resumen Simpson 3/8
+                Esta Regla la empleamos para determinar el área bajo una función aproximándolo mediante el área bajo un
+                polinomio de grado 3 que conecta 4 puntos sobre una curva dada. Resulta útil cuando se tiene una
+                cantidad de puntos par.</br></br>
+
+                De la misma manera como se hizo en la regla de trapecio, la regla de Simpson se puede ampliar si se
+                subdivide el intervalo [a, b] en n subintervalos, todos de la misma longitud h =
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac>
+                        <mrow>
+                            <mo>b-a</mo>
+                        </mrow>
+                        <mrow>
+                            <mo>n</mo>
+                        </mrow>
+                    </mfrac>
+                </math>
+                . Cuando el número de subdivisiones que se haga sea igual a tres, entonces el método recibe el nombre de
+                la Regla de Simpson 3/8. Se le da ese nombre debido al factor
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac>
+                        <mrow>
+                            <mo>3h</mo>
+                        </mrow>
+                        <mrow>
+                            <mo>8</mo>
+                        </mrow>
+                    </mfrac>
+                </math>
+                que aparece en la fórmula.</br></br>
+
+                Para calcular el área bajo la curva aplicando la regla de Simpson 3/8 se utiliza la siguiente
+                fórmula:</br>
+                <p style="font-size: 17px; text-align: center;">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msubsup>
+                            <mo>&int;</mo>
+                            <mn>a</mn>
+                            <mi>b</mi>
+                        </msubsup>
+                        <mo>f(x)dx &asymp;</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>3h</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>8</mo>
+                            </mrow>
+                        </mfrac>
+                        <mo>[f(a) + 3f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>n-1</mn>
+                            </msub>
+                        </mo>
+                        <mo>) + 3f(</mo>
+                        <mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>n</mn>
+                            </msub>
+                        </mo>
+                        <mo>+ f(b)]</mo>
+                    </math>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Con
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>h =</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>b-a</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>3</mo>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </p>
+
+                En la gráfica se muestra una parábola que aproxima a una función real. Observe que se calcula el área o
+                la integral bajo la parábola que pasa por los cuatro puntos.</br></br>
+                <img src="https://multimedia.uned.ac.cr/pem/metodos_numericos_ensenanza/modulo4/img/des/Simpson2.jpg"></br></br>
+
+                Es importante señalar que para la regla de Simpson 3/8 compuesta, el número de subintervalos solo puede
+                ser un múltiplo de 3, en caso contrario no es posible aplicar la regla.</br>
+
+            </h5>
+            </h5>
+
+
             </body>
         </div>
     </div>

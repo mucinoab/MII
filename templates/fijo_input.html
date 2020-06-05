@@ -1,21 +1,22 @@
 <style>
-    .button 
-    {
-      background-color: #5e3c58;
-      color: whitesmoke;
-      padding: 12px 28x;
-      text-align: center;
-      border-radius: 8px;
-      font-size: 15px;
-      margin: 4px 2px;
-      cursor: pointer;
+    .button {
+        background-color: #5e3c58;
+        color: whitesmoke;
+        padding: 12px 28x;
+        text-align: center;
+        border-radius: 8px;
+        font-size: 15px;
+        margin: 4px 2px;
+        cursor: pointer;
     }
- </style>
+</style>
 {% extends 'base.html' %}
 {% block content %}
     <div class="w3-padding-large" id="punto_fijo">
     <!-- Header/Home -->
-        <h1><span class="w3-hide-small">Método Punto Fijo</span></h1>
+    <header class="w3-container w3-padding-32 w3-center " id="punto_fijo">
+        <h1 class="w3-jumbo"><span class="w3-hide-small">Método Punto Fijo</span></h1>
+    </header>
 
     <!-- Inicio Section -->
     <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="inicio">
@@ -25,9 +26,11 @@
     <form action="/punto_fijo_calcula/" method="POST">{% csrf_token %}
         {% for field in form %}
             <div class="fieldWrapper">
-                <div> {{ field.label_tag }} {{ field }} </div>
+                {#                {{ field.errors }}#}
+                {{ field.label_tag }} {{ field }}
             </div>
         {% endfor %}
         <input type="submit" class="button" value="Calcular y Graficar"/>
     </form>
 {% endblock %}
+
