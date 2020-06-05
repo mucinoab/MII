@@ -1,50 +1,82 @@
 <style>
-    .button {
-        background-color: #5e3c58;
-        color: whitesmoke;
-        text-align: center;
-        margin: 6px 2px;
-        border-radius: 8px;
-        font-size: 15px;
-        cursor: pointer;
-    }
+.button {
+  background-color: #5e3c58;
+  color: whitesmoke;
+  text-align: center;
+  margin: 6px 2px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
 
     .button1 {
-        padding: 10px 16px;
-        display: block;
-        width: 170px;
+      padding: 10px 16px;
+      display: block;
+      width: 170px;
     }
 </style>
 {% extends 'base.html' %}
 {% block content %}
-    <div class="w3-padding-large" id="punto_fijo">
-    <!-- Header/Home -->
-    <header class="w3-container  w3-center " id="punto_fijo">
-        <h1 class="w3-jumbo"><span class="w3-hide-small">Interpolación Polinómica de Lagrange</span></h1>
+<div class="w3-padding-large" id="punto_fijo">
+  <!-- Header/Home -->
+  <header class="w3-container  w3-center " id="punto_fijo">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">Interpolación Polinómica de Lagrange</span></h1>
 
-    </header>
+  </header>
 
-    <!-- Inicio Section -->
-    <div class="w3-content w3-justify w3-text-grey " id="inicio">
+  <!-- Inicio Section -->
+  <div class="w3-content w3-justify w3-text-grey " id="inicio">
     <h2 class="w3-hide-medium w3-hide-large" style="text-align: center;">Interpolación Polinómica de Lagrange</h2>
     <hr style="width:200px" class="w3-opacity">
     <h3 style="font-size: large;">Necesitas al menos 5 datos </h3>
     <form method="GET">{% csrf_token %}
-        {{ form }}
-        <input type="submit" class="button" value="Ir"/>
+      <table>
+        <thead>
+        <tr>
+          <th> \(x_i\)</th>
+          <th> \(y_i\)</th>
+          </tr>
+        </thead>
+            <tr>
+              <td> {{ form.x0 }} </td>
+              <td> {{ form.y0 }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ form.x1 }} </td>
+              <td> {{ form.y1 }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ form.x2 }} </td>
+              <td> {{ form.y2 }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ form.x3 }} </td>
+              <td> {{ form.y3 }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ form.x4 }} </td>
+              <td> {{ form.y4 }} </td>
+            </tr>
+
+      </table>
+      <input type="submit" class="button" value="Ir"/>
     </form>
 
-{% endblock %}
-{#    <form method="GET">#}
-{#    {% csrf_token %}#}
-{#    {{ datos}}#}
-{#    <table>#}
-{#        {% for form in datos %}#}
-{#        {{ form }}#}
-{#        {% endfor %}#}
-{#    </table>#}
-{#        <input type="submit" class="button" value="Ir"/>#}
-{#</form>#}
+    {% endblock %}
+    {#    <form method="GET">#}
+      {#    {% csrf_token %}#}
+      {#    {{ datos}}#}
+      {#    <table>#}
+        {#        {% for form in datos %}#}
+        {#        {{ form }}#}
+        {#        {% endfor %}#}
+        {#    </table>#}
+      {#        <input type="submit" class="button" value="Ir"/>#}
+      {#</form>#}
 
 
-{#    <table align="center">#}
+    {#    <table align="center">#}

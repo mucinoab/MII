@@ -217,7 +217,7 @@ def newton_multi(request):
         xs = solucion[0][0]  # x solucion
         ys = solucion[1][0]  # y solucion
 
-        titulo = '\n' + estiliza_string(valores['f1']) + ' and ' + estiliza_string(valores['f2']) + '\n'
+        titulo = '\n' + estiliza_string(valores['f1']) + ', ' + estiliza_string(valores['f2']) + '\n'
 
         plt.rc_context({'axes.edgecolor': 'gray', 'xtick.color': 'gray', 'ytick.color': 'gray'})
         p = plot3d(f1, f2, (x, xs - 3, xs + 3), (y, ys - 3, ys + 3), title=titulo, nb_of_points_x=35, nb_of_points_y=35,
