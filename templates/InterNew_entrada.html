@@ -28,7 +28,35 @@
     <hr style="width:200px" class="w3-opacity">
     <h3 style="font-size: large;">Necesitas al menos 4 datos</h3>
     <form method="GET">{% csrf_token %}
-        {{ form }}
+
+ <table>
+        <thead>
+        <tr>
+          <th> \(x_i\)</th>
+          <th> \(y_i\)</th>
+          </tr>
+        </thead>
+            <tr>
+              <td> {{ form.x0 }} </td>
+              <td> {{ form.y0 }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ form.x1 }} </td>
+              <td> {{ form.y1 }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ form.x2 }} </td>
+              <td> {{ form.y2 }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ form.x3 }} </td>
+              <td> {{ form.y3 }} </td>
+            </tr>
+        
+      </table>
         <input type="submit" class="button" value="Ir"/>
     </form>
 {% endblock %}
