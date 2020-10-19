@@ -18,7 +18,7 @@ psycopg2==2.8.6
 pyparsing==2.4.7
 python-dateutil==2.8.1
 pytz==2020.1
-scipy==1.5.2
+scipy==1.5.3
 six==1.15.0
 sqlparse==0.4.1
 static3==0.7.0
