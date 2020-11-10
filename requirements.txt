@@ -1,4 +1,4 @@
-asgiref==3.3.0
+asgiref==3.3.1
 cycler==0.10.0
 dj-database-url==0.5.0
 dj-static==0.0.6
