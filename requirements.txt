@@ -9,7 +9,7 @@ gitignore==0.0.8
 gunicorn==20.0.4
 kiwisolver==1.3.1
 matplotlib==3.3.4
-mpmath==1.1.0
+mpmath==1.2.1
 numpy==1.20.1
 pandas==1.2.1
 Pillow==8.1.0
