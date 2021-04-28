@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: matplotlib
+    versions:
+    - 3.4.0
+  - dependency-name: pillow
+    versions:
+    - 8.1.1
+  - dependency-name: pandas
+    versions:
+    - 1.2.2
